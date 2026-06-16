@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Sport Design - 前往結帳</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="checkout-page-body">
+
+    <header>
+        <div class="logo">NOVA SPORT</div>
+        <nav>
+            <a href="index.html#home">首頁</a>
+            <a href="index.html#about">關於我們</a>
+            <a href="index.html#products">產品</a>
+            <a href="index.html#faq">常見問題</a>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+        <section class="checkout-hero">
+            <h1>安全結帳</h1>
+            <p>請填寫你的聯絡及送貨資料，完成訂單確認。</p>
+        </section>
+
+        <section class="checkout-container">
+            <div class="checkout-grid">
+
+                <!-- 左邊：顧客資料 -->
+                <div class="checkout-card">
+                    <h2>顧客資料</h2>
+
+                    <form id="checkoutForm" onsubmit="return submitOrder()">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">姓名</label>
+                                <input type="text" id="customerName" name="customerName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerPhone">電話</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" required pattern="[0-9]{8}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerEmail">電郵</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerAddress">送貨地址</label>
+                            <textarea id="customerAddress" name="customerAddress" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="paymentMethod">付款方式</label>
+                            <select id="paymentMethod" name="paymentMethod" required onchange="showPaymentHint()">
+                                
+                            <option value="">請選擇付款方式</option>
+                            <option value="PayMe">PayMe</option>
+                            <option value="FPS">轉數快 FPS</option>
+                            <option value="AlipayHK">AlipayHK</option>
+                            <option value="WeChatPayHK">微信支付 HK</option>
+        ...
+                            </select>
+                        </div>
+
+                        
+                        <div id="paymentHintBox" class="payment-hint-box" style="display:none;">
+                        <h3 id="paymentHintTitle">付款提示</h3>
+                        <p id="paymentHintText"></p>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="remark">備註（選填）</label>
+                        <textarea id="remark" name="remark" rows="3"></textarea>
+                        </div>
+
+
+                        <button type="submit" class="checkout-submit-btn">確認訂單</button>
+                    </form>
+                </div>
+
+                <!-- 右邊：訂單摘要 -->
+                <div class="checkout-card order-summary-card">
+                    <h2>訂單摘要</h2>
+                    <p id="checkoutItemCount" class="checkout-item-count">共 0 件商品</p>    
+
+                    <div id="checkoutItems" class="checkout-items">
+                        <p class="empty-checkout">目前沒有商品。</p>
+                    </div>
+
+                    <div class="checkout-summary">
+                        <div class="summary-line">
+                            <span>小計</span>
+                            <span id="checkoutSubtotal">HK$ 0</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>運費</span>
+                            <span id="checkoutShipping">HK$ 0</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>優惠</span>
+                            <span id="checkoutDiscount">-HK$ 0</span>
+                        </div>
+                        <div class="summary-final">
+                            <span>總計</span>
+                            <span id="checkoutTotal">HK$ 0</span>
+                        </div>
+                    </div>
+
+                    <a href="index.html#products" class="back-shopping-link">← 返回繼續購物</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
