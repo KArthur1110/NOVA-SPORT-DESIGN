@@ -9,7 +9,7 @@
 </head>
     <body>
         <header>
-            <div class="logo">NOVA SPORT DESIGN</div>
+            <a href="#home" class="logo">NOVA SPORT DESIGN</a>
             <nav>
                 <a href="#home">首頁</a>
                 <a href="#about">關於我們</a>
@@ -59,6 +59,15 @@
                         <h3 class="product-title">Everyday Core 高透氣運動 T-Shirt</h3>
                         <div class="product-price">HK$ 189</div>
                         <button class="buy-btn" onclick="addToCart('Everyday Core 運動 T-Shirt', 189)">加入購物車</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="volleyball">
+                    <img src="bakugo_volleyball_match_jersey_b.png" class="product-img">
+                    <div class="product-info">
+                        <span class="product-tag">排球專屬</span>
+                        <h3 class="product-title">NOVA VB Pro 專業排球訓練 Tee</h3>
+                        <div class="product-price">HK$ 249</div>
+                        <button class="buy-btn" onclick="addToCart('NOVA VB Pro 訓練 Tee', 249)">加入購物車</button>
                     </div>
                 </div>
             </div>
@@ -137,6 +146,7 @@
       <span id="cartTotalAmount">HK$ 0</span>
     </div>
 
+    <button class="clear-cart-btn" onclick="clearCart()">清空購物車</button>
     <button class="checkout-btn" onclick="goCheckout()">前往結帳</button>
   </div>
 </div>

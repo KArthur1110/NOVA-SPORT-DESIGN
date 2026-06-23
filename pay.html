@@ -31,7 +31,7 @@
                 <div class="checkout-card">
                     <h2>顧客資料</h2>
 
-                    <form id="checkoutForm" onsubmit="return submitOrder()">
+                    <form id="checkoutForm" onsubmit="submitOrder(event)">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="customerName">姓名</label>
@@ -117,6 +117,7 @@
             </div>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

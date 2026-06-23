@@ -46,7 +46,10 @@ header {
     font-weight: bold;
     color: var(--primary-color);
     letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
 }
+
 
 nav {
     display: flex;
@@ -527,6 +530,24 @@ section h2::after {
     margin-top: 1rem;
     transition: background-color 0.3s;
 }
+.clear-cart-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.clear-cart-btn:hover {
+    background-color: #e64a19;
+}
+
 
 .checkout-btn:hover {
     background-color: #e64a19;

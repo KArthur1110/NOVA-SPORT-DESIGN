@@ -117,6 +117,13 @@ function applyPromo() {
     updateCartUI();
 }
 
+function clearCart() {
+    cart = [];
+    discount = 0;
+    updateCartUI();
+    toggleCart(false);
+}
+
 function updateCartUI() {
     const container = document.getElementById('cartItemsContainer');
     const countBadges = document.querySelectorAll('#cart-count, #mobile-cart-count');
@@ -301,7 +308,8 @@ function renderCheckoutPage() {
 }
 
 // 提交訂單 → 跳 thankyou.html
-function submitOrder() {
+async function submitOrder(event) {
+    if (event && event.preventDefault) event.preventDefault();
     const name = document.getElementById('customerName');
     const phone = document.getElementById('customerPhone');
     const email = document.getElementById('customerEmail');
@@ -359,8 +367,101 @@ function submitOrder() {
     localStorage.removeItem('nova_cart');
     localStorage.removeItem('nova_discount');
 
+    // Export the order to an Excel file (client-side) then redirect.
+    try {
+        await exportOrderToExcel(orderInfo);
+    } catch (e) {
+        console.error('Excel export failed:', e);
+    }
+
     window.location.href = 'thankyou.html';
     return false;
+}
+
+
+// Export or append the order to an Excel workbook client-side.
+// If an `orders_template.xlsx` exists at the site root it will be fetched and appended to;
+// otherwise a new workbook will be created using a standard header row.
+async function exportOrderToExcel(order) {
+    // Try to fetch existing template
+    let wb;
+    try {
+        const resp = await fetch('orders_template.xlsx');
+        if (resp && resp.ok) {
+            const ab = await resp.arrayBuffer();
+            wb = XLSX.read(ab, { type: 'array' });
+        }
+    } catch (e) {
+        // ignore fetch errors and create new workbook
+        wb = null;
+    }
+
+    const sheetName = 'Orders';
+
+    // Build the row to insert
+    const orderId = 'ORD' + Date.now();
+    const date = new Date().toLocaleString();
+    const itemsStr = (order.cart || []).map(i => `${i.name} (${i.color}/${i.size}) x${i.qty} @${i.price}`).join('; ');
+    const row = [
+        orderId,
+        date,
+        order.name,
+        order.phone,
+        order.email,
+        order.address,
+        order.paymentMethod,
+        order.remark || '',
+        itemsStr,
+        order.totalQty,
+        order.subtotal,
+        order.shipping,
+        order.discount,
+        order.total
+    ];
+
+    const header = ['OrderID', 'Date', 'Name', 'Phone', 'Email', 'Address', 'PaymentMethod', 'Remark', 'Items', 'TotalQty', 'Subtotal', 'Shipping', 'Discount', 'Total'];
+
+    if (!wb) {
+        // create new workbook
+        wb = XLSX.utils.book_new();
+        const wsData = [header, row];
+        const ws = XLSX.utils.aoa_to_sheet(wsData);
+        XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    } else {
+        // workbook loaded: find sheet or create
+        let ws = wb.Sheets[sheetName];
+        if (!ws) {
+            // create sheet with header then append
+            const wsData = [header, row];
+            ws = XLSX.utils.aoa_to_sheet(wsData);
+            XLSX.utils.book_append_sheet(wb, ws, sheetName);
+        } else {
+            // convert to array of arrays, append row, and write back
+            const aoa = XLSX.utils.sheet_to_json(ws, { header: 1 });
+            // If sheet is empty, ensure header present
+            if (aoa.length === 0) aoa.push(header);
+            aoa.push(row);
+            const newWs = XLSX.utils.aoa_to_sheet(aoa);
+            wb.Sheets[sheetName] = newWs;
+        }
+    }
+
+    // Trigger browser download of updated workbook
+    try {
+        XLSX.writeFile(wb, 'orders_template.xlsx');
+    } catch (e) {
+        // Some browsers may require a blob approach
+        const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+        const blob = new Blob([wbout], { type: 'application/octet-stream' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'orders_template.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+    }
 }
 
 /* =========================
@@ -409,10 +510,25 @@ function renderThankYouPage() {
         </div>
     `;
 
-    setTimeout(function () {
+    let countdown = 5;
+const countdownEl = document.getElementById('countdown');
+
+if (countdownEl) {
+    countdownEl.innerText = countdown;
+}
+
+const countdownTimer = setInterval(function () {
+    countdown--;
+    if (countdownEl) {
+        countdownEl.innerText = countdown;
+    }
+
+    if (countdown <= 0) {
+        clearInterval(countdownTimer);
         localStorage.removeItem('nova_last_order');
         window.location.href = 'index.html';
-    }, 5000);
+    }
+}, 1000);
 }
 
 /* =========================
