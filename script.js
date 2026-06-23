@@ -99,23 +99,45 @@ function changeQty(name, color, size, amount) {
 }
 
 function applyPromo() {
-    const codeInput = document.getElementById('promoCodeInput');
-    if (!codeInput) return;
+    const input = document.getElementById('promoCodeInput');
+    const msg = document.getElementById('promoMessage');
 
-    const code = codeInput.value.trim().toUpperCase();
+    const code = input.value.trim().toUpperCase();
 
-    if (code === 'NOVA400') {
+    if (code === 'NOVA2026') {
+        discount = 20;
+        msg.innerText = '✅ 優惠碼已套用 -HK$20';
+        msg.className = 'promo-message promo-success';
+
+    } else if (code === 'NOVA400') {
         discount = 40;
-        alert('成功套用優惠碼！全單立減 HK$ 40');
+        msg.innerText = '✅ 優惠碼已套用 -HK$40';
+        msg.className = 'promo-message promo-success';
+
+
     } else if (code === '') {
         discount = 0;
+        msg.innerText = '';
+
+
     } else {
-        alert('無效的優惠碼，請重新輸入。');
         discount = 0;
+        msg.innerText = '❌ 無效優惠碼';
+        msg.className = 'promo-message promo-error';
     }
 
     updateCartUI();
 }
+
+document.getElementById('promoCodeInput').addEventListener('input', function () {
+    const msg = document.getElementById('promoMessage');
+
+    if (this.value === '') {
+        msg.innerText = '';
+    }
+});
+
+
 
 function clearCart() {
     cart = [];

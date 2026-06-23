@@ -97,6 +97,7 @@
                             <span>小計</span>
                             <span id="checkoutSubtotal">HK$ 0</span>
                         </div>
+                        
                         <div class="summary-line">
                             <span>運費</span>
                             <span id="checkoutShipping">HK$ 0</span>
@@ -105,6 +106,23 @@
                             <span>優惠</span>
                             <span id="checkoutDiscount">-HK$ 0</span>
                         </div>
+
+
+                        <div class="promo-box">
+                            <input 
+                                type="text" 
+                                id="promoCodeInput" 
+                                placeholder="輸入優惠碼"
+                                class="promo-input"
+                            />
+                            
+                            <button onclick="applyPromo()" class="promo-btn">
+                                套用
+                            </button>
+
+                            <div id="promoMessage" class="promo-message"></div>
+                        </div>
+
                         <div class="summary-final">
                             <span>總計</span>
                             <span id="checkoutTotal">HK$ 0</span>
