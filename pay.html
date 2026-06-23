@@ -9,7 +9,7 @@
 <body class="checkout-page-body">
 
     <header>
-        <div class="logo">NOVA SPORT</div>
+        <a href="index.html#home" class="logo">NOVA SPORT DESIGN</a>
         <nav>
             <a href="index.html#home">首頁</a>
             <a href="index.html#about">關於我們</a>
@@ -35,19 +35,43 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="customerName">姓名</label>
-                                <input type="text" id="customerName" name="customerName" required>
+                                <input 
+                                    type="text" 
+                                    id="customerName" 
+                                    name="customerName" 
+                                    required
+                                    minlength="2"
+                                    maxlength="40"
+                                    pattern="^[A-Za-z\u4e00-\u9fff\s.'-]{2,40}$"
+                                    title="請輸入 2 至 40 個字，可使用中文、英文、空格、句點、單引號或連字號"
+                                >
+
                             </div>
 
                             <div class="form-group">
                                 <label for="customerPhone">電話</label>
-                                <input type="tel" id="customerPhone" name="customerPhone" required pattern="[0-9]{8}">
+                                <input
+                                    type="tel" 
+                                    id="customerPhone" 
+                                    name="customerPhone" 
+                                    required
+                                    inputmode="numeric"
+                                    maxlength="8"
+                                    pattern="^[0-9]{8}$"
+                                    title="請輸入 8 位數字電話號碼"
+                                >
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="customerEmail">電郵</label>
-                            <input type="email" id="customerEmail" name="customerEmail" required>
-                        </div>
+                            <input
+                                type="email" 
+                                id="customerEmail" 
+                                name="customerEmail" 
+                                required
+                                maxlength="100"
+                            >
 
                         <div class="form-group">
                             <label for="customerAddress">送貨地址</label>
