@@ -301,15 +301,13 @@ function renderCheckoutPage() {
 }
 
 // 提交訂單 → 跳 thankyou.html
-function submitOrder() {
+async function submitOrder() {
     const name = document.getElementById('customerName');
     const phone = document.getElementById('customerPhone');
     const email = document.getElementById('customerEmail');
     const address = document.getElementById('customerAddress');
     const paymentMethod = document.getElementById('paymentMethod');
     const remark = document.getElementById('remark');
-
-    if (!name || !phone || !email || !address || !paymentMethod) return false;
 
     if (
         name.value.trim() === '' ||
@@ -338,23 +336,38 @@ function submitOrder() {
     if (total < 0) total = 0;
 
     const orderInfo = {
-        name: name.value.trim(),
+        orderId: 'NOVA-' + Date.now(),
+        orderDateTime: new Date().toLocaleString('zh-HK', { hour12: false }),
+        customerName: name.value.trim(),
         phone: phone.value.trim(),
         email: email.value.trim(),
         address: address.value.trim(),
         paymentMethod: paymentMethod.value.trim(),
+        receiptLinkOrNo: '',
+        paymentStatus: 'Pending',
         remark: remark ? remark.value.trim() : '',
-        cart: savedCart,
+        items: savedCart, // ✅ 一定要 items
         totalQty: totalQty,
-        subtotal: subtotal,
-        shipping: shipping,
         discount: savedDiscount,
+        shipping: shipping,
         total: total
     };
 
+    try {
+        await fetch('https://script.google.com/macros/s/AKfycbxbY6TXI0DG5z7cnE8vgy3SdDFxIHHVttKG_0x48mffSz-qgIcS8Ij1wLX2ny8NtNu-/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderInfo)
+        });
+    } catch (err) {
+        console.error(err);
+        alert('寫入 Google Sheets 失敗');
+    }
+
     localStorage.setItem('nova_last_order', JSON.stringify(orderInfo));
 
-    // 清空購物車狀態
     cart = [];
     localStorage.removeItem('nova_cart');
     localStorage.removeItem('nova_discount');
