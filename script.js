@@ -306,7 +306,44 @@ function renderCheckoutPage() {
     if (discountEl) discountEl.innerText = `-HK$ ${savedDiscount}`;
     if (totalEl) totalEl.innerText = `HK$ ${total}`;
 }
+const districtMap = {
+    '香港島': ['中西區', '灣仔', '東區', '南區', '其他'],
+    '九龍': ['油尖旺', '深水埗', '九龍城', '黃大仙', '觀塘', '其他'],
+    '新界': ['葵青', '荃灣', '屯門', '元朗', '北區', '大埔', '沙田', '西貢', '離島', '其他']
+};
 
+function updateDistrictOptions() {
+    const regionSelect = document.getElementById('region');
+    const districtSelect = document.getElementById('district');
+    const otherDistrictGroup = document.getElementById('otherDistrictGroup');
+    const otherDistrict = document.getElementById('otherDistrict');
+
+    if (!regionSelect || !districtSelect) return;
+
+    const selectedRegion = regionSelect.value;
+    districtSelect.innerHTML = '<option value="">請選擇區域</option>';
+
+    if (otherDistrictGroup) otherDistrictGroup.style.display = 'none';
+    if (otherDistrict) otherDistrict.value = '';
+
+    if (!districtMap[selectedRegion]) return;
+
+    districtMap[selectedRegion].forEach(district => {
+        const option = document.createElement('option');
+        option.value = district;
+        option.textContent = district;
+        districtSelect.appendChild(option);
+    });
+
+    districtSelect.onchange = function () {
+        if (districtSelect.value === '其他') {
+            if (otherDistrictGroup) otherDistrictGroup.style.display = 'block';
+        } else {
+            if (otherDistrictGroup) otherDistrictGroup.style.display = 'none';
+            if (otherDistrict) otherDistrict.value = '';
+        }
+    };
+}
 // 提交訂單 → 跳 thankyou.html
 async function submitOrder(event) {
     if (event && event.preventDefault) event.preventDefault();
@@ -349,7 +386,7 @@ async function submitOrder(event) {
         name: name.value.trim(),
         phone: phone.value.trim(),
         email: email.value.trim(),
-        address: address.value.trim(),
+        address: `${region.value} ${district.value} ${addressDetail.value.trim()}`,
         paymentMethod: paymentMethod.value.trim(),
         remark: remark ? remark.value.trim() : '',
         cart: savedCart,

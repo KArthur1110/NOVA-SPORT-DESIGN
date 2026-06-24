@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Sport Design - 聯絡我們</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-page {
+            padding-top: 90px;
+            background: #f7f7f7;
+            min-height: 100vh;
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        .contact-hero {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
+                url("hero-bg.jpg") center center / cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 8%;
+            animation: contactHeroZoom 12s ease-in-out infinite alternate;
+        }
+
+
+        .contact-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-hero p {
+            font-size: 1.05rem;
+            color: #ddd;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: 3rem 8%;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .contact-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .contact-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .contact-label {
+            display: block;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-link {
+            color: #ff5722;
+            text-decoration: none;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.45rem;
+            color: #444;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.85rem 0.95rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: #ff5722;
+            box-shadow: 0 0 0 3px rgba(255,87,34,0.12);
+        }
+
+        .contact-submit-btn {
+            width: 100%;
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-submit-btn:hover {
+            background-color: #e64a19;
+        }
+
+        .contact-note {
+            margin-top: 0.8rem;
+            font-size: 0.92rem;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-section {
+                padding: 2rem 5%;
+            }
+        }
+        
+        @keyframes contactHeroZoom {
+            0% {
+                background-size: 100%;
+            }
+            100% {
+                background-size: 108%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html#home" class="logo">NOVA SPORT DESIGN</a>
+        <nav>
+            <a href="index.html#home">首頁</a>
+            <a href="index.html#about">關於我們</a>
+            <a href="index.html#products">產品</a>
+            <a href="index.html#faq">常見問題</a>
+            <a href="contact.html" class="active">聯絡我們</a>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <section class="contact-hero">
+            <h1>聯絡我們</h1>
+            <p>如果你想查詢團體訂製、產品細節、尺碼建議或合作事宜，歡迎透過以下方式聯絡 NOVA SPORT DESIGN。</p>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h2>聯絡資料</h2>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-label">品牌名稱</span>
+                            NOVA SPORT DESIGN
+                        </li>
+                        <li>
+                            <span class="contact-label">Instagram</span>
+                            <a class="contact-link" href="https://instagram.com" target="_blank" rel="noopener">@novasportdesign</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">WhatsApp</span>
+                            <a class="contact-link" href="https://wa.me/85290000000" target="_blank" rel="noopener">+852 9000 0000</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">Email</span>
+                            <a class="contact-link" href="mailto:hello@novasportdesign.com">hello@novasportdesign.com</a>
+                        </li>
+                        <li>
+                            <span class="contact-label">服務時間</span>
+                            星期一至星期六 11:00 - 20:00
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-card">
+                    <h2>查詢表格</h2>
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('已收到你的查詢，我們會盡快回覆。'); this.reset();">
+                        <div class="form-group">
+                            <label for="contactName">姓名</label>
+                            <input type="text" id="contactName" name="contactName" required maxlength="40">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">電郵</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required maxlength="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">電話（選填）</label>
+                            <input type="tel" id="contactPhone" name="contactPhone" maxlength="8" pattern="[0-9]{8}">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactTopic">查詢類別</label>
+                            <select id="contactTopic" name="contactTopic" required>
+                                <option value="">請選擇查詢類別</option>
+                                <option value="產品查詢">產品查詢</option>
+                                <option value="團體訂製">團體訂製</option>
+                                <option value="尺碼建議">尺碼建議</option>
+                                <option value="合作洽談">合作洽談</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">訊息內容</label>
+                            <textarea id="contactMessage" name="contactMessage" rows="5" required maxlength="500" placeholder="請輸入你的查詢內容"></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit-btn">提交查詢</button>
+                        <p class="contact-note">此頁面目前為前端示範版本，提交後會顯示確認訊息。</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
