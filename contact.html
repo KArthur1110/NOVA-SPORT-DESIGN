@@ -6,50 +6,62 @@
     <title>NOVA Sport Design - 聯絡我們</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 設定聯絡頁面的間距、背景顏色及最小高度 */
         .contact-page {
             padding-top: 90px;
             background: #f7f7f7;
             min-height: 100vh;
         }
 
+/* 當導覽列連結處於 active 狀態時，變更其文字顏色 */
         nav a.active {
             color: var(--primary-color);
         }
 
+/* 設定聯絡頁面 Hero 區域的樣式 */
         .contact-hero {
+            /* 使用線性漸層遮罩疊加在背景圖片上，確保文字清晰度，並設定背景圖設定 */
             background:
                 linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
                 url("hero-bg.jpg") center center / cover no-repeat;
+            /* 設定文字顏色為白色 */
             color: #fff;
+            /* 文字置中 */
             text-align: center;
+            /* 設定上下 4rem，左右 8% 的內邊距 */
             padding: 4rem 8%;
+            /* 應用無限循環的縮放動畫效果 */
             animation: contactHeroZoom 12s ease-in-out infinite alternate;
         }
 
-
+/* 設定聯絡頁面 Hero 區域標題 (h1) 的字體大小與下間距 */
         .contact-hero h1 {
             font-size: 2.8rem;
             margin-bottom: 0.8rem;
         }
 
+/* 設定聯絡頁面 Hero 區域段落 (p) 的樣式 */
         .contact-hero p {
             font-size: 1.05rem;
-            color: #ddd;
-            max-width: 760px;
-            margin: 0 auto;
+            color: #ddd; /* 使用淺灰色 */
+            max-width: 760px; /* 限制最大寬度以維持閱讀性 */
+            margin: 0 auto; /* 水平居中 */
         }
 
+        /* 設定聯絡區塊的內邊距 */
         .contact-section {
             padding: 3rem 8%;
         }
 
+        /* 設定聯絡區塊網格布局的樣式 */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 2rem;
-            align-items: start;
+            grid-template-columns: 1fr 1.1fr; /* 定義兩欄布局，比例約為 1:1.1 */
+            gap: 2rem; /* 設定欄位間距 */
+            align-items: start; /* 設定內容垂直對齊至頂部 */
         }
 
+/* 設定聯絡卡片容器的背景、圓角、內邊距與陰影效果 */
         .contact-card {
             background: #fff;
             border-radius: 14px;
@@ -57,24 +69,28 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
 
+        /* 設定聯絡卡片標題 (h2) 的樣式 */
         .contact-card h2 {
             font-size: 1.6rem;
             margin-bottom: 1rem;
             color: #1a1a1a;
         }
 
+        /* 設定聯絡資訊清單移除預設樣式 */
         .contact-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
+        /* 設定清單項目 (li) 的間距與行高 */
         .contact-list li {
             margin-bottom: 1rem;
             color: #555;
             line-height: 1.7;
         }
 
+        /* 設定聯絡標籤 (label) 為區塊顯示並加粗字體 */
         .contact-label {
             display: block;
             font-weight: bold;
@@ -82,19 +98,22 @@
             margin-bottom: 0.2rem;
         }
 
+        /* 設定聯絡連結文字顏色並移除底線 */
         .contact-link {
             color: #ff5722;
             text-decoration: none;
         }
-
+/* 滑鼠懸停於聯絡連結時顯示底線 */
         .contact-link:hover {
             text-decoration: underline;
         }
 
+        /* 設定聯絡表單內各項群組的間距 */
         .contact-form .form-group {
             margin-bottom: 1rem;
         }
 
+        /* 設定聯絡表單標籤 (label) 的排版樣式 */
         .contact-form label {
             display: block;
             font-weight: 600;
@@ -102,6 +121,7 @@
             color: #444;
         }
 
+        /* 設定聯絡表單輸入框、文字區域及選單的共用樣式 */
         .contact-form input,
         .contact-form textarea,
         .contact-form select {
@@ -113,6 +133,7 @@
             outline: none;
         }
 
+        /* 設定輸入框獲取焦點時的顏色與光暈效果 */
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
@@ -120,6 +141,7 @@
             box-shadow: 0 0 0 3px rgba(255,87,34,0.12);
         }
 
+        /* 設定聯絡表單送出按鈕的樣式與互動效果 */
         .contact-submit-btn {
             width: 100%;
             background-color: #ff5722;
@@ -133,30 +155,37 @@
             transition: background-color 0.3s;
         }
 
+        /* 設定按鈕懸停時的深色效果 */
         .contact-submit-btn:hover {
             background-color: #e64a19;
         }
 
+        /* 設定表單備註文字的樣式 */
         .contact-note {
             margin-top: 0.8rem;
             font-size: 0.92rem;
             color: #777;
         }
 
+        /* RWD 響應式設計：針對平板及手機 (寬度小於 768px) */
         @media (max-width: 768px) {
+            /* 將聯絡區塊改為單欄排版 */
             .contact-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* 縮小 Hero 標題字體 */
             .contact-hero h1 {
                 font-size: 2rem;
             }
 
+            /* 縮小聯絡區塊內邊距 */
             .contact-section {
                 padding: 2rem 5%;
             }
         }
         
+        /* 定義 Hero 區域背景圖片的縮放動畫 */
         @keyframes contactHeroZoom {
             0% {
                 background-size: 100%;
