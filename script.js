@@ -134,33 +134,68 @@ function changeQty(name, color, size, amount) {
 
 // 套用優惠碼並更新折扣金額
 function applyPromo() {
-    // 取得優惠碼輸入框元素
-    const codeInput = document.getElementById('promoCodeInput');
-    // 若輸入框不存在則返回
-    if (!codeInput) return;
+    // ✅ 取得輸入框同訊息框
+    const input = document.getElementById('promoCodeInput');
+    const msg = document.getElementById('promoMessage');
 
-    // 取得輸入值並去除前後空白，轉為大寫字母
-    const code = codeInput.value.trim().toUpperCase();
 
-    // 檢查優惠碼是否為 'NOVA400'
-    if (code === 'NOVA400') {
-        // 設定折扣金額為 40
+    // ✅ 處理用戶輸入（轉大寫，避免錯）
+    const code = input.value.trim().toUpperCase();
+
+    // ✅ NOVA2026 → 減 HK$20
+    if (code === 'NOVA2026') {
+        discount = 20;
+        msg.innerText = '✅ 優惠碼已套用 -HK$20';
+        msg.className = 'promo-message promo-success';
+
+    // ✅ NOVA400 → 減 HK$40
+    } else if (code === 'NOVA400') {
         discount = 40;
+        msg.innerText = '✅ 優惠碼已套用 -HK$40';
+        msg.className = 'promo-message promo-success';
+
+    // ✅ 空白 → 清除提示
         // 彈出成功提示
         alert('成功套用優惠碼！全單立減 HK$ 40');
     } else if (code === '') {
         // 若輸入為空，折扣歸零
         discount = 0;
+        msg.innerText = '';
+
+    // ❌ 無效 → 顯示錯誤
     } else {
         // 若優惠碼無效，彈出提示並將折扣設為 0
         alert('無效的優惠碼，請重新輸入。');
         discount = 0;
+        msg.innerText = '❌ 無效優惠碼';
+        msg.className = 'promo-message promo-error';
     }
 
     // 更新購物車顯示介面
     updateCartUI();
 }
 
+
+// ✅ 當頁面載入後先執行（避免報錯）
+document.addEventListener('DOMContentLoaded', function () {
+
+    const promoInput = document.getElementById('promoCodeInput');
+
+    // ✅ 確保輸入框存在先做
+    if (promoInput) {
+
+        // ✅ 當用戶打字時觸發
+        promoInput.addEventListener('input', function () {
+
+            const msg = document.getElementById('promoMessage');
+
+            // ✅ 如果輸入框變空 → 清除提示
+            if (this.value === '') {
+                msg.innerText = '';
+            }
+        });
+    }
+});
 function clearCart() {
     // 清空購物車陣列 (將購物車重置為空)
     cart = [];
@@ -241,53 +276,66 @@ function updateCartUI() {
         `;
     });
 
-    // 如果容器存在，將組裝好的 HTML 寫入頁面
+    // ✅ 如果購物車容器存在 → 將商品 HTML 放入畫面
+    // html = 之前用 loop 建好嘅商品內容
     if (container) container.innerHTML = html;
 
-    // 計算運費：滿 500 元免運，否則運費為 30 元
+    // ✅ 計算運費：滿 HK$500 免運，否則收 HK$30
     let shipping = subtotal >= 500 ? 0 : 30;
-    // 計算總金額：小計 + 運費 - 折扣
-    let total = subtotal + shipping - discount;
-    // 若總金額小於 0，強制設為 0
-    if (total < 0) total = 0;
 
-    // 更新頁面顯示的小計文字
+    // ✅ 計算最終總價：小計 + 運費 - 優惠
+    let total = subtotal + shipping - discount;
+
+    // ✅ 防止總價出現負數（例如優惠大過商品價值）
+    if (total < 0) total = 0;
+    // ✅ 更新小計顯示（例如：HK$ 300）
     if (subtotalText) subtotalText.innerText = `HK$ ${subtotal}`;
-    // 更新頁面顯示的運費文字 (免運時顯示「免運費」)
-    if (shippingText) shippingText.innerText = shipping === 0 ? '免運費' : `HK$ ${shipping}`;
-    // 更新頁面顯示的折扣文字
+
+    // ✅ 更新運費顯示
+    // 如果運費 = 0 → 顯示「免運費」
+    // 否則顯示 HK$ 價錢
+    if (shippingText) 
+        shippingText.innerText = shipping === 0 ? '免運費' : `HK$ ${shipping}`;
+
+    // ✅ 更新優惠顯示（顯示為負數）
     if (discountText) discountText.innerText = `-HK$ ${discount}`;
-    // 更新頁面顯示的最終總金額文字
+
+    // ✅ 更新最終總價顯示
     if (totalText) totalText.innerText = `HK$ ${total}`;
-}
+    }
 
 /* =========================
    商品篩選 / FAQ
 ========================= */
 function filterProducts(category, button) {
     // 移除所有篩選按鈕上的 'active' 樣式類別
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    
-    // 如果傳入了按鈕參數，則為該按鈕添加 'active' 樣式類別
+// ✅ 取得所有分類按鈕，並移除「active」樣式（取消選中效果）
+    document.querySelectorAll('.filter-btn').forEach(btn => 
+        btn.classList.remove('active')
+    );
+    // ✅ 如果有點擊的按鈕，為該按鈕加上「active」樣式（顯示目前選擇）
     if (button) button.classList.add('active');
 
-    // 遍歷所有商品卡片進行篩選檢查
+    // ✅ 取得所有產品卡片，逐一進行檢查
     document.querySelectorAll('.product-card').forEach(card => {
         // 如果類別為 'all' 或者卡片的 data-category 屬性符合所選類別，則移除 'hidden' 類別以顯示卡片
         if (category === 'all' || card.getAttribute('data-category') === category) {
+            // ✅ 顯示商品（移除 hidden 類別
             card.classList.remove('hidden');
         } else {
-            // 否則為卡片添加 'hidden' 類別將其隱藏
+            // ❌ 隱藏不符合條件的商品（加入 hidden 類別）
             card.classList.add('hidden');
         }
     });
 }
 
 function toggleFaq(element) {
-    // 檢查傳入的元素或其父元素是否存在，若不存在則直接返回
+    // ✅ 如果傳入的 element 不存在，
+    // 或 element 沒有父元素（避免出錯），就直接停止執行
     if (!element || !element.parentElement) return;
-    
-    // 切換父元素的 'active' 樣式類別 (如果有則移除，沒有則添加)
+    // ✅ 切換父元素的「active」類別
+    // 如果有 active → 移除（收起）
+    // 如果沒有 active → 加上（展開）
     element.parentElement.classList.toggle('active');
 }
 
@@ -306,28 +354,38 @@ function goCheckout() {
     // 跳轉頁面至結帳頁面 (pay.html)
     window.location.href = 'pay.html';
 }
+
+
+
 // 顯示付款提示
 function showPaymentHint() {
-    // 取得付款方式選擇框元素
+    // ✅ 取得「付款方式」選擇框
     const paymentMethod = document.getElementById('paymentMethod');
-    // 取得顯示提示訊息的容器元素
+    // ✅ 取得提示框整體（用嚟顯示／隱藏）
     const hintBox = document.getElementById('paymentHintBox');
-    // 取得提示標題元素
+    // ✅ 提示標題（例如：PayMe 付款提示）
     const hintTitle = document.getElementById('paymentHintTitle');
     // 取得提示內容文字元素
     const hintText = document.getElementById('paymentHintText');
 
-    // 檢查上述所有元素是否都存在，若缺少任何一個則中止執行
+    // ✅ 如果任何一個元素不存在（例如 HTML 冇載入）
+    // 為避免報錯，直接停止執行
     if (!paymentMethod || !hintBox || !hintTitle || !hintText) return;
-
-    // 取得目前選擇的付款方式值
+    // ✅ 取得目前用戶選擇的付款方式（例如 PayMe / FPS）
     const method = paymentMethod.value;
-
-    // 若未選擇任何付款方式，則隱藏提示區塊並結束函式
+    // ✅ 如果用戶未選擇任何付款方式（空白）
+    if (method === '') {
+        // ✅ 隱藏提示框（唔顯示任何付款提示）
+        hintBox.style.display = 'none';
+        // ✅ 停止執行（唔再往下做）
+        return;
+    }
     if (method === '') {
         hintBox.style.display = 'none';
         return;
     }
+
+
 
     // 顯示提示區塊
     hintBox.style.display = 'block';
@@ -349,23 +407,33 @@ function showPaymentHint() {
 }
 
 // 渲染 pay.html 訂單摘要
-function renderCheckoutPage() {
-    // 取得顯示結帳項目的容器
+    function renderCheckoutPage() {
+    // ✅ 取得「訂單商品列表」顯示區域
     const checkoutItems = document.getElementById('checkoutItems');
-    // 若容器不存在則中止執行
-    if (!checkoutItems) return;
 
-    // 從 localStorage 讀取儲存的購物車資料，若無資料則為空陣列
-    const savedCart = JSON.parse(localStorage.getItem('nova_cart')) || [];
-    // 從 localStorage 讀取儲存的折扣金額，若無則為 0
-    const savedDiscount = JSON.parse(localStorage.getItem('nova_discount')) || 0;
+    // ✅ 如果該元素不存在（例如不在 checkout 頁），就停止執行（防止報錯）
+        if (!checkoutItems) return;
 
-    // 取得頁面各金額顯示區塊的元素
-    const subtotalEl = document.getElementById('checkoutSubtotal');
-    const shippingEl = document.getElementById('checkoutShipping');
-    const discountEl = document.getElementById('checkoutDiscount');
-    const totalEl = document.getElementById('checkoutTotal');
-    const itemCountEl = document.getElementById('checkoutItemCount');
+        // ✅ 從 localStorage 讀取購物車資料（如果沒有就使用空陣列）
+        const savedCart = JSON.parse(localStorage.getItem('nova_cart')) || [];
+
+        // ✅ 讀取優惠折扣金額（如果沒有就當作 0）
+        const savedDiscount = JSON.parse(localStorage.getItem('nova_discount')) || 0;
+
+        // ✅ 取得顯示小計的元素
+        const subtotalEl = document.getElementById('checkoutSubtotal');
+
+        // ✅ 取得顯示運費的元素
+        const shippingEl = document.getElementById('checkoutShipping');
+
+        // ✅ 取得顯示折扣的元素
+        const discountEl = document.getElementById('checkoutDiscount');
+
+        // ✅ 取得顯示總價的元素
+        const totalEl = document.getElementById('checkoutTotal');
+
+        // ✅ 取得顯示商品數量的元素（例如：共 3 件商品）
+        const itemCountEl = document.getElementById('checkoutItemCount');
 
     // 如果購物車為空，顯示提示並將所有金額歸零
     if (savedCart.length === 0) {
@@ -483,32 +551,38 @@ async function submitOrder(event) {
 
     // 檢查必填欄位是否為空，若有空值則顯示提醒並中止執行
     if (
-        name.value.trim() === '' ||
-        phone.value.trim() === '' ||
-        email.value.trim() === '' ||
-        address.value.trim() === '' ||
-        paymentMethod.value.trim() === ''
+        name.value.trim() === '' ||       // 姓名為空
+        phone.value.trim() === '' ||      // 電話為空
+        email.value.trim() === '' ||      // 電郵為空
+        address.value.trim() === '' ||    // 地址為空
+        paymentMethod.value.trim() === '' // 未選付款方式
     ) {
+        // 顯示提示
         alert('請完整填寫所有必填資料。');
         return false;
+        // 停止提交
     }
 
     // 從 localStorage 讀取已儲存的購物車資料與折扣
     const savedCart = JSON.parse(localStorage.getItem('nova_cart')) || [];
+    // ✅ 讀取優惠金額（如果冇就當 0）
     const savedDiscount = JSON.parse(localStorage.getItem('nova_discount')) || 0;
 
     // 初始化小計與總數量
     let subtotal = 0;
     let totalQty = 0;
 
-    // 計算購物車內所有商品的小計與總數量
+    // ✅ 初始化小計（總價）同總數量
     savedCart.forEach(item => {
+        // ✅ 價錢 = 單價 × 數量
         subtotal += item.price * item.qty;
+        // ✅ 計算總件數
         totalQty += item.qty;
     });
 
-    // 計算運費 (滿 400 元免運) 與最終總金額
+    // ✅ 計算運費（滿 $400 免運，否則 $30））
     let shipping = subtotal >= 400 ? 0 : 30;
+    // ✅ 計算最終總價（小計 + 運費 - 折扣）
     let total = subtotal + shipping - savedDiscount;
     // 確保總金額不小於 0
     if (total < 0) total = 0;

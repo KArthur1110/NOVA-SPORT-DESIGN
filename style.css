@@ -1170,6 +1170,8 @@ footer {
     .checkout-hero h1 {
         font-size: 2rem;
     }
+    /* =========================
+    Promo Code（優惠碼）
     
     /* 定義 Hero 圖片背景縮放動畫 */
     @keyframes heroZoom {
