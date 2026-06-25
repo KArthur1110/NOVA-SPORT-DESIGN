@@ -10,61 +10,87 @@ let cart = [];
 /* =========================
    基本 UI：購物車 / 彈窗
 ========================= */
+// 切換購物車側邊欄的顯示與隱藏
 function toggleCart(open) {
+    // 取得購物車側邊欄元素
     const drawer = document.getElementById('cartDrawer');
+    // 取得背景遮罩元素
     const overlay = document.getElementById('cartOverlay');
 
+    // 若側邊欄存在，依據參數 open 切換 'open' class
     if (drawer) drawer.classList.toggle('open', open);
+    // 若遮罩存在，依據參數 open 切換顯示狀態
     if (overlay) overlay.style.display = open ? 'block' : 'none';
 }
 
+// 切換尺寸選擇視窗的顯示與隱藏
 function toggleModal(open) {
+    // 取得尺寸選擇視窗元素
     const modal = document.getElementById('sizeModal');
+    // 若視窗存在，依據參數 open 切換 'open' class
     if (modal) modal.classList.toggle('open', open);
 }
 
 /* =========================
    商品規格選擇
 ========================= */
+// 選擇規格選項功能
 function selectVariant(button, value) {
+    // 獲取按鈕的父元素
     const parent = button.parentElement;
+    // 如果父元素不存在則終止函數
     if (!parent) return;
 
+    // 將該容器內所有選項按鈕的 'selected' class 移除
     parent.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+    // 為當前點擊的按鈕加上 'selected' class
     button.classList.add('selected');
 }
 
+// 加入含有規格的商品至購物車
 function addWithVariants(cardId, baseName, price) {
+    // 取得指定 ID 的商品卡片元素
     const card = document.getElementById(cardId);
+    // 若找不到該卡片則直接返回
     if (!card) return;
 
+    // 取得顏色群組中已選取的按鈕
     const activeColorBtn = card.querySelector('.color-group .option-btn.selected');
+    // 取得尺碼群組中已選取的按鈕
     const activeSizeBtn = card.querySelector('.size-group .option-btn.selected');
 
+    // 若顏色或尺碼其中之一未選擇，跳出提示並停止執行
     if (!activeColorBtn || !activeSizeBtn) {
         alert('請先選擇顏色和尺碼！');
         return;
     }
 
+    // 取得已選顏色的文字內容
     const selectedColor = activeColorBtn.innerText;
+    // 取得已選尺碼的文字內容
     const selectedSize = activeSizeBtn.innerText;
 
+    // 將商品資訊加入購物車
     addToCart(baseName, price, selectedColor, selectedSize);
 }
 
 /* =========================
    購物車
 ========================= */
+// 將商品加入購物車，包含顏色與尺碼選項（預設值為 '-'）
 function addToCart(name, price, color = '-', size = '-') {
+    // 檢查購物車內是否已有相同名稱、顏色與尺碼的商品
     const existingItem = cart.find(item =>
         item.name === name &&
         item.color === color &&
         item.size === size
     );
 
+    // 如果商品已存在，則將該商品的數量加 1
     if (existingItem) {
         existingItem.qty += 1;
     } else {
+        // 如果商品不存在，則建立新物件並推入購物車陣列
         cart.push({
             name: name,
             price: price,
@@ -74,30 +100,39 @@ function addToCart(name, price, color = '-', size = '-') {
         });
     }
 
+    // 更新購物車顯示介面
     updateCartUI();
+    // 打開購物車側邊欄
     toggleCart(true);
 }
 
+// 修改購物車內特定商品的數量
 function changeQty(name, color, size, amount) {
+    // 在購物車陣列中尋找符合名稱、顏色及尺碼的商品
     const item = cart.find(item =>
         item.name === name &&
         item.color === color &&
         item.size === size
     );
 
+    // 若找不到該商品則直接返回
     if (!item) return;
 
+    // 將商品的數量加上指定的變動量 (amount)
     item.qty += amount;
 
+    // 若商品數量小於或等於 0，則將其從購物車陣列中移除
     if (item.qty <= 0) {
         cart = cart.filter(i =>
             !(i.name === name && i.color === color && i.size === size)
         );
     }
 
+    // 更新購物車顯示介面
     updateCartUI();
 }
 
+// 套用優惠碼並更新折扣金額
 function applyPromo() {
     // ✅ 取得輸入框同訊息框
     const input = document.getElementById('promoCodeInput');
@@ -120,6 +155,7 @@ function applyPromo() {
 
     // ✅ 空白 → 清除提示
     } else if (code === '') {
+        // 若輸入為空，折扣歸零
         discount = 0;
         msg.innerText = '';
 
@@ -161,43 +197,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function clearCart() {
+    // 清空購物車陣列 (將購物車重置為空)
     cart = [];
+    
+    // 將優惠折扣重置為 0
     discount = 0;
+    
+    // 呼叫函式更新購物車顯示介面
     updateCartUI();
+    
+    // 關閉購物車側邊欄 (傳入 false 表示隱藏)
     toggleCart(false);
 }
 
 function updateCartUI() {
+    // 取得顯示購物車項目的容器元素
     const container = document.getElementById('cartItemsContainer');
+    // 取得所有顯示購物車數量的標記 (電腦版與手機版)
     const countBadges = document.querySelectorAll('#cart-count, #mobile-cart-count');
+    // 取得小計文字區塊
     const subtotalText = document.getElementById('cartSubtotal');
+    // 取得運費文字區塊
     const shippingText = document.getElementById('cartShipping');
+    // 取得折扣文字區塊
     const discountText = document.getElementById('cartDiscount');
+    // 取得總金額文字區塊
     const totalText = document.getElementById('cartTotalAmount');
 
+    // 計算購物車內所有商品的總數量
     let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+    // 更新所有數量標記的文字
     countBadges.forEach(badge => {
         if (badge) badge.innerText = totalQty;
     });
 
+    // 檢查購物車是否為空
     if (cart.length === 0) {
+        // 若購物車為空，在容器內顯示提示訊息
         if (container) {
             container.innerHTML = `<p style="text-align: center; color: #999; margin-top: 2rem;">購物車目前是空的</p>`;
         }
+        // 將金額相關的所有顯示歸零
         if (subtotalText) subtotalText.innerText = 'HK$ 0';
         if (shippingText) shippingText.innerText = 'HK$ 0';
         if (discountText) discountText.innerText = '-HK$ 0';
         if (totalText) totalText.innerText = 'HK$ 0';
+        // 結束函式執行
         return;
     }
 
+ // 初始化用來儲存購物車 HTML 字串的變數
     let html = '';
+    // 初始化小計金額為 0
     let subtotal = 0;
 
+    // 遍歷購物車內的每一項商品進行處理
     cart.forEach(item => {
+        // 計算該項商品的總價 (單價 * 數量)
         const itemTotal = item.price * item.qty;
+        // 將該項商品的總價累加到小計中
         subtotal += itemTotal;
 
+        // 組裝商品的 HTML 結構字串
         html += `
             <div class="cart-item">
                 <div class="cart-item-details">
@@ -289,11 +350,15 @@ function toggleFaq(element) {
 
 // 去結帳頁：把購物車存入 localStorage
 function goCheckout() {
+    // 將購物車陣列轉換為 JSON 字串並存入 localStorage，以便在結帳頁面讀取
     localStorage.setItem('nova_cart', JSON.stringify(cart));
+    
+    // 將折扣金額轉換為 JSON 字串並存入 localStorage
     localStorage.setItem('nova_discount', JSON.stringify(discount));
+    
+    // 跳轉頁面至結帳頁面 (pay.html)
     window.location.href = 'pay.html';
 }
-
 // 顯示付款提示
 
 function showPaymentHint() {
@@ -325,6 +390,7 @@ function showPaymentHint() {
 
     hintBox.style.display = 'block';
 
+    // 根據不同的付款方式設定對應的標題與提示文字
     if (method === 'PayMe') {
         hintTitle.innerText = 'PayMe 付款提示';
         hintText.innerText = '請於提交訂單後使用 PayMe 完成轉帳，並保留付款截圖作確認用途。';
@@ -370,6 +436,7 @@ function showPaymentHint() {
         const itemCountEl = document.getElementById('checkoutItemCount');
 
 
+    // 如果購物車為空，顯示提示並將所有金額歸零
     if (savedCart.length === 0) {
         checkoutItems.innerHTML = '<p class="empty-checkout">目前沒有商品，請先加入購物車。</p>';
         if (subtotalEl) subtotalEl.innerText = 'HK$ 0';
@@ -380,10 +447,12 @@ function showPaymentHint() {
         return;
     }
 
+    // 初始化 HTML 字串、小計金額與總數量
     let html = '';
     let subtotal = 0;
     let totalQty = 0;
 
+    // 遍歷已儲存的購物車商品並產生結帳清單 HTML
     savedCart.forEach(item => {
         const itemTotal = item.price * item.qty;
         subtotal += itemTotal;
@@ -401,18 +470,58 @@ function showPaymentHint() {
         `;
     });
 
+    // 將產生的商品列表寫入頁面容器
     checkoutItems.innerHTML = html;
 
+    // 計算運費：滿 400 元免運，否則運費為 30 元
     let shipping = subtotal >= 400 ? 0 : 30;
+    // 計算最終總金額
     let total = subtotal + shipping - savedDiscount;
+    // 確保總金額不小於 0
     if (total < 0) total = 0;
 
+    // 更新頁面上的總數量及各項金額顯示
     if (itemCountEl) itemCountEl.innerText = `共 ${totalQty} 件商品`;
     if (subtotalEl) subtotalEl.innerText = `HK$ ${subtotal}`;
     if (shippingEl) shippingEl.innerText = shipping === 0 ? '免運費' : `HK$ ${shipping}`;
     if (discountEl) discountEl.innerText = `-HK$ ${savedDiscount}`;
     if (totalEl) totalEl.innerText = `HK$ ${total}`;
 }
+// 定義地區與行政區的對應關係
+const districtMap = {
+    '香港島': ['中西區', '灣仔', '東區', '南區', '其他'],
+    '九龍': ['油尖旺', '深水埗', '九龍城', '黃大仙', '觀塘', '其他'],
+    '新界': ['葵青', '荃灣', '屯門', '元朗', '北區', '大埔', '沙田', '西貢', '離島', '其他']
+};
+
+function updateDistrictOptions() {
+    // 取得區域、行政區、其他地區輸入框及其容器的元素
+    const regionSelect = document.getElementById('region');
+    const districtSelect = document.getElementById('district');
+    const otherDistrictGroup = document.getElementById('otherDistrictGroup');
+    const otherDistrict = document.getElementById('otherDistrict');
+
+    // 若基礎選單不存在則中止執行
+    if (!regionSelect || !districtSelect) return;
+
+    // 取得所選區域的值，並清空行政區選單
+    const selectedRegion = regionSelect.value;
+    districtSelect.innerHTML = '<option value="">請選擇區域</option>';
+
+    // 預設隱藏「其他地區」輸入框並清空其內容
+    if (otherDistrictGroup) otherDistrictGroup.style.display = 'none';
+    if (otherDistrict) otherDistrict.value = '';
+
+    // 若找不到對應的區域資料則中止執行
+    if (!districtMap[selectedRegion]) return;
+
+    // 根據所選區域，動態產生對應的行政區選項
+    districtMap[selectedRegion].forEach(district => {
+        const option = document.createElement('option');
+        option.value = district;
+        option.textContent = district;
+        districtSelect.appendChild(option);
+    });
 
     // 提交訂單 → 跳 thankyou.html
     async function submitOrder(event) {
@@ -467,13 +576,15 @@ function showPaymentHint() {
 
     // ✅ 計算最終總價（小計 + 運費 - 折扣）
     let total = subtotal + shipping - savedDiscount;
+    // 確保總金額不小於 0
     if (total < 0) total = 0;
 
+    // 建立訂單資訊物件，整合所有客戶輸入及計算後的數據
     const orderInfo = {
         name: name.value.trim(),
         phone: phone.value.trim(),
         email: email.value.trim(),
-        address: address.value.trim(),
+        address: `${region.value} ${district.value} ${addressDetail.value.trim()}`,
         paymentMethod: paymentMethod.value.trim(),
         remark: remark ? remark.value.trim() : '',
         cart: savedCart,
@@ -484,30 +595,33 @@ function showPaymentHint() {
         total: total
     };
 
+    // 將訂單資訊存入 localStorage 作為最後一筆訂單紀錄
     localStorage.setItem('nova_last_order', JSON.stringify(orderInfo));
 
-    // 清空購物車狀態
+    // 清空記憶體中的購物車狀態，並刪除 localStorage 的購物車與折扣資料
     cart = [];
     localStorage.removeItem('nova_cart');
     localStorage.removeItem('nova_discount');
 
-    // Export the order to an Excel file (client-side) then redirect.
+    // 執行匯出 Excel 檔案的非同步操作
     try {
         await exportOrderToExcel(orderInfo);
     } catch (e) {
+        // 若匯出失敗則在控制台記錄錯誤
         console.error('Excel export failed:', e);
     }
 
+    // 跳轉至感謝頁面
     window.location.href = 'thankyou.html';
+    // 回傳 false 確保表單不會額外送出
     return false;
 }
 
 
-// Export or append the order to an Excel workbook client-side.
-// If an `orders_template.xlsx` exists at the site root it will be fetched and appended to;
-// otherwise a new workbook will be created using a standard header row.
+// 將訂單匯出或附加到客戶端的 Excel 活頁簿中
+// 若網站根目錄存在 `orders_template.xlsx`，則會嘗試讀取並附加內容；否則會建立新的活頁簿
 async function exportOrderToExcel(order) {
-    // Try to fetch existing template
+    // 嘗試讀取已存在的範本檔案
     let wb;
     try {
         const resp = await fetch('orders_template.xlsx');
@@ -516,16 +630,21 @@ async function exportOrderToExcel(order) {
             wb = XLSX.read(ab, { type: 'array' });
         }
     } catch (e) {
-        // ignore fetch errors and create new workbook
+        // 若讀取失敗 (例如檔案不存在)，則忽略錯誤並將 wb 設為 null 以便後續建立新活頁簿
         wb = null;
     }
 
+    // 定義工作表名稱
     const sheetName = 'Orders';
 
-    // Build the row to insert
+    // 建立要插入的一行資料
+    // 使用時間戳記生成唯一訂單編號
     const orderId = 'ORD' + Date.now();
+    // 獲取當前日期時間
     const date = new Date().toLocaleString();
+    // 將購物車商品轉換為易於閱讀的字串格式
     const itemsStr = (order.cart || []).map(i => `${i.name} (${i.color}/${i.size}) x${i.qty} @${i.price}`).join('; ');
+    // 建立包含所有訂單欄位的陣列
     const row = [
         orderId,
         date,
@@ -543,26 +662,27 @@ async function exportOrderToExcel(order) {
         order.total
     ];
 
+    // 定義 Excel 的標題欄位
     const header = ['OrderID', 'Date', 'Name', 'Phone', 'Email', 'Address', 'PaymentMethod', 'Remark', 'Items', 'TotalQty', 'Subtotal', 'Shipping', 'Discount', 'Total'];
 
+    // 如果沒有讀取到舊的活頁簿，則建立一個新的
     if (!wb) {
-        // create new workbook
         wb = XLSX.utils.book_new();
         const wsData = [header, row];
         const ws = XLSX.utils.aoa_to_sheet(wsData);
         XLSX.utils.book_append_sheet(wb, ws, sheetName);
     } else {
-        // workbook loaded: find sheet or create
+        // 如果已載入舊的活頁簿，則尋找 'Orders' 工作表
         let ws = wb.Sheets[sheetName];
         if (!ws) {
-            // create sheet with header then append
+            // 如果找不到該工作表，則建立一個並寫入標題與資料
             const wsData = [header, row];
             ws = XLSX.utils.aoa_to_sheet(wsData);
             XLSX.utils.book_append_sheet(wb, ws, sheetName);
         } else {
-            // convert to array of arrays, append row, and write back
+            // 如果工作表存在，將其轉換為二維陣列，附加新行後再寫回
             const aoa = XLSX.utils.sheet_to_json(ws, { header: 1 });
-            // If sheet is empty, ensure header present
+            // 如果工作表是空的，確保加入標題行
             if (aoa.length === 0) aoa.push(header);
             aoa.push(row);
             const newWs = XLSX.utils.aoa_to_sheet(aoa);
@@ -570,11 +690,11 @@ async function exportOrderToExcel(order) {
         }
     }
 
-    // Trigger browser download of updated workbook
+    // 觸發瀏覽器下載更新後的 Excel 檔案
     try {
         XLSX.writeFile(wb, 'orders_template.xlsx');
     } catch (e) {
-        // Some browsers may require a blob approach
+        // 部分瀏覽器可能不支援直接寫入，改用 Blob 物件方式處理下載
         const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
         const blob = new Blob([wbout], { type: 'application/octet-stream' });
         const url = URL.createObjectURL(blob);
@@ -592,11 +712,15 @@ async function exportOrderToExcel(order) {
    Thank You Page
 ========================= */
 function renderThankYouPage() {
+    // 取得用於顯示訂單資料的容器元素
     const thankyouBox = document.getElementById('thankyouOrderInfo');
+    // 若容器不存在則中止執行
     if (!thankyouBox) return;
 
+    // 從 localStorage 讀取最後一筆訂單資料
     const lastOrder = JSON.parse(localStorage.getItem('nova_last_order'));
 
+    // 如果沒有訂單資料，顯示提示訊息並在 3 秒後自動返回主頁
     if (!lastOrder) {
         thankyouBox.innerHTML = '<p>找不到訂單資料。</p>';
         setTimeout(function () {
@@ -605,7 +729,9 @@ function renderThankYouPage() {
         return;
     }
 
+    // 初始化商品項目 HTML 字串
     let itemsHtml = '';
+    // 遍歷訂單中的商品清單並產生 HTML
     lastOrder.cart.forEach(item => {
         itemsHtml += `
             <div class="thankyou-line">
@@ -615,6 +741,7 @@ function renderThankYouPage() {
         `;
     });
 
+    // 將訂單詳細資料 (姓名、電話、總計等) 寫入頁面
     thankyouBox.innerHTML = `
         <h3>訂單資料</h3>
         <div class="thankyou-line"><span>姓名</span><span>${lastOrder.name}</span></div>
@@ -634,33 +761,46 @@ function renderThankYouPage() {
         </div>
     `;
 
+    // 初始化倒數計時為 5 秒
     let countdown = 5;
-const countdownEl = document.getElementById('countdown');
+    // 取得頁面上的倒數數字顯示元素
+    const countdownEl = document.getElementById('countdown');
 
-if (countdownEl) {
-    countdownEl.innerText = countdown;
-}
-
-const countdownTimer = setInterval(function () {
-    countdown--;
+    // 若倒數顯示元素存在，初始化其文字
     if (countdownEl) {
         countdownEl.innerText = countdown;
     }
 
-    if (countdown <= 0) {
-        clearInterval(countdownTimer);
-        localStorage.removeItem('nova_last_order');
-        window.location.href = 'index.html';
-    }
-}, 1000);
+    // 設定每秒執行一次的倒數計時器
+    const countdownTimer = setInterval(function () {
+        countdown--;
+        // 更新顯示的剩餘秒數
+        if (countdownEl) {
+            countdownEl.innerText = countdown;
+        }
+
+        // 當倒數結束時
+        if (countdown <= 0) {
+            // 清除計時器
+            clearInterval(countdownTimer);
+            // 移除訂單快取資料並跳轉回主頁
+            localStorage.removeItem('nova_last_order');
+            window.location.href = 'index.html';
+        }
+    }, 1000);
 }
 
 /* =========================
    頁面初始化
 ========================= */
+// 當整個 HTML 文件載入完成後執行
 document.addEventListener('DOMContentLoaded', function () {
+    // 渲染結帳頁面內容
     renderCheckoutPage();
+    // 渲染感謝頁面內容
     renderThankYouPage();
+    // 根據選擇的付款方式顯示對應提示
     showPaymentHint();
+    // 更新購物車介面顯示
     updateCartUI();
 });

@@ -13,6 +13,7 @@
             <nav>
                 <a href="#home">首頁</a>
                 <a href="#about">關於我們</a>
+                <a href="contact.html">聯絡我們</a>
                 <a href="#products">產品</a>
                 <a href="#faq">常見問題</a>
                 <button class="cart-icon-btn" onclick="toggleCart(true)">🛒 購物車 <span class="cart-badge" id="cart-count">0</span></button>
@@ -31,7 +32,11 @@
                     <p>我們公司成立於香港，團隊成員皆由本地資深排球員與運動愛好者組成。我們深知在進行排球訓練時，普通的運動衫常常會因汗水黏身或剪裁限制了擺臂的角度。</p>
                     <p>因此，我們創立了 <strong>NOVA Sport Design</strong>，致力於研發最適合排球高強度訓練的專業 Tee。精選高規格排汗布料，配合亞洲運動員身型剪裁，確保衣服防磨且高彈性。</p>
                 </div>
-                <div class="about-img"><img src="Model.png" alt="排球隊"></div>
+                <div class="about-img">
+                    <div class="about-photo-card">
+                        <img src="Model.png" alt="品牌形象照">
+                    </div>
+                </div>
             </div>
         </section>
         <section class="products" id="products">
@@ -63,6 +68,15 @@
                 </div>
                 <div class="product-card" data-category="volleyball">
                     <img src="bakugo_volleyball_match_jersey_b.png" class="product-img">
+                    <div class="product-info">
+                        <span class="product-tag">排球專屬</span>
+                        <h3 class="product-title">NOVA VB Pro 專業排球訓練 Tee</h3>
+                        <div class="product-price">HK$ 249</div>
+                        <button class="buy-btn" onclick="addToCart('NOVA VB Pro 訓練 Tee', 249)">加入購物車</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="volleyball">
+                    <img src="shoto_volleyball_training_ss_b.png" class="product-img">
                     <div class="product-info">
                         <span class="product-tag">排球專屬</span>
                         <h3 class="product-title">NOVA VB Pro 專業排球訓練 Tee</h3>

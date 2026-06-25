@@ -1,218 +1,375 @@
 /* =========================
    全域樣式設定
 ========================= */
+/* 全域選擇器：重設所有元素的邊距、內距與盒模型計算方式 */
 * {
+    /* 重設外部邊距 */
     margin: 0;
+    /* 重設內部邊距 */
     padding: 0;
+    /* 設定盒模型為 border-box，使寬高包含 padding 與 border */
     box-sizing: border-box;
+    /* 設定全域預設字體 */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* 設定網頁滾動為平滑捲動效果 */
     scroll-behavior: smooth;
 }
 
+/* 定義全域 CSS 變數 */
 :root {
+    /* 主題強調色 (橘色) */
     --primary-color: #ff5722;
+    /* 深色背景或邊框色 (深灰色) */
     --dark-color: #1a1a1a;
+    /* 淺色背景色 (淺灰色) */
     --light-color: #f4f4f4;
+    /* 一般文字顏色 (深灰色) */
     --text-color: #333;
 }
 
+/* 設定網頁主體樣式 */
 body {
+    /* 使用預定義的文字顏色變數 */
     color: var(--text-color);
+    /* 設定行高，增加閱讀舒適度 */
     line-height: 1.6;
+    /* 設定背景顏色為白色 */
     background-color: #fff;
+    /* 隱藏水平溢出的內容，避免產生不必要的橫向捲軸 */
     overflow-x: hidden;
+    /* 在底部增加 60px 的內距，防止內容被遮擋 */
     padding-bottom: 60px;
 }
 
 /* =========================
    導覽列
 ========================= */
+/* 設定頁首 (header) 的外觀與佈局 */
 header {
+    /* 使用深色變數作為背景 */
     background-color: var(--dark-color);
+    /* 文字設為白色 */
     color: #fff;
+    /* 設定內距：上下為 1rem，左右為 5% */
     padding: 1rem 5%;
+    /* 設定為固定定位，隨頁面滾動置頂 */
     position: fixed;
+    /* 寬度佔滿 100% */
     width: 100%;
+    /* 固定在頁面最上方 */
     top: 0;
+    /* 設定層級為 999，確保永遠在最上層 */
     z-index: 999;
+    /* 使用 Flexbox 進行排版 */
     display: flex;
+    /* 兩端對齊（將 header 內容分佈在兩側） */
     justify-content: space-between;
+    /* 垂直居中對齊 */
     align-items: center;
+    /* 加入底部陰影增加層次感 */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
+/* 設定 Logo 的樣式 */
 .logo {
+    /* 設定字體大小 */
     font-size: 1.5rem;
+    /* 設定字體為粗體 */
     font-weight: bold;
+    /* 使用主色變數作為顏色 */
     color: var(--primary-color);
+    /* 設定字元間距 */
     letter-spacing: 1px;
+    /* 移除文字底線 */
     text-decoration: none;
+    /* 設定為行內區塊元素 */
     display: inline-block;
 }
 
 
+/* 設定導覽列 (nav) 的排版方式 */
 nav {
+    /* 使用 Flexbox 進行佈局 */
     display: flex;
+    /* 垂直居中對齊導覽項目 */
     align-items: center;
 }
-
+/* 設定導覽列連結的樣式 */
 nav a {
+    /* 文字顏色設為白色 */
     color: #fff;
+    /* 移除文字底線 */
     text-decoration: none;
+    /* 左側外邊距，用以隔開各連結 */
     margin-left: 2rem;
+    /* 字體粗細設為中等 */
     font-weight: 500;
+    /* 設定顏色變化的過渡效果，持續時間為 0.3 秒 */
     transition: color 0.3s;
 }
 
+/* 設定滑鼠懸停在導覽列連結時的樣式 */
 nav a:hover {
+    /* 將顏色變更為預定義的主題色 */
     color: var(--primary-color);
 }
 
+/* 設定購物車圖標按鈕的樣式 */
 .cart-icon-btn {
+    /* 移除按鈕預設背景 */
     background: none;
+    /* 移除按鈕預設邊框 */
     border: none;
+    /* 文字顏色設為白色 */
     color: white;
+    /* 設定字體大小 */
     font-size: 1.2rem;
+    /* 滑鼠游標設為手指形狀 */
     cursor: pointer;
+    /* 設定左側外邊距以隔開其他元素 */
     margin-left: 2rem;
+    /* 設定相對定位，便於內部可能存在的計數器標籤定位 */
     position: relative;
+    /* 使用 Flexbox 佈局 */
     display: flex;
+    /* 垂直居中對齊圖標與文字 */
     align-items: center;
 }
 
+/* 設定購物車數量標籤的樣式 */
 .cart-badge {
+    /* 使用主題色作為背景 */
     background-color: var(--primary-color);
+    /* 文字顏色設為白色 */
     color: white;
+    /* 設定字體大小 */
     font-size: 0.75rem;
+    /* 設定內部邊距以形成圓形標籤 */
     padding: 2px 6px;
+    /* 設定圓角為 50% 形成圓形 */
     border-radius: 50%;
+    /* 設定絕對定位，以便固定在購物車圖標右上角 */
     position: absolute;
+    /* 向上偏移使其浮於圖標上方 */
     top: -10px;
+    /* 向右偏移使其位於圖標角落 */
     right: -12px;
 }
 
 /* =========================
    Hero 主視覺
 ========================= */
+/* 設定首頁大圖區 (Hero Section) 的樣式 */
 .hero {
+    /* 設定深色線性漸層背景 */
     background: linear-gradient(135deg, #111, #333);
+    /* 高度設定為視窗高度的 75% */
     height: 75vh;
+    /* 使用 Flexbox 垂直排列內容 */
     display: flex;
     flex-direction: column;
+    /* 內容在區塊內垂直居中 */
     justify-content: center;
+    /* 內容在區塊內水平居中 */
     align-items: center;
+    /* 文字置中 */
     text-align: center;
+    /* 設定文字顏色為白色 */
     color: #fff;
+    /* 設定水平內距 */
     padding: 0 1rem;
+    /* 增加上邊距以避開固定導覽列 */
     margin-top: 60px;
 }
 
+/* 設定 Hero 區塊內標題的樣式 */
 .hero h1 {
+    /* 設定大字體大小 */
     font-size: 3.5rem;
+    /* 設定下方邊距 */
     margin-bottom: 1rem;
+    /* 將文字強制轉換為全大寫 */
     text-transform: uppercase;
+    /* 設定字元間距 */
     letter-spacing: 2px;
 }
 
+/* 設定 Hero 區塊內段落的樣式 */
 .hero p {
+    /* 設定字體大小 */
     font-size: 1.3rem;
+    /* 設定下方邊距 */
     margin-bottom: 2rem;
+    /* 設定最大寬度以維持閱讀體驗 */
     max-width: 650px;
 }
 
+/* 設定通用按鈕樣式 */
 .btn {
+    /* 使用主題色作為背景 */
     background-color: var(--primary-color);
+    /* 文字顏色設為白色 */
     color: #ffffff;
+    /* 設定內距 */
     padding: 0.8rem 2.5rem;
+    /* 移除文字底線 */
     text-decoration: none;
+    /* 設定圓角 */
     border-radius: 5px;
+    /* 字體加粗 */
     font-weight: bold;
+    /* 將文字轉換為大寫 */
     text-transform: uppercase;
+    /* 設定背景顏色與位移的過渡效果 */
     transition: background 0.3s, transform 0.2s;
+    /* 設定為行內區塊元素 */
     display: inline-block;
 }
 
+/* 設定滑鼠懸停在按鈕上時的樣式 */
 .btn:hover {
+    /* 變更為較深的橘色 */
     background-color: #e64a19;
+    /* 按鈕向上微幅浮動 */
     transform: translateY(-2px);
 }
 
 /* =========================
    通用 section
 ========================= */
+/* 設定通用內容區塊的內距 */
 section {
     padding: 5rem 10%;
 }
 
+/* 設定區塊標題樣式 */
 section h2 {
+    /* 文字置中 */
     text-align: center;
+    /* 設定字體大小 */
     font-size: 2.5rem;
+    /* 標題與下方內容的間距 */
     margin-bottom: 3rem;
+    /* 設定相對定位，供裝飾線使用 */
     position: relative;
+    /* 設定深色字體顏色 */
     color: var(--dark-color);
 }
 
+/* 為標題下方建立裝飾線 */
 section h2::after {
+    /* 建立空內容 */
     content: '';
+    /* 設定為區塊元素 */
     display: block;
+    /* 設定裝飾線寬度 */
     width: 50px;
+    /* 設定裝飾線高度 */
     height: 4px;
+    /* 使用主色作為線條顏色 */
     background-color: var(--primary-color);
+    /* 設定線條與標題間距，並水平居中 */
     margin: 10px auto 0;
 }
-
 /* =========================
    About 關於我們
 ========================= */
+/* 設定關於我們區塊的背景色 */
+#about {
+    background: #f7f7f7;
+}
+
+/* 設定關於我們內容容器的排版 */
 .about-container {
-    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 使用 CSS Grid 網格佈局 */
+    display: grid;
+    /* 設定兩欄比例：左側佔 1.1 份，右側佔 0.9 份 */
+    grid-template-columns: 1.1fr 0.9fr;
+    /* 設定欄與列之間的間距 */
+    gap: 3rem;
+    /* 垂直居中對齊內容 */
     align-items: center;
-    gap: 4rem;
 }
 
+/* 設定關於我們文字區域的卡片樣式 */
 .about-text {
-    flex: 1;
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 22px;
+    /* 設定陰影增加立體感 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
+/* 設定關於我們標題樣式 */
 .about-text h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--dark-color);
+    line-height: 1.3;
 }
 
+/* 設定關於我們段落文字樣式 */
 .about-text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     font-size: 1.05rem;
+    line-height: 1.9;
     color: #555;
 }
 
+/* 設定圖片容器的居中對齊 */
 .about-img {
-    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.about-img img {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    display: block;
+/* 設定圖片外框卡片樣式 */
+.about-photo-card {
+    /* 寬度自適應，最大為 430px */
+    width: min(100%, 430px);
+    background: #fff;
+    padding: 14px;
+    border-radius: 24px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
 }
+
+/* 設定圖片內部樣式 */
+.about-photo-card img {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+    /* 設定寬高比為 4:5 */
+    aspect-ratio: 4 / 5;
+    /* 確保圖片填滿容器且不變形 */
+    object-fit: cover;
+    /* 設定圖片聚焦在上方中心 */
+    object-position: center top;
+}
+
+
+
 
 /* =========================
    Products 產品區
 ========================= */
+/* 設定產品列表區塊的背景顏色 */
 .products {
     background-color: var(--light-color);
 }
 
+/* 設定過濾器按鈕容器的排版 */
 .filter-container {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2.5rem;
+    /* 若螢幕太窄則自動換行 */
     flex-wrap: wrap;
 }
 
+/* 設定過濾器按鈕的基礎樣式 */
 .filter-btn {
     background-color: #fff;
     border: 2px solid #ddd;
@@ -223,6 +380,7 @@ section h2::after {
     transition: all 0.3s;
 }
 
+/* 設定按鈕在啟用狀態或滑鼠懸停時的樣式 */
 .filter-btn.active,
 .filter-btn:hover {
     background-color: var(--dark-color);
@@ -230,6 +388,7 @@ section h2::after {
     border-color: var(--dark-color);
 }
 
+/* 設定尺碼指南連結的樣式 */
 .size-guide-trigger {
     display: block;
     text-align: center;
@@ -240,12 +399,15 @@ section h2::after {
     font-weight: 500;
 }
 
+/* 設定產品網格佈局 */
 .product-grid {
     display: grid;
+    /* 自動根據寬度調整欄數，最少 280px */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2.5rem;
 }
 
+/* 設定單一產品卡片的樣式 */
 .product-card {
     background-color: #fff;
     border-radius: 10px;
@@ -256,23 +418,30 @@ section h2::after {
     flex-direction: column;
 }
 
+/* 設定滑鼠懸停在卡片上的效果 */
 .product-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.08);
 }
 
+/* 設定隱藏類別，用於過濾功能 */
 .product-card.hidden {
     display: none;
 }
 
+/* 設定產品圖片樣式 */
 .product-img {
     width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    max-height: 35vh;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
     display: block;
-    background-color: #eee;
+    background-color: #fff;
+    padding: 10px;
 }
 
+/* 設定產品資訊區域的佈局 */
 .product-info {
     padding: 1.5rem;
     display: flex;
@@ -280,6 +449,7 @@ section h2::after {
     flex-grow: 1;
 }
 
+/* 設定產品標籤 (如：新款、熱銷) 的樣式 */
 .product-tag {
     background-color: #e0e0e0;
     color: var(--dark-color);
@@ -291,12 +461,14 @@ section h2::after {
     align-self: flex-start;
 }
 
+/* 設定產品標題樣式 */
 .product-title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
 }
 
+/* 設定產品價格樣式 */
 .product-price {
     font-size: 1.3rem;
     font-weight: bold;
@@ -304,6 +476,7 @@ section h2::after {
     margin-bottom: 1rem;
 }
 
+/* 設定購買按鈕樣式 */
 .buy-btn {
     display: block;
     width: 100%;
@@ -316,43 +489,58 @@ section h2::after {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.3s;
+    /* 將按鈕固定在卡片底部 */
     margin-top: auto;
 }
 
+/* 設定滑鼠懸停在購買按鈕時的樣式 */
+/* 設定滑鼠懸停在購買按鈕時的樣式（延續上一段） */
 .buy-btn:hover {
     background-color: var(--primary-color);
 }
 
 /* =========================
-   FAQ
+   FAQ 常見問題區塊樣式
 ========================= */
+
+/* 設定 FAQ 容器的寬度並置中 */
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* 設定單一問答項目的底部邊框與內距 */
 .faq-item {
     border-bottom: 1px solid #ddd;
     padding: 1rem 0;
 }
 
+/* 設定問題標題的佈局與字體樣式 */
 .faq-question {
     font-size: 1.2rem;
     font-weight: 600;
+    /* 使用 Flexbox 讓問題與圖標兩端對齊 */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* 游標改為手指形狀，提示可點擊 */
     cursor: pointer;
 }
 
+/* 設定答案區域的初始狀態與過渡效果 */
 .faq-answer {
+    /* 預設隱藏（高度為 0） */
     max-height: 0;
+    /* 隱藏溢出內容 */
     overflow: hidden;
+    /* 加入平滑高度變化的過渡效果 */
     transition: max-height 0.3s ease-out;
     color: #666;
 }
 
+/* 當 FAQ 項目被激活 (active) 時的展開樣式 */
 .faq-item.active .faq-answer {
+    /* 設定最大高度以展示內容 */
     max-height: 200px;
     margin-top: 0.5rem;
 }
@@ -360,6 +548,7 @@ section h2::after {
 /* =========================
    Size Modal
 ========================= */
+/* 設定彈出視窗遮罩層的樣式（全螢幕深色半透明背景） */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -367,16 +556,21 @@ section h2::after {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
+    /* 確保其層級高於導覽列 */
     z-index: 1002;
+    /* 預設隱藏 */
     display: none;
+    /* 使用 Flexbox 將視窗內容置中 */
     justify-content: center;
     align-items: center;
 }
 
+/* 當加上 open class 時，顯示遮罩層 */
 .modal-overlay.open {
     display: flex;
 }
 
+/* 設定彈出視窗主體樣式 */
 .size-modal {
     background-color: white;
     padding: 2rem;
@@ -386,6 +580,7 @@ section h2::after {
     position: relative;
 }
 
+/* 設定關閉按鈕樣式 */
 .close-modal {
     position: absolute;
     top: 1rem;
@@ -396,12 +591,15 @@ section h2::after {
     cursor: pointer;
 }
 
+/* 設定尺寸對照表樣式 */
 .size-table {
     width: 100%;
+    /* 合併表格邊框 */
     border-collapse: collapse;
     margin-top: 1rem;
 }
 
+/* 設定表格儲存格的基本樣式 */
 .size-table th,
 .size-table td {
     border: 1px solid #ddd;
@@ -409,6 +607,7 @@ section h2::after {
     text-align: center;
 }
 
+/* 設定表頭樣式 */
 .size-table th {
     background-color: var(--light-color);
 }
@@ -416,24 +615,29 @@ section h2::after {
 /* =========================
    購物車 Drawer
 ========================= */
+/* 設定購物車側邊欄 (Drawer) 的定位與基礎樣式 */
 .cart-drawer {
     position: fixed;
     top: 0;
+    /* 初始定位在螢幕外，隱藏狀態 */
     right: -420px;
     width: 420px;
     height: 100%;
     background-color: #fff;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     z-index: 1001;
+    /* 設定滑動動畫效果 */
     transition: right 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
+/* 當加上 open class 時，將側邊欄滑入視窗 */
 .cart-drawer.open {
     right: 0;
 }
 
+/* 設定購物車標題區 (Header) */
 .cart-header {
     padding: 1.5rem;
     background-color: var(--dark-color);
@@ -443,6 +647,7 @@ section h2::after {
     align-items: center;
 }
 
+/* 關閉購物車按鈕 */
 .close-cart {
     background: none;
     border: none;
@@ -451,12 +656,14 @@ section h2::after {
     cursor: pointer;
 }
 
+/* 購物車商品列表容器 */
 .cart-items {
     padding: 1.5rem;
-    overflow-y: auto;
+    overflow-y: auto; /* 若商品過多則顯示捲軸 */
     flex-grow: 1;
 }
 
+/* 單一商品項目樣式 */
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -467,23 +674,27 @@ section h2::after {
     padding-bottom: 1.2rem;
 }
 
+/* 商品名稱 */
 .cart-item-details h4 {
     font-size: 1rem;
     margin-bottom: 0.2rem;
 }
 
+/* 商品規格文字 (如顏色、尺寸) */
 .cart-item-meta {
     font-size: 0.8rem;
     color: #777;
     margin-bottom: 0.3rem;
 }
 
+/* 數量控制區 */
 .cart-item-qty {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
+/* 增減數量按鈕 */
 .qty-btn {
     background-color: #ddd;
     border: none;
@@ -493,12 +704,14 @@ section h2::after {
     border-radius: 4px;
 }
 
+/* 購物車底部 (包含總價與結帳按鈕) */
 .cart-footer {
     padding: 1.5rem;
     border-top: 1px solid #eee;
     background-color: #f4f4f4;
 }
 
+/* 總價行 */
 .cart-total-line {
     display: flex;
     justify-content: space-between;
@@ -506,6 +719,7 @@ section h2::after {
     margin-bottom: 0.4rem;
 }
 
+/* 最終金額顯示 (加粗與變色) */
 .cart-total-final {
     display: flex;
     justify-content: space-between;
@@ -517,6 +731,7 @@ section h2::after {
     padding-top: 0.5rem;
 }
 
+/* 結帳按鈕 */
 .checkout-btn {
     width: 100%;
     background-color: var(--primary-color);
@@ -530,6 +745,8 @@ section h2::after {
     margin-top: 1rem;
     transition: background-color 0.3s;
 }
+
+/* 清空購物車按鈕 */
 .clear-cart-btn {
     width: 100%;
     background-color: var(--primary-color);
@@ -544,11 +761,8 @@ section h2::after {
     transition: background-color 0.3s;
 }
 
-.clear-cart-btn:hover {
-    background-color: #e64a19;
-}
-
-
+/* 懸停效果 */
+.clear-cart-btn:hover,
 .checkout-btn:hover {
     background-color: #e64a19;
 }
@@ -556,15 +770,18 @@ section h2::after {
 /* =========================
    Checkout Page
 ========================= */
+/* 設定結帳頁面主體的背景與最小高度 */
 .checkout-page-body {
     background-color: #f7f7f7;
     min-height: 100vh;
 }
 
+/* 確保結帳頁面內容避開固定導覽列 */
 .checkout-page {
     padding-top: 90px;
 }
 
+/* 結帳頁面頂部視覺區 (Hero) */
 .checkout-hero {
     background: linear-gradient(135deg, #1a1a1a, #333);
     color: #fff;
@@ -582,10 +799,12 @@ section h2::after {
     color: #ddd;
 }
 
+/* 結帳內容容器佈局 */
 .checkout-container {
     padding: 3rem 8%;
 }
 
+/* 使用 Grid 佈局分為左右兩欄（表單 vs 訂單摘要） */
 .checkout-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -593,6 +812,7 @@ section h2::after {
     align-items: start;
 }
 
+/* 結帳內容卡片樣式 */
 .checkout-card {
     background: #fff;
     border-radius: 12px;
@@ -612,6 +832,7 @@ section h2::after {
     font-size: 0.95rem;
 }
 
+/* 表單欄位行佈局 */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -629,6 +850,7 @@ section h2::after {
     color: #444;
 }
 
+/* 表單輸入框、選單與文字區域樣式 */
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -641,6 +863,7 @@ section h2::after {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* 輸入框聚焦時的樣式 */
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
@@ -648,6 +871,7 @@ section h2::after {
     box-shadow: 0 0 0 3px rgba(255,87,34,0.12);
 }
 
+/* 付款資訊提示框 */
 .payment-hint-box {
     background: #fff3f0;
     border: 1px solid #ffd2c4;
@@ -668,6 +892,7 @@ section h2::after {
     line-height: 1.5;
 }
 
+/* 結帳提交按鈕 */
 .checkout-submit-btn {
     width: 100%;
     background-color: var(--primary-color);
@@ -686,6 +911,7 @@ section h2::after {
     background-color: #e64a19;
 }
 
+/* 結帳訂單項目清單 */
 .checkout-items {
     margin-bottom: 1.5rem;
 }
@@ -715,6 +941,7 @@ section h2::after {
     color: var(--dark-color);
 }
 
+/* 結帳金額摘要區域 */
 .checkout-summary {
     border-top: 1px solid #ddd;
     padding-top: 1rem;
@@ -727,6 +954,7 @@ section h2::after {
     margin-bottom: 0.7rem;
 }
 
+/* 總金額樣式 */
 .summary-final {
     margin-top: 1rem;
     padding-top: 0.8rem;
@@ -736,6 +964,7 @@ section h2::after {
     color: var(--dark-color);
 }
 
+/* 返回購物連結 */
 .back-shopping-link {
     display: inline-block;
     margin-top: 1rem;
@@ -748,6 +977,7 @@ section h2::after {
     text-decoration: underline;
 }
 
+/* 購物車為空時的提示訊息 */
 .empty-checkout {
     color: #888;
     text-align: center;
@@ -757,6 +987,7 @@ section h2::after {
 /* =========================
    Thank You Page
 ========================= */
+/* 設定感謝頁面的整體佈局：深色背景、垂直水平置中 */
 .thankyou-body {
     min-height: 100vh;
     background: linear-gradient(135deg, #111, #333);
@@ -766,11 +997,13 @@ section h2::after {
     padding: 2rem;
 }
 
+/* 設定感謝內容的容器寬度 */
 .thankyou-wrapper {
     width: 100%;
     max-width: 680px;
 }
 
+/* 設定感謝卡片本體樣式（白色背景、圓角、陰影） */
 .thankyou-card {
     background: #fff;
     border-radius: 14px;
@@ -779,17 +1012,20 @@ section h2::after {
     box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
+/* 設定感謝標題顏色與字體大小 */
 .thankyou-card h1 {
     color: var(--primary-color);
     margin-bottom: 0.8rem;
     font-size: 2.2rem;
 }
 
+/* 設定說明文字樣式 */
 .thankyou-card p {
     color: #555;
     margin-bottom: 1rem;
 }
 
+/* 設定訂單資訊區塊樣式 */
 .thankyou-order-info {
     background: #f8f8f8;
     border-radius: 10px;
@@ -798,11 +1034,13 @@ section h2::after {
     text-align: left;
 }
 
+/* 訂單資訊小標題 */
 .thankyou-order-info h3 {
     margin-bottom: 0.8rem;
     color: var(--dark-color);
 }
 
+/* 訂單明細行樣式 */
 .thankyou-line {
     display: flex;
     justify-content: space-between;
@@ -810,11 +1048,13 @@ section h2::after {
     font-size: 0.95rem;
 }
 
+/* 自動跳轉提示文字 */
 .redirect-text {
     font-size: 0.95rem;
     color: #777;
 }
 
+/* 返回首頁按鈕 */
 .thankyou-btn {
     display: inline-block;
     margin-top: 1rem;
@@ -827,131 +1067,109 @@ section h2::after {
     transition: background-color 0.3s;
 }
 
+/* 按鈕懸停效果 */
 .thankyou-btn:hover {
     background: #e64a19;
 }
-
 /* =========================
    Footer
 ========================= */
+/* 設定頁尾 (footer) 的外觀與排版 */
 footer {
+    /* 使用深色變數作為背景 */
     background-color: var(--dark-color);
+    /* 文字顏色設為淺灰色，與背景形成柔和對比 */
     color: #bbb;
+    /* 設定內距：上下各 3rem 與 1rem，左右為 5% */
     padding: 3rem 5% 1rem;
+    /* 文字置中 */
     text-align: center;
 }
 
 /* =========================
    響應式
 ========================= */
+/* 設定平板與手機端的響應式佈局 (寬度 768px 以下) */
 @media (max-width: 768px) {
+    /* 縮小頁首的左右邊距 */
     header {
         padding: 1rem 4%;
     }
 
+    /* 縮小導覽列項目的間距 */
     header nav {
         gap: 0.5rem;
     }
 
+    /* 調整導覽連結的間距與字體大小 */
     nav a {
         margin-left: 1rem;
         font-size: 0.9rem;
     }
 
+    /* 優化 Hero 區塊：加入背景圖片、疊加層與縮放動畫 */
     .hero {
-        height: auto;
-        min-height: 65vh;
-        padding: 3rem 1rem;
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+            url("hero-bg.jpg") center center / cover no-repeat;
+        animation: heroZoom 12s ease-in-out infinite alternate;
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        padding: 0 1rem;
+        margin-top: 60px;
     }
 
+    /* 縮小 Hero 標題文字大小 */
     .hero h1 {
         font-size: 2.3rem;
     }
 
+    /* 縮小 Hero 段落文字大小 */
     .hero p {
         font-size: 1.05rem;
     }
 
+    /* 關於我們區塊改為單欄排列 */
     .about-container {
         flex-direction: column;
         gap: 2rem;
     }
 
+    /* 調整各內容區塊的內距 */
     section {
         padding: 4rem 5%;
     }
 
+    /* 購物車側邊欄改為全螢幕寬度 */
     .cart-drawer {
         width: 100%;
         right: -100%;
     }
 
+    /* 結帳頁面網格改為單欄排列 */
     .checkout-grid {
         grid-template-columns: 1fr;
     }
 
+    /* 結帳表單行改為單欄排列 */
     .form-row {
         grid-template-columns: 1fr;
     }
 
+    /* 調整結帳容器內距 */
     .checkout-container {
         padding: 2rem 5%;
     }
 
+    /* 縮小結帳頁標題文字 */
     .checkout-hero h1 {
         font-size: 2rem;
     }
 }
 /* =========================
    Promo Code（優惠碼）
-========================= */
-
-.promo-box {
-    margin: 12px 0;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.promo-input {
-    flex: 1;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.promo-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(255,87,34,0.15);
-    outline: none;
-}
-
-.promo-btn {
-    padding: 0.6rem 1rem;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.promo-btn:hover {
-    background-color: #e64a19;
-}
-
-.promo-message {
-    margin-top: 5px;
-    font-size: 0.85rem;
-}
-
-.promo-success {
-    color: green;
-}
-
-.promo-error {
-    color: red;
-}
