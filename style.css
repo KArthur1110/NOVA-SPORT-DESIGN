@@ -1170,9 +1170,94 @@ footer {
     .checkout-hero h1 {
         font-size: 2rem;
     }
+}
     /* =========================
     Promo Code（優惠碼）
-    
+    =========================*/
+    .promo-box {
+        margin: 12px 0;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .promo-input {
+        flex: 1;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .promo-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(255,87,34,0.15);
+        outline: none;
+    }
+
+    .promo-btn {
+        padding: 0.6rem 1rem;
+        border: none;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    .promo-btn:hover {
+        background-color: #e64a19;
+    }
+
+    .promo-message {
+        margin-top: 5px;
+        font-size: 0.85rem;
+    }
+
+    .promo-success {
+        color: green;
+    }
+
+    .promo-error {
+        color: red;
+    }
+
+    .variant-selector {
+    margin-bottom: 1rem;
+}
+
+.variant-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 0.35rem;
+}
+
+.option-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.option-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-btn.selected {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: #fff3f0;
+    font-weight: bold;
+}
+
     /* 定義 Hero 圖片背景縮放動畫 */
     @keyframes heroZoom {
         0% {
@@ -1182,4 +1267,3 @@ footer {
             background-size: 108%;
         }
     }
-}

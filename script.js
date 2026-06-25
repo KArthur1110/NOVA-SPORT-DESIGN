@@ -49,30 +49,20 @@ function selectVariant(button, value) {
 
 // 加入含有規格的商品至購物車
 function addWithVariants(cardId, baseName, price) {
-    // 取得指定 ID 的商品卡片元素
     const card = document.getElementById(cardId);
-    // 若找不到該卡片則直接返回
     if (!card) return;
 
-    // 取得顏色群組中已選取的按鈕
-    const activeColorBtn = card.querySelector('.color-group .option-btn.selected');
-    // 取得尺碼群組中已選取的按鈕
     const activeSizeBtn = card.querySelector('.size-group .option-btn.selected');
 
-    // 若顏色或尺碼其中之一未選擇，跳出提示並停止執行
-    if (!activeColorBtn || !activeSizeBtn) {
-        alert('請先選擇顏色和尺碼！');
+    if (!activeSizeBtn) {
+        alert('請先選擇尺碼！');
         return;
     }
 
-    // 取得已選顏色的文字內容
-    const selectedColor = activeColorBtn.innerText;
-    // 取得已選尺碼的文字內容
     const selectedSize = activeSizeBtn.innerText;
-
-    // 將商品資訊加入購物車
-    addToCart(baseName, price, selectedColor, selectedSize);
+    addToCart(baseName, price, '-', selectedSize);
 }
+
 
 /* =========================
    購物車
@@ -263,7 +253,7 @@ function updateCartUI() {
             <div class="cart-item">
                 <div class="cart-item-details">
                     <h4>${item.name}</h4>
-                    <div class="cart-item-meta">規格: ${item.color} / ${item.size}</div>
+                    <div class="cart-item-meta">SIZE: ${item.color}  ${item.size}</div>
                     <p style="color: #ff5722; font-weight: bold;">HK$ ${item.price}</p>
                     <div class="cart-item-qty">
                         <button class="qty-btn" onclick="changeQty('${item.name}', '${item.color}', '${item.size}', -1)">-</button>
@@ -461,7 +451,7 @@ function showPaymentHint() {
             <div class="checkout-item">
                 <div class="checkout-item-info">
                     <h4>${item.name}</h4>
-                    <div class="checkout-item-meta">規格: ${item.color} / ${item.size}</div>
+                    <div class="checkout-item-meta">SIZE: ${item.color}  ${item.size}</div>
                     <div class="checkout-item-meta">數量: ${item.qty}</div>
                 </div>
                 <div class="checkout-item-price">HK$ ${itemTotal}</div>
