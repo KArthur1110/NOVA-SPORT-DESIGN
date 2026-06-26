@@ -580,6 +580,13 @@ section h2::after {
     position: relative;
 }
 
+#sizePickerOptions {
+    margin: 1rem 0 1.5rem;
+}
+#sizePickerModal .checkout-btn {
+    margin-top: 0;
+}
+
 /* 設定關閉按鈕樣式 */
 .close-modal {
     position: absolute;

@@ -7,6 +7,10 @@ let discount = 0;
 let selectedShipping = 0;
 let cart = [];
 
+let pendingProduct = null;
+let pendingSelectedSize = '';
+
+
 /* =========================
    基本 UI：購物車 / 彈窗
 ========================= */
@@ -46,24 +50,50 @@ function selectVariant(button, value) {
     // 為當前點擊的按鈕加上 'selected' class
     button.classList.add('selected');
 }
+function openSizePicker(name, price, sizes) {
+    const modal = document.getElementById('sizePickerModal');
+    const optionsContainer = document.getElementById('sizePickerOptions');
 
-// 加入含有規格的商品至購物車
-function addWithVariants(cardId, baseName, price) {
-    const card = document.getElementById(cardId);
-    if (!card) return;
+    if (!modal || !optionsContainer) return;
 
-    const activeSizeBtn = card.querySelector('.size-group .option-btn.selected');
+    pendingProduct = { name, price, sizes };
+    pendingSelectedSize = '';
 
-    if (!activeSizeBtn) {
+    optionsContainer.innerHTML = '';
+
+    sizes.forEach(size => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn';
+        btn.innerText = size;
+        btn.onclick = function () {
+            pendingSelectedSize = size;
+            optionsContainer.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        };
+        optionsContainer.appendChild(btn);
+    });
+
+    modal.classList.add('open');
+}
+function closeSizePicker() {
+    const modal = document.getElementById('sizePickerModal');
+    if (modal) modal.classList.remove('open');
+
+    pendingProduct = null;
+    pendingSelectedSize = '';
+}
+function confirmSizeSelection() {
+    if (!pendingProduct) return;
+
+    if (pendingSelectedSize === '') {
         alert('請先選擇尺碼！');
         return;
     }
 
-    const selectedSize = activeSizeBtn.innerText;
-    addToCart(baseName, price, '-', selectedSize);
+    addToCart(pendingProduct.name, pendingProduct.price, '-', pendingSelectedSize);
+    closeSizePicker();
 }
-
-
 /* =========================
    購物車
 ========================= */
@@ -124,46 +154,41 @@ function changeQty(name, color, size, amount) {
 
 // 套用優惠碼並更新折扣金額
 function applyPromo() {
-    // ✅ 取得輸入框同訊息框
     const input = document.getElementById('promoCodeInput');
     const msg = document.getElementById('promoMessage');
 
+    if (!input || !msg) return;
 
-    // ✅ 處理用戶輸入（轉大寫，避免錯）
     const code = input.value.trim().toUpperCase();
 
-    // ✅ NOVA2026 → 減 HK$20
     if (code === 'NOVA2026') {
         discount = 20;
         msg.innerText = '✅ 優惠碼已套用 -HK$20';
         msg.className = 'promo-message promo-success';
-
-    // ✅ NOVA400 → 減 HK$40
     } else if (code === 'NOVA400') {
         discount = 40;
         msg.innerText = '✅ 優惠碼已套用 -HK$40';
         msg.className = 'promo-message promo-success';
-
-    // ✅ 空白 → 清除提示
-        // 彈出成功提示
-        alert('成功套用優惠碼！全單立減 HK$ 40');
     } else if (code === '') {
-        // 若輸入為空，折扣歸零
         discount = 0;
         msg.innerText = '';
-
-    // ❌ 無效 → 顯示錯誤
+        msg.className = 'promo-message';
     } else {
-        // 若優惠碼無效，彈出提示並將折扣設為 0
-        alert('無效的優惠碼，請重新輸入。');
         discount = 0;
         msg.innerText = '❌ 無效優惠碼';
         msg.className = 'promo-message promo-error';
     }
 
-    // 更新購物車顯示介面
+    // ✅ 同步更新到 localStorage，俾 pay.html 摘要讀取
+    localStorage.setItem('nova_discount', JSON.stringify(discount));
+
+    // ✅ 更新購物車 UI（如果有）
     updateCartUI();
+
+    // ✅ 重新渲染 checkout summary
+    renderCheckoutPage();
 }
+
 
 
 // ✅ 當頁面載入後先執行（避免報錯）
