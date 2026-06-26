@@ -3,35 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA Sport Design - 專業排球訓練服與運動服飾</title>
+    <title>NOVA Sportswear Design - 專業運動服飾</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
-    <body>
-        <header>
-            <a href="#home" class="logo">NOVA SPORT DESIGN</a>
-            <nav>
-                <a href="#home">首頁</a>
-                <a href="#about">關於我們</a>
-                <a href="contact.html">聯絡我們</a>
-                <a href="#products">產品</a>
-                <a href="#faq">常見問題</a>
-                <button class="cart-icon-btn" onclick="toggleCart(true)">🛒 購物車 <span class="cart-badge" id="cart-count">0</span></button>
-            </nav>
-        </header>
-        <div class="hero" id="home">
-            <h1>NOVA SPORT DESIGN</h1>
-            <p>專為高強度排球訓練與熱血汗水設計。極致排汗、流暢剪裁，助您統治整個球場。</p>
-            <a href="#products" class="btn">立即探索系列</a>
-        </div>
+
+<!-- 背景音樂 -->
+<audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
+
+<!-- 音樂開關按鈕 -->
+<button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
+    ♫ 音樂
+</button>
+
+    <header>
+        <a href="#home" class="logo">NOVA SPORTSWEAR DESIGN</a>
+
+        <nav>
+            <a href="#home" data-i18n="navHome">首頁</a>
+            <a href="#about" data-i18n="navAbout">關於我們</a>
+            <a href="contact.html" data-i18n="navContact">聯絡我們</a>
+            <a href="#products" data-i18n="navProducts">產品</a>
+            <a href="#faq" data-i18n="navFaq">常見問題</a>
+            &ensp;&ensp;&ensp;
+            <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <span id="languageLabel">EN</span>
+            </button>
+
+            
+
+            <button class="cart-icon-btn" onclick="toggleCart(true)">
+                🛒 <span data-i18n="navCart">購物車</span>
+                <span class="cart-badge" id="cart-count">0</span>
+            </button>
+        </nav>
+    </header>
+        
+    <div class="hero" id="home">
+        <h1 data-i18n="heroTitle">NOVA SPORT DESIGN</h1>
+        <p data-i18n="heroSubtitle">專為高強度排球訓練與熱血汗水設計。極致排汗、流暢剪裁，助您統治整個球場。</p>
+        <a href="#products" class="btn" data-i18n="heroBtn">立即探索系列</a>
+    </div>
+
         <section id="about">
-            <h2>關於 NOVA</h2>
+            <h2 data-i18n="aboutHeading">關於 NOVA</h2>
+
             <div class="about-container">
                 <div class="about-text">
-                    <h3>源自對球場的熱愛與執著</h3>
-                    <p>我們公司成立於香港，團隊成員皆由本地資深排球員與運動愛好者組成。我們深知在進行排球訓練時，普通的運動衫常常會因汗水黏身或剪裁限制了擺臂的角度。</p>
-                    <p>因此，我們創立了 <strong>NOVA Sport Design</strong>，致力於研發最適合排球高強度訓練的專業 Tee。精選高規格排汗布料，配合亞洲運動員身型剪裁，確保衣服防磨且高彈性。</p>
+                    <h3 data-i18n="aboutTitle">源自對球場的熱愛與執著</h3>
+
+                    <p data-i18n="aboutP1">
+                        我們公司成立於香港，團隊成員皆由本地資深排球員與運動愛好者組成。我們深知在進行排球訓練時，普通的運動衫常常會因汗水黏身或剪裁限制了擺臂的角度。
+                    </p>
+
+                    <p data-i18n="aboutP2">
+                        因此，我們創立了 NOVA Sport Design，致力於研發最適合排球高強度訓練的專業 Tee。精選高規格排汗布料，配合亞洲運動員身型剪裁，確保衣服防磨且高彈性。
+                    </p>
                 </div>
+
                 <div class="about-img">
                     <div class="about-photo-card">
                         <img src="Model.png" alt="品牌形象照">
@@ -39,14 +68,19 @@
                 </div>
             </div>
         </section>
+
         <section class="products" id="products">
-            <h2>專業運動服飾</h2>
+            <h2 data-i18n="productsHeading">專業運動服飾</h2>
+
             <div class="filter-container">
-                <button class="filter-btn active" onclick="filterProducts('all', this)">全部產品</button>
-                <button class="filter-btn" onclick="filterProducts('volleyball', this)">排球訓練服</button>
-                <button class="filter-btn" onclick="filterProducts('general', this)">日常運動服</button>
+                <button class="filter-btn active" onclick="filterProducts('all', this)" data-i18n="filterAll">全部產品</button>
+                <button class="filter-btn" onclick="filterProducts('volleyball', this)" data-i18n="filterVolleyball">排球訓練服</button>
+                <button class="filter-btn" onclick="filterProducts('general', this)" data-i18n="filterGeneral">日常運動服</button>
             </div>
-            <span class="size-guide-trigger" onclick="toggleModal(true)">📐 查看官方 T-Shirt 尺碼對照表</span>
+
+            <span class="size-guide-trigger" onclick="toggleModal(true)" data-i18n="sizeGuide">
+                📐 查看官方 T-Shirt 尺碼對照表
+            </span>
 
             <div class="product-grid">
 
@@ -58,11 +92,9 @@
                         onclick="openImage(this.src)"
                     >
                     <div class="product-info">
-                        <span class="product-tag">排球專屬</span>
-                        <h3 class="product-title">NOVA Sky-X traing Tee</h3>
-                        <div class="product-price">HK$ 218</div>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA Sky-X traing Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])">
-                            加入購物車
+                        <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
+                        <h3 class="product-title" data-i18n="productSkyX">NOVA Sky-X traing Tee</h3>
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Sky-X traing Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])" data-i18n="addToCart">加入購物車
                         </button>
                     </div>
                 </div>
@@ -75,11 +107,9 @@
                         onclick="openImage(this.src)"
                     >
                     <div class="product-info">
-                        <span class="product-tag">全能運動</span>
-                        <h3 class="product-title">Everyday Core 高透氣運動 T-Shirt</h3>
-                        <div class="product-price">HK$ 188</div>
-                        <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 188, ['XS','S','M','L','XL','2XL'])">
-                            加入購物車
+                        <span class="product-tag" data-i18n="tagGeneral">全能運動</span>
+                        <h3 class="product-title" data-i18n="productEveryday">Everyday Core 高透氣運動 T-Shirt</h3>
+                        <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 188, ['XS','S','M','L','XL','2XL'])" data-i18n="addToCart"> 加入購物車
                         </button>
                     </div>
                 </div>
@@ -92,11 +122,9 @@
                         onclick="openImage(this.src)"
                     >
                     <div class="product-info">
-                        <span class="product-tag">排球專屬</span>
-                        <h3 class="product-title">NOVA Bakugo Tee</h3>
-                        <div class="product-price">HK$ 218</div>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA Bakugo Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])">
-                            加入購物車
+                        <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
+                        <h3 class="product-title" data-i18n="productBakugo">NOVA Bakugo Tee</h3>
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Bakugo Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])" data-i18n="addToCart"> 加入購物車
                         </button>
                     </div>
                 </div>
@@ -109,42 +137,39 @@
                         onclick="openImage(this.src)"
                     >
                     <div class="product-info">
-                        <span class="product-tag">排球專屬</span>
-                        <h3 class="product-title">NOVA shoto Tee</h3>
-                        <div class="product-price">HK$ 218</div>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA shoto Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])">
-                            加入購物車
+                        <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
+                        <h3 class="product-title" data-i18n="productShoto">NOVA shoto Tee</h3>
+                        <button class="buy-btn" onclick="openSizePicker('NOVA shoto Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])" data-i18n="addToCart">加入購物車
                         </button>
                     </div>
                 </div>
 
             </div>
-
         </section>
-            <!-- FAQ 常見問題折疊選單區塊 -->
-            <section class="faq-section" id="faq">
-                <h2>常見問題</h2>
-                <div class="faq-container">
-                    <!-- 問題 1 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">
-                            <span>Q1. 香港本地運費如何計算？</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>全店滿 HK$500 即享免運費優惠。未滿額收取 HK$30 運費，使用順豐速運送達。</p>
-                        </div>
+
+        <section class="faq-section" id="faq">
+            <h2 data-i18n="faqHeading">常見問題</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span data-i18n="faqQ1">Q1. 香港本地運費如何計算？</span>
                     </div>
-                    <!-- 問題 2 -->
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">
-                            <span>Q2. 支援哪些付款方式？</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>我們支援 PayMe、轉數快 (FPS)、AlipayHK 和微信支付 HK。</p>
-                        </div>
+                    <div class="faq-answer">
+                        <p data-i18n="faqA1">全店滿 HK$500 即享免運費優惠。未滿額收取 HK$30 運費，使用順豐速運送達。</p>
                     </div>
                 </div>
-            </section>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span data-i18n="faqQ2">Q2. 支援哪些付款方式？</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="faqA2">我們支援 PayMe、轉數快 (FPS)、AlipayHK 和微信支付 HK。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     
     <script src="script.js">
     </script>
@@ -153,7 +178,7 @@
 <div class="modal-overlay" id="sizeModal">
   <div class="size-modal">
     <button class="close-modal" onclick="toggleModal(false)">✕</button>
-    <h3>尺寸表</h3>
+    <h3 data-i18n="sizeTableTitle">尺寸表</h3>
 
     <table class="size-table">
       <tr><th>Size</th><th>胸圍</th><th>長度</th></tr>
@@ -170,9 +195,14 @@
 <div class="modal-overlay" id="sizePickerModal">
   <div class="size-modal">
     <button class="close-modal" onclick="closeSizePicker()">✕</button>
-    <h3>請選擇尺碼</h3>
+
+    <h3 data-i18n="chooseSize">請選擇尺碼</h3>
+
     <div id="sizePickerOptions" class="option-group"></div>
-    <button class="checkout-btn" onclick="confirmSizeSelection()">確認加入購物車</button>
+
+    <button class="checkout-btn" onclick="confirmSizeSelection()" data-i18n="confirmAddCart">
+      確認加入購物車
+    </button>
   </div>
 </div>
 
@@ -185,35 +215,44 @@
 <!-- ✅ 購物車側邊欄 -->
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header">
-    <h3>購物車</h3>
+    <h3 data-i18n="cartTitle">購物車</h3>
     <button class="close-cart" onclick="toggleCart(false)">✕</button>
   </div>
 
   <div class="cart-items" id="cartItemsContainer">
-    <p style="text-align:center; color:#999;">購物車目前是空的</p>
+    <p data-i18n="cartEmpty" style="text-align:center; color:#999;">
+      購物車目前是空的
+    </p>
   </div>
 
   <div class="cart-footer">
     <div class="cart-total-line">
-      <span>小計</span>
+      <span data-i18n="subtotal">小計</span>
       <span id="cartSubtotal">HK$ 0</span>
     </div>
+
     <div class="cart-total-line">
-      <span>運費</span>
+      <span data-i18n="shipping">運費</span>
       <span id="cartShipping">HK$ 0</span>
     </div>
+
     <div class="cart-total-line">
-      <span>優惠</span>
+      <span data-i18n="discount">優惠</span>
       <span id="cartDiscount">-HK$ 0</span>
     </div>
 
     <div class="cart-total-final">
-      <span>總計</span>
+      <span data-i18n="total">總計</span>
       <span id="cartTotalAmount">HK$ 0</span>
     </div>
 
-    <button class="clear-cart-btn" onclick="clearCart()">清空購物車</button>
-    <button class="checkout-btn" onclick="goCheckout()">前往結帳</button>
+    <button class="clear-cart-btn" onclick="clearCart()" data-i18n="clearCart">
+      清空購物車
+    </button>
+
+    <button class="checkout-btn" onclick="goCheckout()" data-i18n="goCheckout">
+      前往結帳
+    </button>
   </div>
 </div>
 

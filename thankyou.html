@@ -10,18 +10,24 @@
 
     <div class="thankyou-wrapper">
         <div class="thankyou-card">
-            <h1>付款成功！</h1>
-            <p>多謝你支持 NOVA SPORT。</p>
+            <h1 data-i18n="thankyouTitle">付款成功！</h1>
+            <p data-i18n="thankyouSubtitle">多謝你支持 NOVA SPORT。</p>
 
             <div id="thankyouOrderInfo" class="thankyou-order-info">
-                <p>正在載入訂單資料...</p>
+                <p data-i18n="thankyouLoading">正在載入訂單資料...</p>
             </div>
 
-            <p class="redirect-text"><span id="countdown">5</span> 秒後將自動返回主頁...</p>
-            <a href="index.html" class="thankyou-btn">立即返回主頁</a>
+            
+            <p class="redirect-text">
+                <span id="countdown">5</span>
+                <span data-i18n="redirectText"> 秒後將自動返回主頁...</span>
+            </p>            
+            <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <span id="languageLabel">EN</span>
+            </button>
+            <a href="index.html" class="thankyou-btn" data-i18n="nav">Return</a>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

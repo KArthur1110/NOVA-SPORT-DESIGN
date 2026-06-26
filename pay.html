@@ -11,18 +11,23 @@
     <header>
         <a href="index.html#home" class="logo">NOVA SPORT DESIGN</a>
         <nav>
-            <a href="index.html#home">首頁</a>
-            <a href="index.html#about">關於我們</a>
-            <a href="contact.html">聯絡我們</a>
-            <a href="index.html#products">產品</a>
-            <a href="index.html#faq">常見問題</a>
+            <a href="index.html#home" data-i18n="navHome">首頁</a>
+            <a href="index.html#about" data-i18n="navAbout">關於我們</a>
+            <a href="contact.html" data-i18n="navContact">聯絡我們</a>
+            <a href="index.html#products" data-i18n="navProducts">產品</a>
+            <a href="index.html#faq" data-i18n="navFaq">常見問題</a>
+
+            <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <span id="languageLabel">EN</span>
+            </button>
         </nav>
+
     </header>
 
     <main class="checkout-page">
         <section class="checkout-hero">
-            <h1>安全結帳</h1>
-            <p>請填寫你的聯絡及送貨資料，完成訂單確認。</p>
+            <h1 data-i18n="checkoutHeroTitle">安全結帳</h1>
+            <p data-i18n="checkoutHeroSubtitle">請填寫你的聯絡及送貨資料，完成訂單確認。</p>
         </section>
 
         <section class="checkout-container">
@@ -30,12 +35,12 @@
 
                 <!-- 左邊：顧客資料 -->
                 <div class="checkout-card">
-                    <h2>顧客資料</h2>
+                    <h2 data-i18n="customerInfoTitle">顧客資料</h2>
 
                     <form id="checkoutForm" onsubmit="submitOrder(event)">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="customerName">姓名</label>
+                                <label for="customerName" data-i18n="customerNameLabel">姓名</label>
                                 <input 
                                     type="text" 
                                     id="customerName" 
@@ -50,7 +55,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="customerPhone">電話</label>
+                                <label for="customerPhone" data-i18n="customerPhoneLabel">電話</label>
                                 <input
                                     type="tel" 
                                     id="customerPhone" 
@@ -65,7 +70,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="customerEmail">電郵</label>
+                            <label for="customerEmail" data-i18n="customerEmailLabel">電郵</label>
                             <input
                                 type="email"
                                 id="customerEmail"
@@ -76,7 +81,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="region">地區</label>
+                            <label for="region" data-i18n="regionLabel">地區</label>
                             <select id="region" name="region" required onchange="updateDistrictOptions()">
                                 <option value="">請選擇地區</option>
                                 <option value="香港島">香港島</option>
@@ -86,14 +91,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="district">區域</label>
+                            <label for="district" data-i18n="districtLabel">區域</label>
                             <select id="district" name="district" required>
                                 <option value="">請先選擇地區</option>
                             </select>
                         </div>
 
                         <div class="form-group" id="otherDistrictGroup" style="display:none;">
-                            <label for="otherDistrict">其他區域</label>
+                            <label for="otherDistrict" data-i18n="otherDistrictLabel">其他區域</label>
                             <input
                                 type="text"
                                 id="otherDistrict"
@@ -104,7 +109,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="customerAddressDetail">詳細地址</label>
+                            <label for="customerAddressDetail" data-i18n="addressDetailLabel">詳細地址</label>
                             <textarea
                                 id="customerAddressDetail"
                                 name="customerAddressDetail"
@@ -116,7 +121,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="paymentMethod">付款方式</label>
+                            <label for="paymentMethod" data-i18n="paymentMethodLabel">付款方式</label>
                             <select id="paymentMethod" name="paymentMethod" required onchange="showPaymentHint()">
                                 
                             <option value="">請選擇付款方式</option>
@@ -133,35 +138,34 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="remark">備註（選填）</label>
+                        <label for="remark" data-i18n="remarkLabel">備註（選填）</label>
                         <textarea id="remark" name="remark" rows="3"></textarea>
                         </div>
 
 
-                        <button type="submit" class="checkout-submit-btn">確認訂單</button>
+                       <button type="submit" class="checkout-submit-btn" data-i18n="confirmOrderBtn">確認訂單</button>
                     </form>
                 </div>
         
                 <!-- 右邊：訂單摘要 -->
                 <div class="checkout-card order-summary-card">
-                    <h2>訂單摘要</h2>
-                    <p id="checkoutItemCount" class="checkout-item-count">共 0 件商品</p>    
-
+                    <h2 data-i18n="orderSummaryTitle">訂單摘要</h2>
+                    <p id="checkoutItemCount" class="checkout-item-count" data-i18n="checkoutItemCountEmpty">共 0 件商品</p>
                     <div id="checkoutItems" class="checkout-items">
                         <p class="empty-checkout">目前沒有商品。</p>
                     </div>
 
                     <div class="checkout-summary">
                         <div class="summary-line">
-                            <span>小計</span>
+                            <span data-i18n="subtotal">小計</span>
                             <span id="checkoutSubtotal">HK$ 0</span>
                         </div>
                         <div class="summary-line">
-                            <span>運費</span>
+                            <span data-i18n="shipping">運費</span>
                             <span id="checkoutShipping">HK$ 0</span>
                         </div>
                         <div class="summary-line">
-                            <span>優惠</span>
+                            <span data-i18n="discount">優惠</span>
                             <span id="checkoutDiscount">-HK$ 0</span>
                         </div>
 
@@ -170,23 +174,24 @@
                                 type="text" 
                                 id="promoCodeInput" 
                                 placeholder="輸入優惠碼"
+                                data-i18n-placeholder="promoPlaceholder"
                                 class="promo-input"
                             />
-                            
-                            <button onclick="applyPromo()" class="promo-btn">
+                            <button onclick="applyPromo()" class="promo-btn" data-i18n="applyPromoBtn">
                                 套用
                             </button>
+
 
                             <div id="promoMessage" class="promo-message"></div>
                         </div>
 
                         <div class="summary-final">
-                            <span>總計</span>
+                            <span data-i18n="total">總計</span>
                             <span id="checkoutTotal">HK$ 0</span>
                         </div>
                     </div>
 
-                    <a href="index.html#products" class="back-shopping-link">← 返回繼續購物</a>
+                    <a href="index.html#products" class="back-shopping-link" data-i18n="backToShopping">← 返回繼續購物</a>
                 </div>
 
             </div>
