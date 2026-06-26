@@ -401,22 +401,27 @@ section h2::after {
 
 /* 設定產品網格佈局 */
 .product-grid {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
-    /* 自動根據寬度調整欄數，最少 280px */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: stretch;
 }
+
 
 /* 設定單一產品卡片的樣式 */
 .product-card {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
+    min-height: 100%;
 }
+
 
 /* 設定滑鼠懸停在卡片上的效果 */
 .product-card:hover {
@@ -1098,6 +1103,11 @@ footer {
 ========================= */
 /* 設定平板與手機端的響應式佈局 (寬度 768px 以下) */
 @media (max-width: 768px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
     /* 縮小頁首的左右邊距 */
     header {
         padding: 1rem 4%;
@@ -1274,3 +1284,50 @@ footer {
             background-size: 108%;
         }
     }
+
+
+/* =========================
+   Image Lightbox 圖片放大
+========================= */
+
+.product-img {
+    cursor: zoom-in;
+}
+
+.image-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2005;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.image-lightbox.show {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 92vw;
+    max-height: 86vh;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2006;
+}

@@ -47,52 +47,79 @@
                 <button class="filter-btn" onclick="filterProducts('general', this)">日常運動服</button>
             </div>
             <span class="size-guide-trigger" onclick="toggleModal(true)">📐 查看官方 T-Shirt 尺碼對照表</span>
-            <div class="product-grid">
-                <div class="product-card" id="vb-pro-1" data-category="volleyball">
-                <img src="SKY-X-Sky-traintee .jpeg" class="product-img" alt="NOVA VB Pro 專業排球訓練 Tee">
-                <div class="product-info">
-                    <span class="product-tag">排球專屬</span>
-                    <h3 class="product-title">NOVA VB Pro 專業排球訓練 Tee</h3>
 
-                    <div class="product-price">HK$ 249</div>
-                    <button class="buy-btn" onclick="openSizePicker('NOVA VB Pro 訓練 Tee', 249, ['2XS','XS','S','M','L','XL','2XL'])">加入購物車</button>
+            <div class="product-grid">
+
+                <div class="product-card" id="vb-pro-1" data-category="volleyball">
+                    <img
+                        src="SKY-X-Sky-traintee .jpeg"
+                        class="product-img"
+                        alt="NOVA Sky-X traing Tee"
+                        onclick="openImage(this.src)"
+                    >
+                    <div class="product-info">
+                        <span class="product-tag">排球專屬</span>
+                        <h3 class="product-title">NOVA Sky-X traing Tee</h3>
+                        <div class="product-price">HK$ 218</div>
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Sky-X traing Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])">
+                            加入購物車
+                        </button>
+                    </div>
                 </div>
-            </div>
-                </div>
-                
+
                 <div class="product-card" id="everyday-core-1" data-category="general">
-                    <img src="NOVA SPORT T-Shirt.png" class="product-img" alt="Everyday Core 高透氣運動 T-Shirt">
+                    <img
+                        src="NOVA SPORT T-Shirt.png"
+                        class="product-img"
+                        alt="Everyday Core T-Shirt"
+                        onclick="openImage(this.src)"
+                    >
                     <div class="product-info">
                         <span class="product-tag">全能運動</span>
                         <h3 class="product-title">Everyday Core 高透氣運動 T-Shirt</h3>
-
-                        
-
-                        <div class="product-price">HK$ 189</div>
-                        <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 189, ['XS','S','M','L','XL','2XL'])">加入購物車</button>
+                        <div class="product-price">HK$ 188</div>
+                        <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 188, ['XS','S','M','L','XL','2XL'])">
+                            加入購物車
+                        </button>
                     </div>
                 </div>
 
-                </div>
-                <div class="product-card" data-category="volleyball">
-                    <img src="bakugo_volleyball_match_jersey_b.png" class="product-img">
+                <div class="product-card" id="bakugo-tee-1" data-category="volleyball">
+                    <img
+                        src="bakugo_volleyball_match_jersey_b.png"
+                        class="product-img"
+                        alt="NOVA Bakugo Tee"
+                        onclick="openImage(this.src)"
+                    >
                     <div class="product-info">
                         <span class="product-tag">排球專屬</span>
-                        <h3 class="product-title">NOVA VB Pro 專業排球訓練 Tee</h3>                       
-                        <div class="product-price">HK$ 249</div>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA VB Pro 訓練 Tee', 249, ['2XS','XS','S','M','L','XL','2XL'])">加入購物車</button>
+                        <h3 class="product-title">NOVA Bakugo Tee</h3>
+                        <div class="product-price">HK$ 218</div>
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Bakugo Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])">
+                            加入購物車
+                        </button>
                     </div>
                 </div>
-                <div class="product-card" data-category="volleyball">
-                    <img src="shoto_volleyball_training_ss_b.png" class="product-img">
+
+                <div class="product-card" id="shoto-tee-1" data-category="volleyball">
+                    <img
+                        src="shoto_volleyball_training_ss_b.png"
+                        class="product-img"
+                        alt="NOVA shoto Tee"
+                        onclick="openImage(this.src)"
+                    >
                     <div class="product-info">
                         <span class="product-tag">排球專屬</span>
-                        <h3 class="product-title">NOVA VB Pro 專業排球訓練 Tee</h3>
-                        <div class="product-price">HK$ 249</div>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA VB Pro 訓練 Tee', 249, ['2XS','XS','S','M','L','XL','2XL'])">加入購物車</button>
+                        <h3 class="product-title">NOVA shoto Tee</h3>
+                        <div class="product-price">HK$ 218</div>
+                        <button class="buy-btn" onclick="openSizePicker('NOVA shoto Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])">
+                            加入購物車
+                        </button>
                     </div>
                 </div>
+
             </div>
+
         </section>
             <!-- FAQ 常見問題折疊選單區塊 -->
             <section class="faq-section" id="faq">
@@ -149,6 +176,11 @@
   </div>
 </div>
 
+<!-- 圖片放大彈窗 -->
+<div id="imageLightbox" class="image-lightbox" onclick="closeImage()">
+    <button class="lightbox-close" type="button" onclick="event.stopPropagation(); closeImage()">✕</button>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="產品圖片放大預覽" onclick="event.stopPropagation()">
+</div>
 
 <!-- ✅ 購物車側邊欄 -->
 <div class="cart-drawer" id="cartDrawer">

@@ -26,6 +26,18 @@ function toggleCart(open) {
     // 若遮罩存在，依據參數 open 切換顯示狀態
     if (overlay) overlay.style.display = open ? 'block' : 'none';
 }
+function saveCartState() {
+    localStorage.setItem('nova_cart', JSON.stringify(cart));
+    localStorage.setItem('nova_discount', JSON.stringify(discount));
+}
+
+function loadCartState() {
+    const savedCart = JSON.parse(localStorage.getItem('nova_cart')) || [];
+    const savedDiscount = JSON.parse(localStorage.getItem('nova_discount')) || 0;
+
+    cart = savedCart;
+    discount = savedDiscount;
+}
 
 // 切換尺寸選擇視窗的顯示與隱藏
 function toggleModal(open) {
@@ -94,23 +106,40 @@ function confirmSizeSelection() {
     addToCart(pendingProduct.name, pendingProduct.price, '-', pendingSelectedSize);
     closeSizePicker();
 }
+
+function openImage(src) {
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    if (!lightbox || !lightboxImg) return;
+
+    lightboxImg.src = src;
+    lightbox.classList.add('show');
+}
+
+function closeImage() {
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    if (!lightbox || !lightboxImg) return;
+
+    lightbox.classList.remove('show');
+    lightboxImg.src = '';
+}
 /* =========================
    購物車
 ========================= */
 // 將商品加入購物車，包含顏色與尺碼選項（預設值為 '-'）
 function addToCart(name, price, color = '-', size = '-') {
-    // 檢查購物車內是否已有相同名稱、顏色與尺碼的商品
     const existingItem = cart.find(item =>
         item.name === name &&
         item.color === color &&
         item.size === size
     );
 
-    // 如果商品已存在，則將該商品的數量加 1
     if (existingItem) {
         existingItem.qty += 1;
     } else {
-        // 如果商品不存在，則建立新物件並推入購物車陣列
         cart.push({
             name: name,
             price: price,
@@ -120,35 +149,30 @@ function addToCart(name, price, color = '-', size = '-') {
         });
     }
 
-    // 更新購物車顯示介面
+    saveCartState();
     updateCartUI();
-    // 打開購物車側邊欄
     toggleCart(true);
 }
 
 // 修改購物車內特定商品的數量
 function changeQty(name, color, size, amount) {
-    // 在購物車陣列中尋找符合名稱、顏色及尺碼的商品
     const item = cart.find(item =>
         item.name === name &&
         item.color === color &&
         item.size === size
     );
 
-    // 若找不到該商品則直接返回
     if (!item) return;
 
-    // 將商品的數量加上指定的變動量 (amount)
     item.qty += amount;
 
-    // 若商品數量小於或等於 0，則將其從購物車陣列中移除
     if (item.qty <= 0) {
         cart = cart.filter(i =>
             !(i.name === name && i.color === color && i.size === size)
         );
     }
 
-    // 更新購物車顯示介面
+    saveCartState();
     updateCartUI();
 }
 
@@ -212,16 +236,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 function clearCart() {
-    // 清空購物車陣列 (將購物車重置為空)
     cart = [];
-    
-    // 將優惠折扣重置為 0
     discount = 0;
-    
-    // 呼叫函式更新購物車顯示介面
+
+    localStorage.removeItem('nova_cart');
+    localStorage.removeItem('nova_discount');
+
     updateCartUI();
-    
-    // 關閉購物車側邊欄 (傳入 false 表示隱藏)
     toggleCart(false);
 }
 
@@ -358,15 +379,8 @@ function toggleFaq(element) {
    Checkout Page
 ========================= */
 
-// 去結帳頁：把購物車存入 localStorage
 function goCheckout() {
-    // 將購物車陣列轉換為 JSON 字串並存入 localStorage，以便在結帳頁面讀取
-    localStorage.setItem('nova_cart', JSON.stringify(cart));
-    
-    // 將折扣金額轉換為 JSON 字串並存入 localStorage
-    localStorage.setItem('nova_discount', JSON.stringify(discount));
-    
-    // 跳轉頁面至結帳頁面 (pay.html)
+    saveCartState();
     window.location.href = 'pay.html';
 }
 
@@ -818,6 +832,7 @@ function renderThankYouPage() {
 ========================= */
 // 當整個 HTML 文件載入完成後執行
 document.addEventListener('DOMContentLoaded', function () {
+    loadCartState();
     // 渲染結帳頁面內容
     renderCheckoutPage();
     // 渲染感謝頁面內容
