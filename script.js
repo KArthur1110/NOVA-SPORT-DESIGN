@@ -89,10 +89,22 @@ const translations = {
         topicCollab: '合作洽談',
         topicOther: '其他',
         contactMessageLabel: '訊息內容',
+        contactMessagePlaceholder: '請輸入你的查詢內容',
         contactSubmitBtn: '提交查詢',
         contactNote: '此頁面目前為前端示範版本，提交後會顯示確認訊息。',
 
         checkoutHeroTitle: '安全結帳',
+        regionPlaceholder: '請選擇地區',
+        regionHKIsland: '香港島',
+        regionKowloon: '九龍',
+        regionNT: '新界',
+        districtFirstChooseRegion: '請先選擇地區',
+        districtPlaceholder: '請選擇區域',
+        addressDetailPlaceholder: '請輸入大廈 / 街道 / 樓層 / 單位',
+        paymentPlaceholder: '請選擇付款方式',
+        paymentFPS: '轉數快 FPS',
+        paymentWeChatPayHK: '微信支付 HK',
+
         checkoutHeroSubtitle: '請填寫你的聯絡及送貨資料，完成訂單確認。',
         customerInfoTitle: '顧客資料',
         customerNameLabel: '姓名',
@@ -196,11 +208,22 @@ const translations = {
         topicCollab: 'Collaboration',
         topicOther: 'Other',
         contactMessageLabel: 'Message',
+        contactMessagePlaceholder: 'Please enter your enquiry message',
         contactSubmitBtn: 'Submit Enquiry',
         contactNote: 'This page is currently a front-end demo. A confirmation message will be shown after submission.',
 
         checkoutHeroTitle: 'Secure Checkout',
         checkoutHeroSubtitle: 'Please fill in your contact and delivery information to confirm your order.',
+        regionPlaceholder: 'Please select a region',
+        regionHKIsland: 'Hong Kong Island',
+        regionKowloon: 'Kowloon',
+        regionNT: 'New Territories',
+        districtFirstChooseRegion: 'Please select a region first',
+        districtPlaceholder: 'Please select a district',
+        addressDetailPlaceholder: 'Please enter building / street / floor / unit',
+        paymentPlaceholder: 'Please select a payment method',
+        paymentFPS: 'FPS',
+        paymentWeChatPayHK: 'WeChat Pay HK',
         customerInfoTitle: 'Customer Information',
         customerNameLabel: 'Name',
         customerPhoneLabel: 'Phone',
@@ -234,20 +257,41 @@ function t(key) {
 function applyLanguage() {
     document.documentElement.lang = currentLanguage === 'zh' ? 'zh-Hant-HK' : 'en';
 
+    // 一般文字翻譯：label / h1 / p / button / option
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
+
         if (translations[currentLanguage][key]) {
             element.innerText = translations[currentLanguage][key];
         }
     });
 
+    // placeholder 翻譯：input / textarea
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+
+        if (translations[currentLanguage][key]) {
+            element.setAttribute('placeholder', translations[currentLanguage][key]);
+        }
+    });
+
     const languageLabel = document.getElementById('languageLabel');
+
     if (languageLabel) {
         languageLabel.innerText = currentLanguage === 'zh' ? 'EN' : '中文';
     }
 
+    // 如果 checkout 頁已經選咗 region，切換語言時重新渲染 district 顯示文字
+    const regionSelect = document.getElementById('region');
+    const districtSelect = document.getElementById('district');
+
+    if (regionSelect && districtSelect && regionSelect.value !== '') {
+        updateDistrictOptions();
+    }
+
     updateCartUI();
 }
+
 
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
@@ -848,7 +892,38 @@ const districtMap = {
     '九龍': ['油尖旺', '深水埗', '九龍城', '黃大仙', '觀塘', '其他'],
     '新界': ['葵青', '荃灣', '屯門', '元朗', '北區', '大埔', '沙田', '西貢', '離島', '其他']
 };
+const districtNameTranslations = {
+    en: {
+        '中西區': 'Central and Western',
+        '灣仔': 'Wan Chai',
+        '東區': 'Eastern',
+        '南區': 'Southern',
+        '油尖旺': 'Yau Tsim Mong',
+        '深水埗': 'Sham Shui Po',
+        '九龍城': 'Kowloon City',
+        '黃大仙': 'Wong Tai Sin',
+        '觀塘': 'Kwun Tong',
+        '葵青': 'Kwai Tsing',
+        '荃灣': 'Tsuen Wan',
+        '屯門': 'Tuen Mun',
+        '元朗': 'Yuen Long',
+        '北區': 'North',
+        '大埔': 'Tai Po',
+        '沙田': 'Sha Tin',
+        '西貢': 'Sai Kung',
+        '離島': 'Islands',
+        '其他': 'Other'
+    },
+    zh: {}
+};
 
+function getDistrictDisplayName(district) {
+    if (currentLanguage === 'en') {
+        return districtNameTranslations.en[district] || district;
+    }
+
+    return district;
+}
 function updateDistrictOptions() {
     // 取得區域、行政區、其他地區輸入框及其容器的元素
     const regionSelect = document.getElementById('region');
@@ -861,7 +936,7 @@ function updateDistrictOptions() {
 
     // 取得所選區域的值，並清空行政區選單
     const selectedRegion = regionSelect.value;
-    districtSelect.innerHTML = '<option value="">請選擇區域</option>';
+    districtSelect.innerHTML = `<option value="">${t('districtPlaceholder')}</option>`;
 
     // 預設隱藏「其他地區」輸入框並清空其內容
     if (otherDistrictGroup) otherDistrictGroup.style.display = 'none';
@@ -874,7 +949,7 @@ function updateDistrictOptions() {
     districtMap[selectedRegion].forEach(district => {
         const option = document.createElement('option');
         option.value = district;
-        option.textContent = district;
+        option.textContent = getDistrictDisplayName(district);
         districtSelect.appendChild(option);
     });
 

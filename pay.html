@@ -83,18 +83,21 @@
                         <div class="form-group">
                             <label for="region" data-i18n="regionLabel">地區</label>
                             <select id="region" name="region" required onchange="updateDistrictOptions()">
-                                <option value="">請選擇地區</option>
-                                <option value="香港島">香港島</option>
-                                <option value="九龍">九龍</option>
-                                <option value="新界">新界</option>
+                                <option value="" data-i18n="regionPlaceholder">請選擇地區</option>
+                                <option value="香港島" data-i18n="regionHKIsland">香港島</option>
+                                <option value="九龍" data-i18n="regionKowloon">九龍</option>
+                                <option value="新界" data-i18n="regionNT">新界</option>
                             </select>
+
                         </div>
 
                         <div class="form-group">
                             <label for="district" data-i18n="districtLabel">區域</label>
-                            <select id="district" name="district" required>
-                                <option value="">請先選擇地區</option>
+                            
+<select id="district" name="district" required>
+                                <option value="" data-i18n="districtFirstChooseRegion">請先選擇地區</option>
                             </select>
+
                         </div>
 
                         <div class="form-group" id="otherDistrictGroup" style="display:none;">
@@ -110,26 +113,20 @@
 
                         <div class="form-group">
                             <label for="customerAddressDetail" data-i18n="addressDetailLabel">詳細地址</label>
-                            <textarea
-                                id="customerAddressDetail"
-                                name="customerAddressDetail"
-                                rows="3"
-                                required
-                                maxlength="120"
-                                placeholder="請輸入大廈 / 街道 / 樓層 / 單位"
+                            <textarea id="customerAddressDetail" name="customerAddressDetail" rows="3"
+                            required maxlength="120" placeholder="請輸入大廈 / 街道 / 樓層 / 單位"
+                            data-i18n-placeholder="addressDetailPlaceholder"
                             ></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="paymentMethod" data-i18n="paymentMethodLabel">付款方式</label>
                             <select id="paymentMethod" name="paymentMethod" required onchange="showPaymentHint()">
-                                
-                            <option value="">請選擇付款方式</option>
+                            <option value="" data-i18n="paymentPlaceholder">請選擇付款方式</option>
                             <option value="PayMe">PayMe</option>
-                            <option value="FPS">轉數快 FPS</option>
+                            <option value="FPS" data-i18n="paymentFPS">轉數快 FPS</option>
                             <option value="AlipayHK">AlipayHK</option>
-                            <option value="WeChatPayHK">微信支付 HK</option>
-        
+                            <option value="WeChatPayHK" data-i18n="paymentWeChatPayHK">微信支付 HK</option>          
                             </select>
                         </div>
                         <div id="paymentHintBox" class="payment-hint-box" style="display:none;">
