@@ -127,7 +127,11 @@ const translations = {
         thankyouSubtitle: '多謝你支持 NOVA SPORT。',
         thankyouLoading: '正在載入訂單資料...',
         redirectText: ' 秒後將自動返回主頁...',
-        backHomeNow: '立即返回主頁'
+        backHomeNow: '立即返回主頁',
+        
+        bgmVolumeLabel: '音樂音量',
+        cartCheckoutEmpty: '購物車目前是空的，請先加入商品再結帳。',
+
 
     },
 
@@ -245,7 +249,9 @@ const translations = {
         thankyouSubtitle: 'Thank you for supporting NOVA SPORT.',
         thankyouLoading: 'Loading order information...',
         redirectText: ' seconds until returning to homepage...',
-        backHomeNow: 'Return Home Now'
+        backHomeNow: 'Return Home Now',
+        bgmVolumeLabel: 'Music Volume',
+        cartCheckoutEmpty: 'Your cart is empty. Please add items before checkout.',
 
     }
 };
@@ -338,13 +344,54 @@ function toggleModal(open) {
 
 let bgmStarted = false;
 
+function getSavedBgmVolume() {
+    const savedVolume = localStorage.getItem('nova_bgm_volume');
+    const volumeNumber = savedVolume !== null ? Number(savedVolume) : 18;
+
+    const safeVolume = Math.min(Math.max(volumeNumber, 0), 100);
+
+    return safeVolume / 100;
+}
+
+function updateBgmVolume(value) {
+    const volumeNumber = Math.min(Math.max(Number(value) || 0, 0), 100);
+
+    localStorage.setItem('nova_bgm_volume', String(volumeNumber));
+
+    const audio = document.getElementById('bgmAudio');
+    const volumeText = document.getElementById('bgmVolumeValue');
+
+    if (audio) {
+        audio.volume = volumeNumber / 100;
+    }
+
+    if (volumeText) {
+        volumeText.innerText = `${volumeNumber}%`;
+    }
+}
+
+function initBgmVolume() {
+    const savedVolume = localStorage.getItem('nova_bgm_volume');
+    const initialVolume = savedVolume !== null ? Number(savedVolume) : 18;
+
+    const safeVolume = Math.min(Math.max(initialVolume, 0), 100);
+
+    const slider = document.getElementById('bgmVolumeSlider');
+
+    if (slider) {
+        slider.value = safeVolume;
+    }
+
+    updateBgmVolume(safeVolume);
+}
+
 function toggleBgm() {
     const audio = document.getElementById('bgmAudio');
     const btn = document.getElementById('musicToggleBtn');
 
     if (!audio || !btn) return;
 
-    audio.volume = 0.35;
+    audio.volume = getSavedBgmVolume();
 
     if (audio.paused) {
         audio.play()
@@ -370,13 +417,13 @@ document.addEventListener('click', function startBgmOnce() {
 
     if (!audio || !btn || bgmStarted) return;
 
-    audio.volume = 0.28;
+    audio.volume = getSavedBgmVolume();
 
     audio.play()
         .then(() => {
             bgmStarted = true;
             btn.classList.add('playing');
-            btn.innerText = '♫ 播放中';
+            btn.innerText = t('musicPlaying');
         })
         .catch(() => {
             // 如果瀏覽器阻止播放，保留按鈕俾用戶自己撳
@@ -595,6 +642,7 @@ function updateCartUI() {
     const discountText = document.getElementById('cartDiscount');
     // 取得總金額文字區塊
     const totalText = document.getElementById('cartTotalAmount');
+    const drawerCheckoutBtn = document.getElementById('drawerCheckoutBtn');
 
     // 計算購物車內所有商品的總數量
     let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -605,18 +653,20 @@ function updateCartUI() {
 
     // 檢查購物車是否為空
     if (cart.length === 0) {
-        // 若購物車為空，在容器內顯示提示訊息
-        if (container) {
-            container.innerHTML = `<p style="text-align: center; color: #999; margin-top: 2rem;">${t('cartEmpty')}</p>`;
-        }
-        // 將金額相關的所有顯示歸零
-        if (subtotalText) subtotalText.innerText = 'HK$ 0';
-        if (shippingText) shippingText.innerText = 'HK$ 0';
-        if (discountText) discountText.innerText = '-HK$ 0';
-        if (totalText) totalText.innerText = 'HK$ 0';
-        // 結束函式執行
-        return;
+    if (drawerCheckoutBtn) drawerCheckoutBtn.disabled = true;
+
+    if (container) {
+        container.innerHTML = `<p style="text-align: center; color: #999; margin-top: 2rem;">${t('cartEmpty')}</p>`;
     }
+
+    if (subtotalText) subtotalText.innerText = 'HK$ 0';
+    if (shippingText) shippingText.innerText = 'HK$ 0';
+    if (discountText) discountText.innerText = '-HK$ 0';
+    if (totalText) totalText.innerText = 'HK$ 0';
+
+    return;
+}
+if (drawerCheckoutBtn) drawerCheckoutBtn.disabled = false;
 
  // 初始化用來儲存購物車 HTML 字串的變數
     let html = '';
@@ -750,10 +800,42 @@ function initScrollAnimations() {
    Checkout Page
 ========================= */
 
+
+function hasCartItems(items) {
+    return Array.isArray(items) && items.some(item => item.qty > 0);
+}
+
+
 function goCheckout() {
+    loadCartState();
+
+    if (!hasCartItems(cart)) {
+        alert(t('cartCheckoutEmpty'));
+        toggleCart(true);
+        return;
+    }
+
     saveCartState();
     window.location.href = 'pay.html';
 }
+
+function guardCheckoutPage() {
+    const checkoutForm = document.getElementById('checkoutForm');
+
+    // 如果唔係 pay.html，就唔做任何事
+    if (!checkoutForm) return false;
+
+    const savedCart = JSON.parse(localStorage.getItem('nova_cart')) || [];
+
+    if (!hasCartItems(savedCart)) {
+        alert(t('cartCheckoutEmpty'));
+        window.location.href = 'index.html#products';
+        return true;
+    }
+
+    return false;
+}
+
 
 
 
@@ -1240,10 +1322,11 @@ function renderThankYouPage() {
 ========================= */
 // 當整個 HTML 文件載入完成後執行
 document.addEventListener('DOMContentLoaded', function () {
+
     loadCartState();
-
+    initBgmVolume();
+    if (guardCheckoutPage()) return;
     initScrollAnimations();
-
     // 渲染結帳頁面內容
     renderCheckoutPage();
     // 渲染感謝頁面內容
@@ -1252,6 +1335,5 @@ document.addEventListener('DOMContentLoaded', function () {
     showPaymentHint();
     // 更新購物車介面顯示
     updateCartUI();
-
     applyLanguage()
 });

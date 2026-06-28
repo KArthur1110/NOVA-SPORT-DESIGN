@@ -16,6 +16,21 @@
     ♫ 音樂
 </button>
 
+<div class="music-control-panel">
+    <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
+
+    <input
+        type="range"
+        id="bgmVolumeSlider"
+        min="0"
+        max="100"
+        value="18"
+        oninput="updateBgmVolume(this.value)"
+    >
+
+    <span id="bgmVolumeValue">18%</span>
+</div>
+
     <header>
         <a href="#home" class="logo">NOVA SPORTSWEAR DESIGN</a>
 
@@ -250,8 +265,8 @@
       清空購物車
     </button>
 
-    <button class="checkout-btn" onclick="goCheckout()" data-i18n="goCheckout">
-      前往結帳
+    <button id="drawerCheckoutBtn" class="checkout-btn" onclick="goCheckout()" data-i18n="goCheckout">
+    前往結帳
     </button>
   </div>
 </div>

@@ -2084,5 +2084,78 @@ nav a:hover,
         0 0 18px rgba(255, 87, 34, 0.35);
 }
 
+/* =========================
+   Music Volume Control
+========================= */
+
+.music-control-panel {
+    position: fixed;
+    right: 22px;
+    bottom: 78px;
+    z-index: 2500;
+    width: 190px;
+    background: rgba(26, 26, 26, 0.92);
+    color: #fff;
+    border: 1px solid rgba(255, 87, 34, 0.35);
+    border-radius: 16px;
+    padding: 0.8rem 0.9rem;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.music-control-panel label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    margin-bottom: 0.45rem;
+    color: #ffb199;
+}
+
+.music-control-panel input[type="range"] {
+    width: 100%;
+    accent-color: #ff5722;
+    cursor: pointer;
+}
+
+.music-control-panel span {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.78rem;
+    text-align: right;
+    color: #ddd;
+}
+.checkout-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    filter: grayscale(0.35);
+    transform: none !important;
+    box-shadow: none !important;
+}
+/* =========================
+   Hide Music Volume Panel
+   音量面板預設隱藏，指住音樂按鈕先顯示
+========================= */
+
+.music-control-panel {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.96);
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* 指住音樂按鈕時顯示音量面板 */
+.music-toggle-btn:hover + .music-control-panel,
+.music-toggle-btn:focus + .music-control-panel,
+.music-control-panel:hover,
+.music-control-panel:focus-within {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
 
 
