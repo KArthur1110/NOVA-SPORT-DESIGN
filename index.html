@@ -1,24 +1,33 @@
+<!-- 宣告此文件為符合 HTML5 標準的網頁文件 -->
 <!DOCTYPE html>
+<!-- 設定網頁根節點，並指定預設語系為香港繁體中文 -->
 <html lang="zh-Hant-HK">
 <head>
+    <!-- 設定網頁文字編碼為萬國碼 (UTF-8)，防止中文字元出現亂碼 -->
     <meta charset="UTF-8">
+    <!-- 設定響應式網頁的視窗縮放規則，確保在手機等行動裝置上能完美自適應不變形 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 設定瀏覽器分頁與搜尋結果所顯示的網頁標題 -->
     <title>NOVA Sportswear Design - 專業運動服飾</title>
+    <!-- 引入全站共用的外部樣式表檔案 style.css -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
-<!-- 背景音樂 -->
+<!-- 背景音樂音訊標籤：設定唯一的 id 控制節點、指定音訊來源路徑、啟用循環播放及自動預載 -->
 <audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
 
-<!-- 音樂開關按鈕 -->
+<!-- 音樂播放/暫停控制按鈕，綁定點擊事件方法與多國語言翻譯標籤 -->
 <button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
     ♫ 音樂
 </button>
 
+<!-- 音樂音量調節面板的外層區塊容器 -->
 <div class="music-control-panel">
+    <!-- 綁定音量滑桿的文字標籤，並設有多國語言翻譯監聽屬性 -->
     <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
 
+    <!-- 音量調整滑桿欄位 (HTML5 Range 欄位)，設定範圍 0-100、預設值 18 並綁定即時拖曳變更事件 -->
     <input
         type="range"
         id="bgmVolumeSlider"
@@ -28,104 +37,165 @@
         oninput="updateBgmVolume(this.value)"
     >
 
+    <!-- 用來即時反映並印出當前音量百分比數字（如：18%）的顯示標籤 -->
     <span id="bgmVolumeValue">18%</span>
+<!-- 閉合音樂音量調節面板的外層容器 (div.music-control-panel) -->
 </div>
 
+
+    <!-- 網頁頂部頁首 (Header) 區塊 -->
     <header>
+        <!-- 品牌標誌 Logo 連結，錨點指向首頁區塊 -->
         <a href="#home" class="logo">NOVA SPORTSWEAR DESIGN</a>
 
+        <!-- 主要導覽列標籤 -->
         <nav>
+            <!-- 各個頁面區塊及外部連結的導覽項目，皆綁定 data-i18n 翻譯屬性 -->
             <a href="#home" data-i18n="navHome">首頁</a>
             <a href="#about" data-i18n="navAbout">關於我們</a>
             <a href="#products" data-i18n="navProducts">產品</a>
             <a href="#faq" data-i18n="navFaq">常見問題</a>
             <a href="contact.html" data-i18n="navContact">聯絡我們</a>
        
+            <!-- 購物車圖示按鈕，點擊時呼叫顯示購物車側邊欄的方法 -->
             <button class="cart-icon-btn" onclick="toggleCart(true)">
+                <!-- 購物車圖示、文字與數量提示標記 (Badge) -->
                 🛒 <span data-i18n="navCart">購物車</span>
                 <span class="cart-badge" id="cart-count">0</span>
             </button>
 
+            <!-- 多國語言切換按鈕，點擊時呼叫切換語系的方法 -->
             <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <!-- 語言狀態文字顯示區域（預設顯示 EN） -->
                 <span id="languageLabel">EN</span>
             </button>
+        <!-- 閉合主要導覽列 (nav) -->
         </nav>
+    <!-- 閉合網頁頂部頁首 (header) -->
     </header>
+
         
+       <!-- 首頁頂部視覺區 (Hero Section) 的外層區塊容器，設定對應錨點 id -->
     <div class="hero" id="home">
+        <!-- 滿版大視覺的主標題文字，綁定多國語言翻譯監聽屬性 -->
         <h1 data-i18n="heroTitle">NOVA SPORT DESIGN</h1>
+        <!-- 品牌的宣傳核心副標題段落，詳細說明產品特色 -->
         <p data-i18n="heroSubtitle">專為高強度排球訓練與熱血汗水設計。極致排汗、流暢剪裁，助您統治整個球場。</p>
+        <!-- 引導顧客點擊前往產品列表區塊的行動呼籲 (CTA) 按鈕連結 -->
         <a href="#products" class="btn" data-i18n="heroBtn">立即探索系列</a>
+    <!-- 閉合首頁頂部視覺區外層容器 (div.hero) -->
     </div>
 
+
+        <!-- 關於我們 (About Us) 的獨立頁面區塊標籤，設定對應導覽列錨點 id -->
         <section id="about">
+            <!-- 關於我們區塊的次級大標題，綁定多國語言翻譯監聽屬性 -->
             <h2 data-i18n="aboutHeading">關於 NOVA</h2>
 
+            <!-- 內部圖文並排的雙欄佈局外層容器 -->
             <div class="about-container">
+                <!-- 左側欄：品牌的理念與故事介紹文字區域 -->
                 <div class="about-text">
+                    <!-- 文字區域的內嵌小標題 -->
                     <h3 data-i18n="aboutTitle">源自對球場的熱愛與執著</h3>
 
+                    <!-- 品牌背景故事介紹段落一，詳細說明市場痛點 -->
                     <p data-i18n="aboutP1">
                         我們公司成立於香港，團隊成員皆由本地資深排球員與運動愛好者組成。我們深知在進行排球訓練時，普通的運動衫常常會因汗水黏身或剪裁限制了擺臂的角度。
                     </p>
 
+                    <!-- 品牌背景故事介紹段落二，詳細說明品牌核心產品優勢 -->
                     <p data-i18n="aboutP2">
                         因此，我們創立了 NOVA Sport Design，致力於研發最適合排球高強度訓練的專業 Tee。精選高規格排汗布料，配合亞洲運動員身型剪裁，確保衣服防磨且高彈性。
                     </p>
+                <!-- 閉合品牌故事文字區域容器 (div.about-text) -->
                 </div>
 
+                <!-- 右側欄：品牌形象圖片的顯示區域 -->
                 <div class="about-img">
+                    <!-- 帶有邊框內邊距的立體照片卡片容器 -->
                     <div class="about-photo-card">
+                        <!-- 品牌官方模特兒穿著排球服裝的形象展示圖片 -->
                         <img src="Model.png" alt="品牌形象照">
                     </div>
+                <!-- 閉合右側圖片顯示區域容器 (div.about-img) -->
                 </div>
+            <!-- 閉合雙欄佈局外層容器 (div.about-container) -->
             </div>
+        <!-- 閉合關於我們區塊標籤 (section#about) -->
         </section>
 
+
+        <!-- 產品列表與分類展示區塊標籤，設定對應導覽列錨點 id -->
         <section class="products" id="products">
+            <!-- 產品區塊的主標題，綁定多國語言翻譯監聽屬性 -->
             <h2 data-i18n="productsHeading">專業運動服飾</h2>
 
+            <!-- 商品項目類別過濾按鈕的橫向排版容器 -->
             <div class="filter-container">
+                <!-- 預設啟用的全部產品顯示按鈕，點擊時傳入 all 類別參數與當前按鈕實例 -->
                 <button class="filter-btn active" onclick="filterProducts('all', this)" data-i18n="filterAll">全部產品</button>
+                <!-- 排球訓練服專屬篩選按鈕，點擊時傳入 volleyball 類別參數與當前按鈕實例 -->
                 <button class="filter-btn" onclick="filterProducts('volleyball', this)" data-i18n="filterVolleyball">排球訓練服</button>
+                <!-- 日常運動服專屬篩選按鈕，點擊時傳入 general 類別參數與當前按鈕實例 -->
                 <button class="filter-btn" onclick="filterProducts('general', this)" data-i18n="filterGeneral">日常運動服</button>
             </div>
 
+            <!-- 開啟官方尺碼對照表彈窗的點擊觸發標籤，綁定點擊事件與多國語言標籤 -->
             <span class="size-guide-trigger" onclick="toggleModal(true)" data-i18n="sizeGuide">
                 📐 查看官方 T-Shirt 尺碼對照表
             </span>
 
+            <!-- 產品網格佈局彈性容器，用來包裹全站所有的商品卡片 -->
             <div class="product-grid">
 
+                <!-- 產品項目 1：NOVA Sky-X 運動 T-Shirt卡片容器，設有 id 與指定過濾類別屬性 -->
                 <div class="product-card" id="vb-pro-1" data-category="volleyball">
+                    <!-- 商品封面圖片，綁定滑鼠點擊時呼叫滿版燈箱放大圖片的 JS 方法，並傳入目前圖片的路徑來源 -->
                     <img
                         src="SKY-X-Sky-traintee .jpeg"
                         class="product-img"
                         alt="NOVA Sky-X traing Tee"
                         onclick="openImage(this.src)"
                     >
+                    <!-- 商品資訊與購買規格的操作容器區塊 -->
                     <div class="product-info">
+                        <!-- 商品特殊分類或促銷狀態的標籤顯示欄 -->
                         <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
+                        <!-- 商品的主要名稱標題，設有多國語言翻譯監聽屬性 -->
                         <h3 class="product-title" data-i18n="productSkyX">NOVA Sky-X traing Tee</h3>
+                        <!-- 加入購物車按鈕，點擊時呼叫開啟尺寸規格挑選彈窗的 JS 方法，並將商品名稱、單價 $218 以及對應完整可選尺寸字串陣列作為參數傳入 -->
                         <button class="buy-btn" onclick="openSizePicker('NOVA Sky-X traing Tee', 218, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart">加入購物車
                         </button>
+                    <!-- 閉合商品資訊與購買區容器 (div.product-info) -->
                     </div>
+                <!-- 閉合產品卡片主容器 (div.product-card) -->
                 </div>
 
+
+                <!-- 產品項目 2：Everyday Core 運動 T-Shirt 卡片容器，設有 id 與日常運動分類屬性 -->
                 <div class="product-card" id="everyday-core-1" data-category="general">
+                    <!-- 商品封面圖片，點擊時呼叫滿版燈箱放大圖片的 JS 方法，並傳入目前圖片的路徑來源 -->
                     <img
                         src="NOVA SPORT T-Shirt.png"
                         class="product-img"
                         alt="Everyday Core T-Shirt"
                         onclick="openImage(this.src)"
                     >
+                    <!-- 商品資訊與購買規格的操作容器區塊 -->
                     <div class="product-info">
+                        <!-- 商品通用運動分類標籤顯示欄 -->
                         <span class="product-tag" data-i18n="tagGeneral">全能運動</span>
+                        <!-- 商品的主要名稱標題，設有多國語言翻譯監聽屬性 -->
                         <h3 class="product-title" data-i18n="productEveryday">Everyday Core 高透氣運動 T-Shirt</h3>
+                        <!-- 加入購物車按鈕，點擊時呼叫開啟尺寸規格挑選彈窗的 JS 方法，並將商品名稱、單價 $188 以及對應完整可選尺寸字串陣列作為參數傳入 -->
                         <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 188, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart"> 加入購物車
                         </button>
+                    <!-- 閉合商品資訊與購買區容器 (div.product-info) -->
                     </div>
+                <!-- 閉合產品卡片主容器 (div.product-card) -->
                 </div>
+
 
                 <div class="product-card" id="bakugo-tee-1" data-category="volleyball">
                     <img
@@ -142,211 +212,382 @@
                     </div>
                 </div>
 
-                <div class="product-card" id="shoto-tee-1" data-category="volleyball">
+                <!-- 產品項目 3：NOVA Bakugo Tee 運動卡片容器，設有 id 與指定過濾類別屬性 -->
+                <div class="product-card" id="bakugo-tee-1" data-category="volleyball">
+                    <!-- 商品封面圖片，點擊時呼叫滿版燈箱放大圖片的 JS 方法，並傳入目前圖片的路徑來源 -->
                     <img
-                        src="shoto_volleyball_training_ss_b.png"
+                        src="bakugo_volleyball_match_jersey_b.png"
                         class="product-img"
-                        alt="NOVA shoto Tee"
+                        alt="NOVA Bakugo Tee"
                         onclick="openImage(this.src)"
                     >
+                    <!-- 商品資訊與購買規格的操作容器區塊 -->
                     <div class="product-info">
+                        <!-- 商品特殊分類或促銷狀態的標籤顯示欄 -->
                         <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
-                        <h3 class="product-title" data-i18n="productShoto">NOVA shoto Tee</h3>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA shoto Tee', 218, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart">加入購物車
+                        <!-- 商品的主要名稱標題，設有多國語言翻譯監聽屬性 -->
+                        <h3 class="product-title" data-i18n="productBakugo">NOVA Bakugo Tee</h3>
+                        <!-- 加入購物車按鈕，點擊時呼叫開啟尺寸規格挑選彈窗的 JS 方法，並將商品名稱、單價 $218 以及對應完整可選尺寸字串陣列作為參數傳入 -->
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Bakugo Tee', 218, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart"> 加入購物車
                         </button>
+                    <!-- 閉合商品資訊與購買區容器 (div.product-info) -->
                     </div>
+                <!-- 閉合產品卡片主容器 (div.product-card) -->
                 </div>
 
             </div>
         </section>
 
+         <!-- 常見問題 (FAQ) 的獨立頁面區塊標籤，設定對應導覽列錨點 id -->
         <section class="faq-section" id="faq">
+            <!-- FAQ 區塊的次級大標題，綁定多國語言翻譯監聽屬性 -->
             <h2 data-i18n="faqHeading">常見問題</h2>
 
+            <!-- 內部所有 FAQ 折疊卡片項目的主容器 -->
             <div class="faq-container">
+                <!-- FAQ 項目 1：香港本地運費計算說明卡片 -->
                 <div class="faq-item">
+                    <!-- 問題點擊觸發區域，點擊時呼叫 JS 中的折疊面板切換方法，並將當前節點實例 (this) 傳入 -->
                     <div class="faq-question" onclick="toggleFaq(this)">
+                        <!-- 顯示的問題文字，綁定多國語言翻譯監聽屬性 -->
                         <span data-i18n="faqQ1">Q1. 香港本地運費如何計算？</span>
                     </div>
+                    <!-- 折疊動態展開的回答內容容器區塊 -->
                     <div class="faq-answer">
+                        <!-- 詳細回答說明的段落文字，設有多國語言翻譯監聽屬性 -->
                         <p data-i18n="faqA1">全店滿 HK$500 即享免運費優惠。未滿額收取 HK$30 運費，使用順豐速運送達。</p>
                     </div>
+                <!-- 閉合第一項 FAQ 項目容器 (div.faq-item) -->
                 </div>
 
+
+                <!-- FAQ 項目 2：支援付款方式說明卡片 -->
                 <div class="faq-item">
+                    <!-- 問題點擊觸發區域，點擊時呼叫 JS 中的折疊面板切換方法，並將當前節點實例 (this) 傳入 -->
                     <div class="faq-question" onclick="toggleFaq(this)">
+                        <!-- 顯示的問題文字，綁定多國語言翻譯監聽屬性 -->
                         <span data-i18n="faqQ2">Q2. 支援哪些付款方式？</span>
                     </div>
+                    <!-- 折疊動態展開的回答內容容器區塊 -->
                     <div class="faq-answer">
+                        <!-- 詳細回答說明的段落文字，設有多國語言翻譯監聽屬性 -->
                         <p data-i18n="faqA2">我們支援 PayMe、轉數快 (FPS)、AlipayHK 和微信支付 HK。</p>
                     </div>
+                <!-- 閉合第二項 FAQ 項目容器 (div.faq-item) -->
                 </div>
+            <!-- 閉合所有 FAQ 折疊卡片項目的主容器 (div.faq-container) -->
             </div>
+        <!-- 閉合常見問題區塊標籤 (section#faq) -->
         </section>
     
+    <!-- 引入全站主要業務、購物車與背景音樂控制邏輯的外部 JavaScript 檔案 -->
     <script src="script.js">
     </script>
 
 
-<!-- ✅ 尺碼表彈窗 -->
+
+<!-- ✅ 尺碼表彈窗：滿版半透明黑色遮罩外層容器，設定 id 控制節點 -->
 <div class="modal-overlay" id="sizeModal">
+  <!-- 尺寸表寬版化卡片主體，套用新增的寬版專屬類別樣式 -->
   <div class="size-modal size-modal-wide">
+    <!-- 右上角關閉按鈕，點擊時呼叫隱藏彈窗的 JS 方法 -->
     <button class="close-modal" onclick="toggleModal(false)">✕</button>
 
+    <!-- 彈窗的主標題，綁定多國語言翻譯監聽屬性 -->
     <h3 data-i18n="sizeTableTitle">尺寸表</h3>
 
+    <!-- 服飾品類分區的副標題文字樣式 -->
     <h4 class="size-section-title">上衣 T-Shirt / Jersey</h4>
 
+    <!-- 新增的橫向滾動溢出包覆容器，確保多欄位在手機端不破版破型 -->
     <div class="size-table-scroll">
+      <!-- 尺碼數據對照表格 -->
       <table class="size-table">
+        <!-- 表格的表頭結構區塊 -->
         <thead>
+          <!-- 表格的表頭標題列 -->
           <tr>
+            <!-- 欄位標題：尺碼 -->
             <th>尺碼</th>
+            <!-- 欄位標題：7XS 碼 -->
             <th>7XS</th>
+            <!-- 欄位標題：6XS 碼 -->
             <th>6XS</th>
+            <!-- 欄位標題：5XS 碼 -->
             <th>5XS</th>
+            <!-- 欄位標題：4XS 碼 -->
             <th>4XS</th>
+            <!-- 欄位標題：3XS 碼 -->
             <th>3XS</th>
+            <!-- 欄位標題：2XS 碼 -->
             <th>2XS</th>
+            <!-- 欄位標題：XS 碼 -->
             <th>XS</th>
+            <!-- 欄位標題：S 碼 -->
             <th>S</th>
+            <!-- 欄位標題：M 碼 -->
             <th>M</th>
+            <!-- 欄位標題：L 碼 -->
             <th>L</th>
+            <!-- 欄位標題：XL 碼 -->
             <th>XL</th>
+            <!-- 欄位標題：2XL 碼 -->
             <th>2XL</th>
+            <!-- 欄位標題：3XL 碼 -->
             <th>3XL</th>
+            <!-- 欄位標題：4XL 碼 -->
             <th>4XL</th>
+            <!-- 欄位標題：5XL 碼 -->
             <th>5XL</th>
           </tr>
+        <!-- 閉合表格表頭結構 (thead) -->
         </thead>
 
+
+        <!-- 表格的數據主體結構區塊 -->
         <tbody>
+          <!-- 表格的第一組數據列：參考身高 -->
           <tr>
+            <!-- 數據項目名稱：參考身高 -->
             <td>參考身高(cm)</td>
+            <!-- 對應 7XS 的身高範圍 -->
             <td>100-109</td>
+            <!-- 對應 6XS 的身高範圍 -->
             <td>110-119</td>
+            <!-- 對應 5XS 的身高範圍 -->
             <td>120-129</td>
+            <!-- 對應 4XS 的身高範圍 -->
             <td>130-139</td>
+            <!-- 對應 3XS 的身高範圍 -->
             <td>140-149</td>
+            <!-- 對應 2XS 的身高範圍 -->
             <td>150-155</td>
+            <!-- 對應 XS 的身高範圍 -->
             <td>155-165</td>
+            <!-- 對應 S 的身高範圍 -->
             <td>165-170</td>
+            <!-- 對應 M 的身高範圍 -->
             <td>170-175</td>
+            <!-- 對應 L 的身高範圍 -->
             <td>175-180</td>
+            <!-- 對應 XL 的身高範圍 -->
             <td>180-185</td>
+            <!-- 對應 2XL 的身高範圍 -->
             <td>185-195</td>
+            <!-- 對應 3XL 的身高範圍 -->
             <td>185-195</td>
+            <!-- 對應 4XL 的身高範圍 -->
             <td>195-200</td>
+            <!-- 對應 5XL 的身高範圍 -->
             <td>200-205</td>
           </tr>
 
+
+          <!-- 表格的第二組數據列：參考體重 -->
           <tr>
+            <!-- 數據項目名稱：參考體重 -->
             <td>參考體重(kg)</td>
+            <!-- 對應 7XS 的體重範圍 -->
             <td>15-16</td>
+            <!-- 對應 6XS 的體重範圍 -->
             <td>17-21</td>
+            <!-- 對應 5XS 的體重範圍 -->
             <td>18-24</td>
+            <!-- 對應 4XS 的體重範圍 -->
             <td>22-26</td>
+            <!-- 對應 3XS 的體重範圍 -->
             <td>24-34</td>
+            <!-- 對應 2XS 的體重範圍 -->
             <td>26-38</td>
+            <!-- 對應 XS 的體重範圍 -->
             <td>40-50</td>
+            <!-- 對應 S 的體重範圍 -->
             <td>50-60</td>
+            <!-- 對應 M 的體重範圍 -->
             <td>60-65</td>
+            <!-- 對應 L 的體重範圍 -->
             <td>65-75</td>
+            <!-- 對應 XL 的體重範圍 -->
             <td>75-85</td>
+            <!-- 對應 2XL 的體重範圍 -->
             <td>85-95</td>
+            <!-- 對應 3XL 的體重範圍 -->
             <td>95-105</td>
+            <!-- 對應 4XL 的體重範圍 -->
             <td>105-115</td>
+            <!-- 對應 5XL 的體重範圍 -->
             <td>115-125</td>
           </tr>
 
+
+           <!-- 表格的第三組數據列：胸圍 -->
           <tr>
+            <!-- 數據項目名稱：胸圍 -->
             <td>胸圍(cm)</td>
+            <!-- 對應 7XS 的胸圍寬度 -->
             <td>35.0</td>
+            <!-- 對應 6XS 的胸圍寬度 -->
             <td>37.0</td>
+            <!-- 對應 5XS 的胸圍寬度 -->
             <td>40.0</td>
+            <!-- 對應 4XS 的胸圍寬度 -->
             <td>43.0</td>
+            <!-- 對應 3XS 的胸圍寬度 -->
             <td>47.0</td>
+            <!-- 對應 2XS 的胸圍寬度 -->
             <td>48.5</td>
+            <!-- 對應 XS 的胸圍寬度 -->
             <td>50.0</td>
+            <!-- 對應 S 的胸圍寬度 -->
             <td>50.5</td>
+            <!-- 對應 M 的胸圍寬度 -->
             <td>52.5</td>
+            <!-- 對應 L 的胸圍寬度 -->
             <td>54.5</td>
+            <!-- 對應 XL 的胸圍寬度 -->
             <td>56.5</td>
+            <!-- 對應 2XL 的胸圍寬度 -->
             <td>58.5</td>
+            <!-- 對應 3XL 的胸圍寬度 -->
             <td>60.5</td>
+            <!-- 對應 4XL 的胸圍寬度 -->
             <td>62.5</td>
+            <!-- 對應 5XL 的胸圍寬度 -->
             <td>65.5</td>
           </tr>
 
+
+           <!-- 表格的第四組數據列：後衣長 -->
           <tr>
+            <!-- 數據項目名稱：後衣長 -->
             <td>後衣長(cm)</td>
+            <!-- 對應 7XS 的後衣長度 -->
             <td>45.0</td>
+            <!-- 對應 6XS 的後衣長度 -->
             <td>48.0</td>
+            <!-- 對應 5XS 的後衣長度 -->
             <td>52.0</td>
+            <!-- 對應 4XS 的後衣長度 -->
             <td>56.0</td>
+            <!-- 對應 3XS 的後衣長度 -->
             <td>60.0</td>
+            <!-- 對應 2XS 的後衣長度 -->
             <td>65.0</td>
+            <!-- 對應 XS 的後衣長度 -->
             <td>66.5</td>
+            <!-- 對應 S 的後衣長度 -->
             <td>68.5</td>
+            <!-- 對應 M 的後衣長度 -->
             <td>70.5</td>
+            <!-- 對應 L 的後衣長度 -->
             <td>72.5</td>
+            <!-- 對應 XL 的後衣長度 -->
             <td>74.5</td>
+            <!-- 對應 2XL 的後衣長度 -->
             <td>76.5</td>
+            <!-- 對應 3XL 的後衣長度 -->
             <td>78.5</td>
+            <!-- 對應 4XL 的後衣長度 -->
             <td>80.5</td>
+            <!-- 對應 5XL 的後衣長度 -->
             <td>82.5</td>
           </tr>
 
+          <!-- 表格的第五組數據列：短袖袖長 -->
           <tr>
+            <!-- 數據項目名稱：短袖袖長 -->
             <td>短袖袖長(cm)</td>
+            <!-- 對應 7XS 的短袖袖長 -->
             <td>16.0</td>
+            <!-- 對應 6XS 的短袖袖長 -->
             <td>17.0</td>
+            <!-- 對應 5XS 的短袖袖長 -->
             <td>18.0</td>
+            <!-- 對應 4XS 的短袖袖長 -->
             <td>19.0</td>
+            <!-- 對應 3XS 的短袖袖長 -->
             <td>20.0</td>
+            <!-- 對應 2XS 的短袖袖長 -->
             <td>21.0</td>
+            <!-- 對應 XS 的短袖袖長 -->
             <td>22.0</td>
+            <!-- 對應 S 的短袖袖長 -->
             <td>22.5</td>
+            <!-- 對應 M 的短袖袖長 -->
             <td>23.0</td>
+            <!-- 對應 L 的短袖袖長 -->
             <td>23.5</td>
+            <!-- 對應 XL 的短袖袖長 -->
             <td>24.0</td>
+            <!-- 對應 2XL 的短袖袖長 -->
             <td>24.5</td>
+            <!-- 對應 3XL 的短袖袖長 -->
             <td>25.0</td>
+            <!-- 對應 4XL 的短袖袖長 -->
             <td>25.5</td>
+            <!-- 對應 5XL 的短袖袖長 -->
             <td>26.0</td>
           </tr>
+
         </tbody>
       </table>
     </div>
 
+    <!-- 褲子品類分區的副標題文字樣式 -->
     <h4 class="size-section-title">褲子 Shorts</h4>
 
+    <!-- 橫向滾動溢出包覆容器，確保多欄位在手機端不破版破型 -->
     <div class="size-table-scroll">
+      <!-- 褲子尺碼數據對照表格 -->
       <table class="size-table">
+        <!-- 表格的表頭結構區塊 -->
         <thead>
+          <!-- 表格的表頭標題列 -->
           <tr>
+            <!-- 欄位標題：尺碼 -->
             <th>尺碼</th>
+            <!-- 欄位標題：7XS 碼 -->
             <th>7XS</th>
+            <!-- 欄位標題：6XS 碼 -->
             <th>6XS</th>
+            <!-- 欄位標題：5XS 碼 -->
             <th>5XS</th>
+            <!-- 欄位標題：4XS 碼 -->
             <th>4XS</th>
+            <!-- 欄位標題：3XS 碼 -->
             <th>3XS</th>
+            <!-- 欄位標題：2XS 碼 -->
             <th>2XS</th>
+            <!-- 欄位標題：XS 碼 -->
             <th>XS</th>
+            <!-- 欄位標題：S 碼 -->
             <th>S</th>
+            <!-- 欄位標題：M 碼 -->
             <th>M</th>
+            <!-- 欄位標題：L 碼 -->
             <th>L</th>
+            <!-- 欄位標題：XL 碼 -->
             <th>XL</th>
+            <!-- 欄位標題：2XL 碼 -->
             <th>2XL</th>
+            <!-- 欄位標題：3XL 碼 -->
             <th>3XL</th>
+            <!-- 欄位標題：4XL 碼 -->
             <th>4XL</th>
+            <!-- 欄位標題：5XL 碼 -->
             <th>5XL</th>
           </tr>
+        <!-- 閉合表格表頭結構 (thead) -->
         </thead>
 
+
+         <!-- 表格的數據主體結構區塊 -->
         <tbody>
+          <!-- 表格的第一組數據列：腰圍 1/2 -->
           <tr>
+            <!-- 數據項目名稱：腰圍平鋪一半寬度 -->
             <td>腰圍 1/2 (cm)</td>
+            <!-- 各尺碼對應的腰圍半寬數據值 -->
             <td>23.0</td>
             <td>24.5</td>
             <td>26.0</td>
@@ -364,8 +605,11 @@
             <td>44.0</td>
           </tr>
 
+          <!-- 表格的第二組數據列：臀圍 1/2 -->
           <tr>
+            <!-- 數據項目名稱：臀圍平鋪一半寬度 -->
             <td>臀圍 1/2 (cm)</td>
+            <!-- 各尺碼對應的臀圍半寬數據值 -->
             <td>39.0</td>
             <td>41.0</td>
             <td>43.5</td>
@@ -383,8 +627,11 @@
             <td>68.0</td>
           </tr>
 
+          <!-- 表格的第三組數據列：褲長含腰 -->
           <tr>
+            <!-- 數據項目名稱：總褲長包含腰頭高度 -->
             <td>褲長含腰 (cm)</td>
+            <!-- 各尺碼對應的褲長數據值（5XL 為空值） -->
             <td>27.5</td>
             <td>30.0</td>
             <td>32.5</td>
@@ -401,24 +648,37 @@
             <td>56.0</td>
             <td></td>
           </tr>
+        <!-- 閉合表格數據主體 (tbody) -->
         </tbody>
+      <!-- 閉合尺碼對照表格 (table) -->
       </table>
+    <!-- 閉合橫向滾動包覆容器 (div.size-table-scroll) -->
     </div>
 
+
+    <!-- 尺碼表下方的中文備註說明文字 -->
     <p class="size-note">
       * 尺碼資料只作參考，實際穿著感會因身形及版型而略有不同。
     </p>
+  <!-- 閉合官方尺碼卡片主體 (div.size-modal) -->
   </div>
+<!-- 閉合官方尺碼表彈窗滿版遮罩外層 (div.modal-overlay) -->
 </div>
 <!-- 選擇尺碼彈窗 -->
+<!-- 購物點選加入購物車時彈出的規格挑選遮罩外層容器 -->
 <div class="modal-overlay" id="sizePickerModal">
+  <!-- 選擇尺碼的彈出卡片主體 -->
   <div class="size-modal">
+    <!-- 右上角關閉按鈕，設定類型為普通按鈕並綁定取消尺寸選擇的 JS 方法 -->
     <button class="close-modal" type="button" onclick="closeSizePicker()">✕</button>
 
+    <!-- 欄位主標題，綁定多國語言翻譯監聽屬性 -->
     <h3 data-i18n="chooseSize">請選擇尺碼</h3>
 
+    <!-- 供 JS 根據點選商品動態渲染多個尺寸規格按鈕的空白 HTML 容器 -->
     <div id="sizePickerOptions" class="option-group"></div>
 
+    <!-- 驗證尺寸並正式推入購物車的提交按鈕，設有多國語言翻譯監聽屬性 -->
     <button
       class="checkout-btn"
       type="button"
@@ -426,58 +686,91 @@
       data-i18n="confirmAddCart">
       確認加入購物車
     </button>
+  <!-- 閉合尺寸規格挑選卡片主體 (div.size-modal) -->
   </div>
+<!-- 閉合購物規格挑選彈窗滿版遮罩外層 (div.modal-overlay) -->
 </div>
 
 <!-- 圖片放大彈窗 -->
+<!-- 滿版背影大燈箱遮罩容器，點擊外圍任何一處皆呼叫關閉燈箱的 JS 方法 -->
 <div id="imageLightbox" class="image-lightbox" onclick="closeImage()">
+    <!-- 右上方關閉按鈕，使用 stopPropagation 阻斷點擊事件向外冒泡，避免與外層關閉方法重複觸發 -->
     <button class="lightbox-close" type="button" onclick="event.stopPropagation(); closeImage()">✕</button>
+    <!-- 放大呈現產品封面圖的 img 標籤，初始 src 網址為空由 JS 動態寫入，設有 stopPropagation 阻斷圖片點擊時關閉燈箱 -->
     <img id="lightboxImg" class="lightbox-img" src="" alt="產品圖片放大預覽" onclick="event.stopPropagation()">
+<!-- 閉合圖片放大燈箱滿版遮罩容器 (div#imageLightbox) -->
 </div>
 
 <!-- ✅ 購物車側邊欄 -->
+<!-- 右側滑入式購物車抽屜主容器，設定 id 控制節點 -->
 <div class="cart-drawer" id="cartDrawer">
+  <!-- 購物車抽屜頭部控制區塊 -->
   <div class="cart-header">
+    <!-- 購物車主標題，綁定多國語言翻譯監聽屬性 -->
     <h3 data-i18n="cartTitle">購物車</h3>
+    <!-- 右側關閉購物車抽屜按鈕，點擊呼叫隱藏抽屜的 JS 方法 -->
     <button class="close-cart" onclick="toggleCart(false)">✕</button>
+  <!-- 閉合購物車抽屜頭部控制區塊容器 (div.cart-header) -->
   </div>
 
+  <!-- 購物車動態商品卡片清單累積容器，綁定 id 供 JS 即時重繪內容 -->
   <div class="cart-items" id="cartItemsContainer">
+    <!-- 購物車預設空狀態中文提示，設有多國語言翻譯監聽屬性與行內置中置灰樣式 -->
     <p data-i18n="cartEmpty" style="text-align:center; color:#999;">
       購物車目前是空的
     </p>
+  <!-- 閉合購物車動態商品卡片清單累積容器 (div#cartItemsContainer) -->
   </div>
 
+  <!-- 購物車底部計費與結算金額面板容器 -->
   <div class="cart-footer">
+    <!-- 純商品加總金額小計行 -->
     <div class="cart-total-line">
+      <!-- 欄位標籤：小計，綁定多國語言翻譯監聽屬性 -->
       <span data-i18n="subtotal">小計</span>
+      <!-- 顯示小計金額的數字標籤（預設為 HK$ 0） -->
       <span id="cartSubtotal">HK$ 0</span>
+    <!-- 閉合純商品金額小計行容器 (div.cart-total-line) -->
     </div>
-
+    <!-- 運費金額行 -->
     <div class="cart-total-line">
+      <!-- 欄位標籤：運費，綁定多國語言翻譯屬性 -->
       <span data-i18n="shipping">運費</span>
+      <!-- 顯示運費金額的數字標籤，預設為 HK$ 0 -->
       <span id="cartShipping">HK$ 0</span>
     </div>
 
+    <!-- 優惠碼扣減折扣金額行 -->
     <div class="cart-total-line">
+      <!-- 欄位標籤：優惠，綁定多國語言翻譯屬性 -->
       <span data-i18n="discount">優惠</span>
+      <!-- 顯示折扣金額的數字標籤，預設為 -HK$ 0 -->
       <span id="cartDiscount">-HK$ 0</span>
     </div>
 
+    <!-- 最終實付總計金額顯示行，套用加大加粗的強調樣式類別 -->
     <div class="cart-total-final">
+      <!-- 欄位標籤：總計，綁定多國語言翻譯屬性 -->
       <span data-i18n="total">總計</span>
+      <!-- 顯示應付總金額的數字標籤，預設為 HK$ 0 -->
       <span id="cartTotalAmount">HK$ 0</span>
     </div>
 
+    <!-- 呼叫清空購物車函式的按鈕，綁定清除本地快取的 JS 方法與多國語言屬性 -->
     <button class="clear-cart-btn" onclick="clearCart()" data-i18n="clearCart">
       清空購物車
     </button>
 
+    <!-- 驗證並前往結帳頁面的提交按鈕，設有 id 以供購物車為空時進行禁用狀態控制 -->
     <button id="drawerCheckoutBtn" class="checkout-btn" onclick="goCheckout()" data-i18n="goCheckout">
     前往結帳
     </button>
+  <!-- 閉合購物車底部計費與結算金額面板容器 (div.cart-footer) -->
   </div>
+<!-- 閉合購物車側邊欄抽屜主容器 (div.cart-drawer) -->
 </div>
 
+<!-- 閉合網頁主體內容標籤 -->
 </body>
+<!-- 閉合整個 HTML 網頁文件根標籤 -->
 </html>

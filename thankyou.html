@@ -1,23 +1,35 @@
+<!-- 宣告此文件為符合 HTML5 標準的網頁文件 -->
 <!DOCTYPE html>
+<!-- 設定網頁根節點，並指定預設語系為香港繁體中文 -->
 <html lang="zh-Hant-HK">
 <head>
+    <!-- 設定網頁文字編碼為萬國碼 (UTF-8)，防止中文字元出現亂碼 -->
     <meta charset="UTF-8">
+    <!-- 設定響應式網頁的視窗縮放規則，確保在手機等行動裝置上能完美自適應不變形 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 設定瀏覽器分頁與搜尋結果所顯示的感謝頁網頁標題 -->
     <title>NOVA Sport Design - 訂單完成</title>
+    <!-- 引入全站共用的外部核心自適應樣式表檔案 style.css -->
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- 網頁內容主體，套用獨立的感謝頁專屬滿版背景與居中樣式類別 -->
 <body class="thankyou-body">
-        <!-- 背景音樂 -->
+    <!-- 背景音樂 -->
+    <!-- 背景音樂音訊標籤：設定唯一的控制 id、指定音訊來源路徑、啟用循環播放及自動預載 -->
     <audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
 
     <!-- 音樂開關按鈕 -->
+    <!-- 音樂播放與暫停切換按鈕，設定類型為普通按鈕、綁定點擊事件方法，並設有多國語言翻譯屬性 -->
     <button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
         ♫ 音樂
     </button>
 
+    <!-- 音量調整控制面板的外層容器 -->
     <div class="music-control-panel">
+        <!-- 綁定音量滑桿 id 的文字標籤，並設有多國語言翻譯監聽屬性 -->
         <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
 
+        <!-- 音量調整原生滑桿控制項 (Range 欄位)，設定範圍值為 0-100、預設值 18 並綁定滑動即時變更事件 -->
         <input
             type="range"
             id="bgmVolumeSlider"
@@ -27,29 +39,48 @@
             oninput="updateBgmVolume(this.value)"
         >
 
+        <!-- 即時反映並在畫面上印出當前音量百分比數字（如：18%）的顯示標籤 -->
         <span id="bgmVolumeValue">18%</span>
+    <!-- 閉合音量調整控制面板的外層容器 (div.music-control-panel) -->
     </div>
 
+    <!-- 感謝頁面核心內容的寬度限制外包覆容器 -->
     <div class="thankyou-wrapper">
+        <!-- 感謝內容的白底圓角立體卡片主體 -->
         <div class="thankyou-card">
+            <!-- 付款成功主標題，綁定多國語言功能 (i18n) 的翻譯監聽屬性 -->
             <h1 data-i18n="thankyouTitle">付款成功！</h1>
+            <!-- 感謝支持副標題段落文字，同樣設有多國語言翻譯監聽屬性 -->
             <p data-i18n="thankyouSubtitle">多謝你支持 NOVA SPORT。</p>
 
+            <!-- 供 JS 根據本地快取 (localStorage) 動態渲染付款明細、流水單號的灰色數據區塊容器 -->
             <div id="thankyouOrderInfo" class="thankyou-order-info">
+                <!-- 預設中文載入中提示文字，設有多國語言翻譯監聽屬性 -->
                 <p data-i18n="thankyouLoading">正在載入訂單資料...</p>
             </div>
 
             
+            <!-- 自動跳轉的倒數計時提示文字段落 -->
             <p class="redirect-text">
+                <!-- 供 JavaScript 讀取並執行每秒減 1 倒數的數字顯示錨點（預設為 5） -->
                 <span id="countdown">5</span>
+                <!-- 後續的提示說明文字，綁定多國語言功能 (i18n) 的翻譯監聽屬性 -->
                 <span data-i18n="redirectText"> 秒後將自動返回主頁...</span>
             </p>            
+            <!-- 多國語言切換按鈕，點擊時呼叫切換語系的方法 -->
             <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <!-- 語言狀態文字顯示區域（預設顯示 EN） -->
                 <span id="languageLabel">EN</span>
             </button>
+            <!-- 手動返回首頁的品牌按鈕連結，設有多國語言翻譯屬性 -->
             <a href="index.html" class="thankyou-btn" data-i18n="nav">Return</a>
+        <!-- 閉合感謝內容的白底圓角立體卡片主體 (div.thankyou-card) -->
         </div>
+    <!-- 閉合感謝頁面核心內容的寬度限制外包覆容器 (div.thankyou-wrapper) -->
     </div>
+    <!-- 引入全站主要業務、自動倒數跳轉與多國語言控制邏輯的外部 JavaScript 檔案 -->
     <script src="script.js"></script>
+<!-- 閉合感謝頁專屬主體內容標籤 -->
 </body>
+<!-- 閉合整個 HTML 網頁文件根標籤 -->
 </html>

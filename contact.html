@@ -1,26 +1,38 @@
+<!-- 宣告此文件為符合 HTML5 標準的網頁文件 -->
 <!DOCTYPE html>
+<!-- 設定網頁根節點，並指定預設語系為香港繁體中文 -->
 <html lang="zh-Hant-HK">
 <head>
+    <!-- 設定網頁文字編碼為萬國碼 (UTF-8)，防止中文字元出現亂碼 -->
     <meta charset="UTF-8">
+    <!-- 設定響應式網頁的視窗縮放規則，確保在手機等行動裝置上能完美自適應不變形 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 設定瀏覽器分頁與搜尋結果所顯示的網頁標題 -->
     <title>NOVA Sport Design - 聯絡我們</title>
+    <!-- 引入全站共用的外部樣式表檔案 style.css -->
     <link rel="stylesheet" href="style.css">
+    <!-- 宣告頁面內嵌樣式表區塊 -->
     <style>
         /* 設定聯絡頁面的間距、背景顏色及最小高度 */
         .contact-page {
+            /* 設定上方內邊距為 90px，避免內容被固定的導覽列遮擋 */
             padding-top: 90px;
+            /* 設定背景顏色為淺灰色 */
             background: #f7f7f7;
+            /* 設定最小高度為瀏覽器視窗高度的 100% */
             min-height: 100vh;
         }
 
 /* 當導覽列連結處於 active 狀態時，變更其文字顏色 */
         nav a.active {
+            /* 將當前啟用中連結的文字顏色更改為主要色調變數 */
             color: var(--primary-color);
         }
 
 /* 設定聯絡頁面 Hero 區域的樣式 */
         .contact-hero {
             /* 使用線性漸層遮罩疊加在背景圖片上，確保文字清晰度，並設定背景圖設定 */
+            /* 設定半透明的黑色漸層疊加層，並引入背景圖片使其居中、滿版且不重複 */
             background:
                 linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
                 url("hero-bg.jpg") center center / cover no-repeat;
@@ -31,93 +43,131 @@
             /* 設定上下 4rem，左右 8% 的內邊距 */
             padding: 4rem 8%;
             /* 應用無限循環的縮放動畫效果 */
+            /* 套用名為 contactHeroZoom 的動畫，週期為 12 秒，均速淡入淡出且無限往復反轉執行 */
             animation: contactHeroZoom 12s ease-in-out infinite alternate;
         }
 
 /* 設定聯絡頁面 Hero 區域標題 (h1) 的字體大小與下間距 */
         .contact-hero h1 {
+            /* 設定主標題字型大小為 2.8rem */
             font-size: 2.8rem;
+            /* 設定主標題下方外邊距為 0.8rem */
             margin-bottom: 0.8rem;
         }
 
 /* 設定聯絡頁面 Hero 區域段落 (p) 的樣式 */
         .contact-hero p {
+            /* 設定段落文字字型大小為 1.05rem */
             font-size: 1.05rem;
+            /* 使用淺灰色 */
             color: #ddd; /* 使用淺灰色 */
+            /* 限制最大寬度以維持閱讀性 */
             max-width: 760px; /* 限制最大寬度以維持閱讀性 */
+            /* 水平居中 */
             margin: 0 auto; /* 水平居中 */
         }
 
         /* 設定聯絡區塊的內邊距 */
         .contact-section {
+            /* 設定聯絡區塊容器內邊距：上下 3rem，左右 8% */
             padding: 3rem 8%;
         }
 
         /* 設定聯絡區塊網格布局的樣式 */
         .contact-grid {
+            /* 啟用網格佈局模型 */
             display: grid;
+            /* 定義兩欄布局，比例約為 1:1.1 */
             grid-template-columns: 1fr 1.1fr; /* 定義兩欄布局，比例約為 1:1.1 */
+            /* 設定欄位間距 */
             gap: 2rem; /* 設定欄位間距 */
+            /* 設定內容垂直對齊至頂部 */
             align-items: start; /* 設定內容垂直對齊至頂部 */
         }
 
 /* 設定聯絡卡片容器的背景、圓角、內邊距與陰影效果 */
         .contact-card {
+            /* 設定卡片背景為白色 */
             background: #fff;
+            /* 設定卡片四周的圓角為 14px */
             border-radius: 14px;
+            /* 設定卡片內部的四周內邊距為 2rem */
             padding: 2rem;
+            /* 設定微弱細緻的擴散陰影效果 */
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
 
         /* 設定聯絡卡片標題 (h2) 的樣式 */
         .contact-card h2 {
+            /* 設定卡片次標題字型大小為 1.6rem */
             font-size: 1.6rem;
+            /* 設定次標題下方外邊距為 1rem */
             margin-bottom: 1rem;
+            /* 設定文字顏色為深黑色 */
             color: #1a1a1a;
         }
 
-        /* 設定聯絡資訊清單移除預設樣式 */
+
+/* 設定聯絡資訊清單移除預設樣式 */
         .contact-list {
+            /* 移除無序清單的預設前方項目點點符號 */
             list-style: none;
+            /* 將內邊距強制歸零 */
             padding: 0;
+            /* 將外邊距強制歸零 */
             margin: 0;
         }
 
         /* 設定清單項目 (li) 的間距與行高 */
         .contact-list li {
+            /* 設定項目之間的下方外邊距為 1rem */
             margin-bottom: 1rem;
+            /* 設定文字顏色為深灰色 */
             color: #555;
+            /* 設定行高為 1.7 倍字高，確保文字排版通透 */
             line-height: 1.7;
         }
 
         /* 設定聯絡標籤 (label) 為區塊顯示並加粗字體 */
         .contact-label {
+            /* 設定為區塊元素，強制該標籤排版時單獨獨占一行 */
             display: block;
+            /* 將字體粗細設定為粗體 */
             font-weight: bold;
+            /* 設定文字顏色為深黑色 */
             color: #1a1a1a;
+            /* 設定標籤下方的垂直外邊距為 0.2rem */
             margin-bottom: 0.2rem;
         }
 
         /* 設定聯絡連結文字顏色並移除底線 */
         .contact-link {
+            /* 設定連結的文字顏色為主色調亮橘色 */
             color: #ff5722;
+            /* 預設隱藏並移除超連結的底線 */
             text-decoration: none;
         }
 /* 滑鼠懸停於聯絡連結時顯示底線 */
         .contact-link:hover {
+            /* 當滑鼠懸停在聯絡超連結上方時，重新顯現下底線 */
             text-decoration: underline;
         }
 
         /* 設定聯絡表單內各項群組的間距 */
         .contact-form .form-group {
+            /* 設定表單各群組包裹容器的下方垂直外邊距為 1rem */
             margin-bottom: 1rem;
         }
 
         /* 設定聯絡表單標籤 (label) 的排版樣式 */
         .contact-form label {
+            /* 設定為區塊元素，強制標籤文字獨立換行佔據一整行 */
             display: block;
+            /* 設定字體粗細為 600（半粗體樣式） */
             font-weight: 600;
+            /* 設定標籤下方的外邊距為 0.45rem 為輸入框留出空隙 */
             margin-bottom: 0.45rem;
+            /* 設定文字顏色為深灰色 */
             color: #444;
         }
 
@@ -125,11 +175,17 @@
         .contact-form input,
         .contact-form textarea,
         .contact-form select {
+            /* 設定控制項寬度為 100% 撐滿外層容器 */
             width: 100%;
+            /* 設定欄位內邊距：上下 0.85rem，左右 0.95rem */
             padding: 0.85rem 0.95rem;
+            /* 設定 1px 實線的灰色邊框 */
             border: 1px solid #ccc;
+            /* 設定元件的四角圓角半徑為 8px */
             border-radius: 8px;
+            /* 設定輸入框內部的字型大小為 0.95rem */
             font-size: 0.95rem;
+            /* 移除點擊啟用時瀏覽器預設的外圍粗黑邊框線 */
             outline: none;
         }
 
@@ -137,33 +193,49 @@
         .contact-form input:focus,
         .contact-form textarea:focus,
         .contact-form select:focus {
+            /* 當滑鼠點擊欄位打字時，邊框顏色變更為主色調亮橘色 */
             border-color: #ff5722;
+            /* 同時在元件外圍擴散疊加一層柔和的橘色呼吸發光陰影圈 */
             box-shadow: 0 0 0 3px rgba(255,87,34,0.12);
         }
 
         /* 設定聯絡表單送出按鈕的樣式與互動效果 */
         .contact-submit-btn {
+            /* 設定按鈕寬度為 100% 水平撐滿 */
             width: 100%;
+            /* 設定按鈕的背景填色為主色調亮橘色 */
             background-color: #ff5722;
+            /* 設定按鈕文字顏色為純白色 */
             color: #fff;
+            /* 移除按鈕自帶的預設邊框線 */
             border: none;
+            /* 設定按鈕的垂直與水平內邊距為 1rem */
             padding: 1rem;
+            /* 設定按鈕文字字型大小為 1rem */
             font-size: 1rem;
+            /* 將按鈕文字加粗 */
             font-weight: bold;
+            /* 設定按鈕四角的圓角半徑為 8px */
             border-radius: 8px;
+            /* 當滑鼠指針懸停在按鈕上方時自動更換為手指游標 */
             cursor: pointer;
+            /* 針對背景填色的更改設定 0.3 秒的平滑動畫過渡時間 */
             transition: background-color 0.3s;
         }
 
         /* 設定按鈕懸停時的深色效果 */
         .contact-submit-btn:hover {
+            /* 當滑鼠懸停在提交按鈕上時，背景填色自動加深轉為深橘紅色 */
             background-color: #e64a19;
         }
 
         /* 設定表單備註文字的樣式 */
         .contact-note {
+            /* 設定備註文字區塊的上方垂直外邊距為 0.8rem */
             margin-top: 0.8rem;
+            /* 設定微縮字型大小為 0.92rem */
             font-size: 0.92rem;
+            /* 設定文字顏色為淺灰色 */
             color: #777;
         }
 
@@ -171,26 +243,33 @@
         @media (max-width: 768px) {
             /* 將聯絡區塊改為單欄排版 */
             .contact-grid {
+                /* 在行動端將聯絡資訊與表單網格拆分為垂直單欄排列 */
                 grid-template-columns: 1fr;
             }
 
             /* 縮小 Hero 標題字體 */
             .contact-hero h1 {
+                /* 縮小行動裝置下主視覺標題的字型大小為 2rem */
                 font-size: 2rem;
             }
 
             /* 縮小聯絡區塊內邊距 */
             .contact-section {
+                /* 縮小行動裝置下聯絡區塊容器的內邊距：上下 2rem，左右 5% */
                 padding: 2rem 5%;
             }
         }
         
         /* 定義 Hero 區域背景圖片的縮放動畫 */
         @keyframes contactHeroZoom {
+            /* 動畫起始狀態 */
             0% {
+                /* 背景圖片尺寸保持 100% 原始大小 */
                 background-size: 100%;
             }
+            /* 動畫結束與回彈狀態 */
             100% {
+                /* 背景圖片平滑放大至 108% 尺寸，營造慢動作推進視覺感 */
                 background-size: 108%;
             }
         }
@@ -198,17 +277,22 @@
     </style>
 </head>
 <body>
-        <!-- 背景音樂 -->
+    <!-- 背景音樂 -->
+    <!-- 背景音樂音訊標籤：設定唯一的控制 id、指定音訊音軌檔案路徑、啟用循環播放 (loop) 以及自動預載功能 -->
     <audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
 
     <!-- 音樂開關按鈕 -->
+    <!-- 音樂播放與暫停切換按鈕，設定類型為普通按鈕、綁定點擊事件方法，並設有多國語言翻譯標籤 -->
     <button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
         ♫ 音樂
     </button>
 
+    <!-- 音量調整控制面板的外層彈性盒容器 -->
     <div class="music-control-panel">
+        <!-- 綁定音量滑桿 id 的文字標籤，並設有多國語言翻譯監聽屬性 -->
         <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
 
+        <!-- 音量調整原生滑桿控制項 (Range 欄位)，設定範圍值為 0-100、預設值 18 並綁定滑鼠拖曳即時變更事件 -->
         <input
             type="range"
             id="bgmVolumeSlider"
@@ -218,150 +302,239 @@
             oninput="updateBgmVolume(this.value)"
         >
 
+        <!-- 即時反映並在畫面上印出當前音量百分比數字（如：18%）的動態顯示標籤 -->
         <span id="bgmVolumeValue">18%</span>
+    <!-- 閉合音量調整控制面板的外層容器 (div.music-control-panel) -->
     </div>
-        <header>
+
+    <!-- 網頁頂部頁首 (Header) 主區塊容器 -->
+    <header>
+        <!-- 品牌標誌 Logo 連結，指向首頁網頁檔案與對應的主視覺錨點位置 -->
         <a href="index.html#home" class="logo">NOVA SPORTSWEAR DESIGN</a>
         
+        <!-- 主要導覽列標籤 -->
         <nav>
+            <!-- 導覽項目連結：返回首頁主視覺區，並綁定 data-i18n 翻譯屬性 -->
             <a href="index.html" data-i18n="navHome">首頁</a>
+            <!-- 導覽項目連結：返回首頁關於我們區塊，並綁定 data-i18n 翻譯屬性 -->
             <a href="index.html#about" data-i18n="navAbout">關於我們</a>
+            <!-- 導覽項目連結：返回首頁產品列表區塊，並綁定 data-i18n 翻譯屬性 -->
             <a href="index.html#products" data-i18n="navProducts">產品</a>
+            <!-- 導覽項目連結：返回首頁常見問題區塊，並綁定 data-i18n 翻譯屬性 -->
             <a href="index.html#faq" data-i18n="navFaq">常見問題</a>
+            <!-- 當前位於聯絡我們網頁，套用 active 啟動中高亮樣式類別 -->
             <a href="contact.html" class="active" data-i18n="navContact">聯絡我們</a>
+            <!-- 購物車圖示按鈕，點擊時呼叫顯示購物車側邊欄的方法 -->
             <button class="cart-icon-btn" onclick="toggleCart(true)">
+                <!-- 購物車圖示、文字與數量提示標記 (Badge) -->
                 🛒 <span data-i18n="navCart">購物車</span>
                 <span class="cart-badge" id="cart-count">0</span>
             </button>
+            <!-- 多國語言切換按鈕，點擊時呼叫切換語系的方法 -->
             <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <!-- 語言狀態文字顯示區域（預設顯示 EN） -->
                 <span id="languageLabel">EN</span>
             </button>
+        <!-- 閉合主要導覽列 (nav) -->
         </nav>
+    <!-- 閉合網頁頂部頁首 (header) -->
     </header>
 
+    <!-- 聯絡我們獨立頁面的主要內容版面佈局容器 -->
     <main class="contact-page">
+        <!-- 聯絡頁面頂部視覺區 (Hero Section) 的外層獨立區塊標籤 -->
         <section class="contact-hero">
+            <!-- 視覺區主標題文字，綁定多國語言功能 (i18n) 的翻譯鍵名監聽屬性 -->
             <h2 data-i18n="contactInfoTitle">聯絡資料</h2>
+            <!-- 視覺區的核心引導描述段落文字，同樣設有多國語言翻譯監聽屬性 -->
             <p data-i18n="contactSubtitle">
                 如果你想查詢團體訂製、產品細節、尺碼建議或合作事宜，歡迎透過以下方式聯絡 NOVA SPORT DESIGN。
             </p>
 
+        <!-- 閉合聯絡頁面頂部視覺區外層容器 (section.contact-hero) -->
         </section>
 
+        <!-- 聯絡我們資訊與表單的主要內容區塊標籤 -->
         <section class="contact-section">
+            <!-- 圖文與表單並排的雙欄網格佈局容器 -->
             <div class="contact-grid">
+                <!-- 左側欄：官方聯絡資料白底卡片容器 -->
                 <div class="contact-card">
+                    <!-- 聯絡資料區塊小標題，綁定多國語言翻譯監聽屬性 -->
                     <h2 data-i18n="contactHeading">聯絡資料</h2>
+                    <!-- 聯絡資訊無序清單項目容器，套用去清單點點樣式類別 -->
                     <ul class="contact-list">
+                        <!-- 品牌名稱資訊列 -->
                         <li>
+                            <!-- 粗體標籤，綁定多國語言翻譯監聽屬性 -->
                             <span data-i18n="brandNameLabel" class="contact-label">品牌名稱</span>
                             NOVA SPORTSWEAR DESIGN
                         </li>
+                        <!-- Instagram 社群連結列 -->
                         <li>
+                            <!-- 粗體標籤 -->
                             <span class="contact-label">Instagram</span>
+                            <!-- 官方 Instagram 外部超連結，設定在新分頁開啟 (target="_blank") -->
                             <a class="contact-link" href="https://www.instagram.com/novasport.ltd/" target="_blank" rel="novasport.ltd">@novasport.ltd</a>
                         </li>
+                        <!-- WhatsApp 通訊連結列 -->
                         <li>
+                            <!-- 粗體標籤 -->
                             <span class="contact-label">WhatsApp</span>
+                            <!-- 官方 WhatsApp 行動對話外部超連結，設定在新分頁開啟 -->
                             <a class="contact-link" href="https://wa.me/852+55432705" target="_blank" rel="noopener">852+55432705</a>
                         </li>
+                        <!-- Email 電子郵件聯絡列 -->
                         <li>
+                            <!-- 粗體標籤 -->
                             <span class="contact-label">Email</span>
+                            <!-- 點擊後直接調起客戶端原生郵件撰寫軟體的 mailto 超連結 -->
                             <a class="contact-link" href="mailto:Novasportsweardesigncompany@gmail.com">Novasportsweardesigncompany@gmail.com</a>
                         </li>
+                        <!-- 營業服務時間說明列 -->
                         <li>
+                            <!-- 粗體標籤，綁定多國語言翻譯監聽屬性 -->
                             <span data-i18n="serviceHoursLabel" class="contact-label">服務時間</span>
+                            <!-- 詳細服務時間文字，綁定多國語言翻譯監聽屬性 -->
                             <span data-i18n="serviceHoursText">星期一至星期六 11:00 - 20:00</span>
                         </li>
                     </ul>
                 </div>
-
+                <!-- 右側欄：顧客查詢表單白底卡片容器 -->
                 <div class="contact-card">
+                    <!-- 查詢表單區塊小標題，綁定多國語言翻譯監聽屬性 -->
                     <h2 data-i18n="contactFormTitle">查詢表格</h2>
+                    <!-- 查詢互動表單，綁定提交事件方法：阻止網頁跳轉重新整理、跳出確認接收彈窗並一鍵清空所有已填寫欄位 -->
                     <form class="contact-form" onsubmit="event.preventDefault(); alert('已收到你的查詢，我們會盡快回覆。'); this.reset();">
+                        <!-- 姓名輸入欄位群組 -->
                         <div class="form-group">
+                            <!-- 綁定輸入框 id 的標籤，並設有多國語言翻譯監聽屬性 -->
                             <label for="contactName" data-i18n="contactNameLabel">姓名</label>
+                            <!-- 姓名文字輸入框，設為必填且限制最大字數為 40 個字 -->
                             <input type="text" id="contactName" name="contactName" required maxlength="40">
                         </div>
+                        <!-- 電郵輸入欄位群組 -->
                         <div class="form-group">
+                            <!-- 綁定輸入框 id 的標籤，並設有多國語言翻譯監聽屬性 -->
                             <label for="contactEmail" data-i18n="contactEmailLabel">電郵</label>
+                            <!-- 電子郵件專用輸入框，具備基本格式驗證，設為必填且限制最大字數為 100 個字 -->
                             <input type="email" id="contactEmail" name="contactEmail" required maxlength="100">
                         </div>
+                        <!-- 電話選填欄位群組 -->
                         <div class="form-group">
+                            <!-- 綁定輸入框 id 的標籤，並設有多國語言翻譯監聽屬性 -->
                             <label for="contactPhone" data-i18n="contactPhoneLabel">電話（選填）</label>
+                            <!-- 電話專用輸入框，限制最大長度為 8 位數且透過正則表達式規定只能輸入 0-9 的純數字 -->
                             <input type="tel" id="contactPhone" name="contactPhone" maxlength="8" pattern="[0-9]{8}">
                         </div>
+                        <!-- 查詢類別下拉選單群組 -->
                         <div class="form-group">
+                            <!-- 綁定選單 id 的標籤，並設有多國語言翻譯監聽屬性 -->
                             <label for="contactTopic" data-i18n="contactTopicLabel">查詢類別</label>
+                            <!-- 查詢類別下拉選單，設為必填項目 -->
                             <select id="contactTopic" name="contactTopic" required>
+                                <!-- 預設提示無效選項，綁定多國語言翻譯監聽屬性 -->
                                 <option value="" data-i18n="contactTopicPlaceholder">請選擇查詢類別</option>
+                                <!-- 產品查詢分類選項，綁定多國語言翻譯監聽屬性 -->
                                 <option value="產品查詢" data-i18n="topicProduct">產品查詢</option>
+                                <!-- 團體訂製分類選項，綁定多國語言翻譯監聽屬性 -->
                                 <option value="團體訂製" data-i18n="topicTeamOrder">團體訂製</option>
+                                <!-- 尺碼建議分類選項，綁定多國語言翻譯監聽屬性 -->
                                 <option value="尺碼建議" data-i18n="topicSizeAdvice">尺碼建議</option>
+                                <!-- 合作洽談分類選項，綁定多國語言翻譯監聽屬性 -->
                                 <option value="合作洽談" data-i18n="topicCollab">合作洽談</option>
+                                <!-- 其他分類選項，綁定多國語言翻譯監聽屬性 -->
                                 <option value="其他" data-i18n="topicOther">其他</option>
                             </select>
                         </div>
+                        <!-- 訊息內容多行輸入文字域群組 -->
                         <div class="form-group">
+                            <!-- 綁定文字域 id 的標籤，並設有多國語言翻譯監聽屬性 -->
                             <label for="contactMessage" data-i18n="contactMessageLabel">訊息內容</label>
+                            <!-- 訊息內容多行輸入框，設定預設顯示 5 行高度、必填項目、限制最大字數 500 字，並綁定多國語言提示文字屬性 -->
                             <textarea id="contactMessage" name="contactMessage" rows="5" required maxlength="500" placeholder="請輸入你的查詢內容" data-i18n-placeholder="contactMessagePlaceholder"
                             ></textarea>
 
                         </div>
                         
+                            <!-- 表單提交查詢按鈕，點擊時正式送出欄位並觸發表單內建的 alert 與 reset 流程 -->
                             <button type="submit" class="contact-submit-btn" data-i18n="contactSubmitBtn">提交查詢</button>
+                            <!-- 表單下方的中文提示備註文字，說明當前前端邏輯，並綁定多國語言翻譯屬性 -->
                             <p class="contact-note" data-i18n="contactNote">
                                 此頁面目前為前端示範版本，提交後會顯示確認訊息。
                             </p>
-
                     </form>
                 </div>
             </div>
         </section>
     </main>
     <!-- ✅ 購物車側邊欄 -->
+    <!-- 右側滑入式購物車抽屜主容器，設定唯一的 id 供 JavaScript 進行面板的顯示與隱藏控制 -->
     <div class="cart-drawer" id="cartDrawer">
+        <!-- 購物車抽屜的頂部標題與關閉按鈕區塊 -->
         <div class="cart-header">
+            <!-- 購物車主標題文字，綁定多國語言功能 (i18n) 的翻譯鍵名監聽屬性 -->
             <h3 data-i18n="cartTitle">購物車</h3>
+            <!-- 右側關閉購物車抽屜的按鈕，點擊時呼叫隱藏抽屜的 JS 方法 -->
             <button class="close-cart" onclick="toggleCart(false)">✕</button>
         </div>
 
+        <!-- 購物車動態商品卡片清單的累積容器，綁定 id 供 JS 即時更新與重繪內容 -->
         <div class="cart-items" id="cartItemsContainer">
+            <!-- 購物車預設空狀態中文提示，設有多國語言翻譯監聽屬性與行內置中、灰色文字樣式 -->
             <p data-i18n="cartEmpty" style="text-align:center; color:#999;">
                 購物車目前是空的
             </p>
         </div>
 
+        <!-- 購物車底部計費與結算金額面板容器 -->
         <div class="cart-footer">
+            <!-- 純商品金額小計顯示行 -->
             <div class="cart-total-line">
+                <!-- 欄位標籤：小計，綁定多國語言翻譯監聽屬性 -->
                 <span data-i18n="subtotal">小計</span>
+                <!-- 顯示小計金額的數字標籤，初始預設為 HK$ 0 -->
                 <span id="cartSubtotal">HK$ 0</span>
             </div>
 
+            <!-- 滿額免運判定後顯示的運費金額行 -->
             <div class="cart-total-line">
+                <!-- 欄位標籤：運費，綁定多國語言翻譯監聽屬性 -->
                 <span data-i18n="shipping">運費</span>
+                <!-- 顯示運費金額的數字標籤，預設為 HK$ 0 -->
                 <span id="cartShipping">HK$ 0</span>
             </div>
 
+            <!-- 優惠碼扣減折扣金額顯示行 -->
             <div class="cart-total-line">
+                <!-- 欄位標籤：優惠，綁定多國語言翻譯監聽屬性 -->
                 <span data-i18n="discount">優惠</span>
+                <!-- 顯示折扣金額的數字標籤，預設為 -HK$ 0 -->
                 <span id="cartDiscount">-HK$ 0</span>
             </div>
 
+            <!-- 最終實付總計金額顯示行，套用加大加粗的強調樣式類別 -->
             <div class="cart-total-final">
+                <!-- 欄位標籤：總計，綁定多國語言翻譯監聽屬性 -->
                 <span data-i18n="total">總計</span>
+                <!-- 顯示應付總金額的數字標籤，初始預設為 HK$ 0 -->
                 <span id="cartTotalAmount">HK$ 0</span>
             </div>
 
+            <!-- 呼叫清空購物車函式的按鈕，綁定清除本地快取的 JS 方法與多國語言屬性 -->
             <button class="clear-cart-btn" onclick="clearCart()" data-i18n="clearCart">
                 清空購物車
             </button>
 
+            <!-- 驗證並前往結帳頁面的提交按鈕，設有 id 以供購物車為空時進行禁用狀態控制 -->
             <button id="drawerCheckoutBtn" class="checkout-btn" onclick="goCheckout()" data-i18n="goCheckout">
                 前往結帳
             </button>
+        <!-- 閉合購物車底部計費與結算金額面板容器 (div.cart-footer) -->
         </div>
+    <!-- 閉合購物車側邊欄抽屜主容器 (div.cart-drawer) -->
     </div>
+    <!-- 引入全站主要業務、多國語言與購物車控制邏輯的外部 JavaScript 檔案 -->
     <script src="script.js"></script>
 </body>
 </html>

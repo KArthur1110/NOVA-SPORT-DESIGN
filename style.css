@@ -304,34 +304,50 @@ section h2::after {
 
 /* 設定關於我們標題樣式 */
 .about-text h3 {
+    /* 設定關於我們區域小標題的字型大小為 2rem */
     font-size: 2rem;
+    /* 設定標題下方的外邊距為 1rem */
     margin-bottom: 1rem;
+    /* 設定文字顏色為變數定義的深色主題 */
     color: var(--dark-color);
+    /* 設定行高為 1.3 倍字高，確保多行時不擁擠 */
     line-height: 1.3;
 }
 
 /* 設定關於我們段落文字樣式 */
 .about-text p {
+    /* 設定每個介紹段落之間的下方外邊距為 1.25rem */
     margin-bottom: 1.25rem;
+    /* 設定段落內文的字型大小為 1.05rem */
     font-size: 1.05rem;
+    /* 設定行高為 1.9 倍字高，大幅提升長文的通透性與閱讀舒適度 */
     line-height: 1.9;
+    /* 設定文字顏色為中等深灰色 */
     color: #555;
 }
 
 /* 設定圖片容器的居中對齊 */
 .about-img {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定子元件在主軸（水平方向）上居中對齊 */
     justify-content: center;
+    /* 設定子元件在交叉軸（垂直方向）上居中對齊 */
     align-items: center;
 }
 
 /* 設定圖片外框卡片樣式 */
 .about-photo-card {
     /* 寬度自適應，最大為 430px */
+    /* 套用自適應寬度：在手機端撐滿 100% 寬度，在桌機大螢幕上限寬為 430px */
     width: min(100%, 430px);
+    /* 設定卡片背景填色為純白色 */
     background: #fff;
+    /* 設定卡片四周的內部邊距（拍立得外框感）為 14px */
     padding: 14px;
+    /* 設定卡片四周的圓角為 24px */
     border-radius: 24px;
+    /* 設定稍微具有層次感與擴散效果的立體陰影 */
     box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
 }
 
@@ -356,151 +372,231 @@ section h2::after {
 ========================= */
 /* 設定產品列表區塊的背景顏色 */
 .products {
+    /* 將產品區塊的背景填色設定為全域變數所定義的淺色調 */
     background-color: var(--light-color);
 }
 
 /* 設定過濾器按鈕容器的排版 */
 .filter-container {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定子元件在主軸（水平方向）上居中對齊 */
     justify-content: center;
+    /* 設定子按鈕之間的水平與垂直間距為 1rem */
     gap: 1rem;
+    /* 設定整個分類按鈕列與下方商品的垂直外邊距為 2.5rem */
     margin-bottom: 2.5rem;
     /* 若螢幕太窄則自動換行 */
+    /* 啟用自動換行屬性，確保在小螢幕手機端按鈕會自動排列到下一行而不擠壓破版 */
     flex-wrap: wrap;
 }
 
 /* 設定過濾器按鈕的基礎樣式 */
 .filter-btn {
+    /* 設定按鈕背景顏色為純白色 */
     background-color: #fff;
+    /* 設定 2px 的實線淺灰色外邊框 */
     border: 2px solid #ddd;
+    /* 設定按鈕內部內邊距：上下 0.5rem，左右 1.5rem */
     padding: 0.5rem 1.5rem;
+    /* 設定按鈕四周圓角為 20px，營造膠囊狀的圓潤視覺感 */
     border-radius: 20px;
+    /* 當滑鼠移到按鈕上方時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 將按鈕文字字體粗細設定為 600（半粗體） */
     font-weight: 600;
+    /* 設定所有屬性變更（如 hover 變色）的過渡動畫時間為 0.3 秒，使互動更平滑 */
     transition: all 0.3s;
 }
 
 /* 設定按鈕在啟用狀態或滑鼠懸停時的樣式 */
 .filter-btn.active,
 .filter-btn:hover {
+    /* 當按鈕被選中或滑鼠移上去時，背景顏色切換為全域變數定義的深色主題色 */
     background-color: var(--dark-color);
+    /* 文字顏色切換為純白色 */
     color: #fff;
+    /* 邊框顏色同步變更為深色主題色，保持視覺一致性 */
     border-color: var(--dark-color);
 }
 
 /* 設定尺碼指南連結的樣式 */
 .size-guide-trigger {
+    /* 設定為區塊元素，使其強制獨占一行，方便排版與點擊 */
     display: block;
+    /* 將文字區塊水平居中對齊 */
     text-align: center;
+    /* 設定尺碼連結與下方產品網格之間的下外邊距為 2rem */
     margin-bottom: 2rem;
+    /* 文字顏色套用全域變數定義的品牌主色調（亮橘色） */
     color: var(--primary-color);
+    /* 為文字加上底線，強調其具備超連結的可點擊特性 */
     text-decoration: underline;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 將字體粗細設定為 500（中等粗細） */
     font-weight: 500;
 }
 
 /* 設定產品網格佈局 */
 .product-grid {
+    /* 限制產品網格區域的最大寬度為 1200px，防止大螢幕上過度拉伸 */
     max-width: 1200px;
+    /* 設定上下邊距為 0，左右自動對齊，使整個網格在頁面中水平居中 */
     margin: 0 auto;
+    /* 啟用網格佈局模型 (CSS Grid) */
     display: grid;
+    /* 定義網格為均分兩欄佈局，並搭配 minmax 防止邊界溢出破版 */
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* 設定網格橫向與縱向的行格間距皆為 2rem */
     gap: 2rem;
+    /* 設定網格內的子卡片在垂直方向上自動拉伸填滿，確保同一排的卡片高度完全等高 */
     align-items: stretch;
 }
 
 
 /* 設定單一產品卡片的樣式 */
 .product-card {
+    /* 設定產品卡片背景顏色為純白色 */
     background-color: #fff;
+    /* 設定卡片四周的圓角為 14px */
     border-radius: 14px;
+    /* 隱藏所有超出卡片圓角邊框的內容（例如內嵌圖片的直角尖角） */
     overflow: hidden;
+    /* 套用細緻、微弱的擴散低權重陰影，營造卡片輕微浮起的立體感 */
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /* 設定位移 (transform) 與陰影效果變更時的過渡動畫時間為 0.3 秒 */
     transition: transform 0.3s, box-shadow 0.3s;
+    /* 在卡片內部啟用彈性盒佈局，以便進行內部的垂直彈性排版 */
     display: flex;
+    /* 設定內部的子元件依據垂直方向（由上至下）進行數列排列 */
     flex-direction: column;
+    /* 強制卡片最小高度填滿父級網格單元格的 100%，確保視覺等高效果 */
     min-height: 100%;
 }
 
 
 /* 設定滑鼠懸停在卡片上的效果 */
 .product-card:hover {
+    /* 當滑鼠懸停在商品卡片上時，沿著 Y 軸平滑向上微移 4px，營造精緻的互動反饋 */
     transform: translateY(-4px);
+    /* 同時加深並擴大立體陰影的範疇，加強視覺上的懸浮聚焦感 */
     box-shadow: 0 8px 16px rgba(0,0,0,0.08);
 }
 
 /* 設定隱藏類別，用於過濾功能 */
 .product-card.hidden {
+    /* 強制將帶有此類別的商品卡片從畫面中完全隱藏並不佔據任何排版空間 */
     display: none;
 }
 
 /* 設定產品圖片樣式 */
 .product-img {
+    /* 設定圖片寬度為 100% 填滿父級卡片容器 */
     width: 100%;
+    /* 限制圖片的最大高度不超過瀏覽器視窗高度的 35% (35vh)，防止直式圖片過長 */
     max-height: 35vh;
+    /* 高度設定為自動，維持商品的原始圖片長寬比例 */
     height: auto;
+    /* 確保圖片在固定比例內縮放時完整顯示，不剪裁且不拉伸變形 */
     object-fit: contain;
+    /* 將縮放後的商品圖片精確定位在圖片容器的正中央 */
     object-position: center;
+    /* 設定為區塊元素，消除圖片底部的預設微小空白間隙 */
     display: block;
+    /* 設定圖片底色為純白色 */
     background-color: #fff;
+    /* 設定圖片四周留白內邊距 10px，營造商品的精緻懸浮框感 */
     padding: 10px;
 }
 
 /* 設定產品資訊區域的佈局 */
 .product-info {
+    /* 設定商品卡片下半部文字資訊區域的四周內邊距為 1.5rem */
     padding: 1.5rem;
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定內部的子元件依據垂直方向（由上至下）進行數列排列 */
     flex-direction: column;
+    /* 設定彈性增長係數為 1，當產品名稱長短不一時，自動撐開垂直空間以使底部購買按鈕對齊 */
     flex-grow: 1;
 }
 
 /* 設定產品標籤 (如：新款、熱銷) 的樣式 */
 .product-tag {
+    /* 設定商品分類標籤的背景顏色為淺灰色 */
     background-color: #e0e0e0;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
+    /* 設定微縮標籤字型大小為 0.75rem */
     font-size: 0.75rem;
+    /* 設定標籤內部邊距：上下 0.2rem，左右 0.6rem */
     padding: 0.2rem 0.6rem;
+    /* 設定標籤的微小四角圓角為 3px */
     border-radius: 3px;
+    /* 設定標籤與下方商品標題之間的垂直外邊距為 0.5rem */
     margin-bottom: 0.5rem;
+    /* 將標籤文字字體粗細設定為粗體 */
     font-weight: bold;
+    /* 設定自身在側軸（水平方向）上的對齊方式為靠左對齊，防止標籤寬度被 Flex 撐滿 */
     align-self: flex-start;
 }
 
 /* 設定產品標題樣式 */
 .product-title {
+    /* 設定商品名稱標題字型大小為 1.2rem */
     font-size: 1.2rem;
+    /* 設定商品名稱與下方價格之間的下外邊距為 0.5rem */
     margin-bottom: 0.5rem;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
 }
 
 /* 設定產品價格樣式 */
 .product-price {
+    /* 設定商品價格字型大小為 1.3rem */
     font-size: 1.3rem;
+    /* 將價格文字加粗顯示 */
     font-weight: bold;
+    /* 文字顏色套用全域變數定義的品牌主色調（亮橘色） */
     color: var(--primary-color);
+    /* 設定價格與底部按鈕之間的垂直下外邊距為 1rem */
     margin-bottom: 1rem;
 }
 
 /* 設定購買按鈕樣式 */
 .buy-btn {
+    /* 設定為區塊元素，使其能完美套用寬度與邊距屬性 */
     display: block;
+    /* 設定按鈕寬度為 100% 水平填滿資訊區域 */
     width: 100%;
+    /* 按鈕背景顏色套用全域變數定義的深色主題色 */
     background-color: var(--dark-color);
+    /* 設定按鈕文字顏色為純白色 */
     color: #fff;
+    /* 將按鈕內部文字水平居中對齊 */
     text-align: center;
+    /* 設定按鈕垂直內部邊距為 0.7rem */
     padding: 0.7rem;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 設定按鈕四周的圓角為 5px */
     border-radius: 5px;
+    /* 將按鈕文字粗細設定為 500（中等字體粗細） */
     font-weight: 500;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 針對背景變更設定 0.3 秒的平滑漸變動畫過渡時間 */
     transition: background 0.3s;
     /* 將按鈕固定在卡片底部 */
+    /* 套用上外邊距自動填滿屬性，強制將購買按鈕推至卡片的最底部，確保每張卡片的按鈕整齊劃一 */
     margin-top: auto;
 }
 
 /* 設定滑鼠懸停在購買按鈕時的樣式 */
 /* 設定滑鼠懸停在購買按鈕時的樣式（延續上一段） */
 .buy-btn:hover {
+    /* 當滑鼠懸停在按鈕上方時，背景顏色平滑變更為品牌主色調（亮橘色） */
     background-color: var(--primary-color);
 }
 
@@ -510,43 +606,59 @@ section h2::after {
 
 /* 設定 FAQ 容器的寬度並置中 */
 .faq-container {
+    /* 限制問答區域的最大寬度為 800px，最適合純文字閱讀的通透排版 */
     max-width: 800px;
+    /* 設定上下外邊距為 0，左右自動對齊，使整個問答面板在頁面中水平居中 */
     margin: 0 auto;
 }
 
 /* 設定單一問答項目的底部邊框與內距 */
 .faq-item {
+    /* 在每個問答項目底部加上 1px 的實線淺灰色水平分隔線 */
     border-bottom: 1px solid #ddd;
+    /* 設定每個項目的內部邊距：上下各 1rem，左右為 0 */
     padding: 1rem 0;
 }
 
 /* 設定問題標題的佈局與字體樣式 */
 .faq-question {
+    /* 設定問題標題的字型大小為 1.2rem */
     font-size: 1.2rem;
+    /* 將問題文字粗細設定為 600（半粗體） */
     font-weight: 600;
     /* 使用 Flexbox 讓問題與圖標兩端對齊 */
+    /* 啟用彈性盒佈局模型 */
     display: flex;
+    /* 設定子元件（文字與展開箭頭圖標）在主軸（水平方向）上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定子元件在交叉軸（垂直方向）上居中對齊 */
     align-items: center;
     /* 游標改為手指形狀，提示可點擊 */
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標，明確提示使用者此區塊可點擊觸發 */
     cursor: pointer;
 }
 
 /* 設定答案區域的初始狀態與過渡效果 */
 .faq-answer {
     /* 預設隱藏（高度為 0） */
+    /* 初始狀態將最大高度限制為 0，達到預設隱藏折疊面板的效果 */
     max-height: 0;
     /* 隱藏溢出內容 */
+    /* 強制隱藏所有超出當前高度範圍的內容，防止文字外流溢出 */
     overflow: hidden;
     /* 加入平滑高度變化的過渡效果 */
+    /* 設定最大高度變化時，套用 0.3 秒減速淡出的過渡動畫效果，讓折疊滑動更流暢 */
     transition: max-height 0.3s ease-out;
+    /* 設定回答內文的文字顏色為稍淺的深灰色 */
     color: #666;
 }
 
 /* 當 FAQ 項目被激活 (active) 時的展開樣式 */
 .faq-item.active .faq-answer {
     /* 設定最大高度以展示內容 */
+    /* 當外層項目被注入 active 類別時，動態將最大高度放寬至 200px，讓內部文字平滑展開顯現 */
     max-height: 200px;
+    /* 同時為展開後的回答文字加上 0.5rem 的上方外邊距，與問題標題拉開間隙 */
     margin-top: 0.5rem;
 }
 
@@ -555,72 +667,104 @@ section h2::after {
 ========================= */
 /* 設定彈出視窗遮罩層的樣式（全螢幕深色半透明背景） */
 .modal-overlay {
+    /* 設定為固定定位，使其相對於瀏覽器視窗定位，滾動網頁時仍維持置頂 */
     position: fixed;
+    /* 貼緊視窗頂部 */
     top: 0;
+    /* 貼緊視窗左側 */
     left: 0;
+    /* 撐滿整個瀏覽器視窗的寬度 */
     width: 100%;
+    /* 撐滿整個瀏覽器視窗的高度 */
     height: 100%;
+    /* 使用帶有 0.5 半透明度的黑色作為背景遮罩填色 */
     background-color: rgba(0,0,0,0.5);
     /* 確保其層級高於導覽列 */
+    /* 設定高階層的堆疊順序，確保遮罩與彈窗能完美覆蓋在導覽列與全站內容之上 */
     z-index: 1002;
     /* 預設隱藏 */
+    /* 初始狀態完全隱藏該元素，不佔據任何網頁空間 */
     display: none;
     /* 使用 Flexbox 將視窗內容置中 */
+    /* 預先設定彈性盒模型佈局，以便開啟時子元件能自動居中 */
     justify-content: center;
     align-items: center;
 }
 
 /* 當加上 open class 時，顯示遮罩層 */
 .modal-overlay.open {
+    /* 當與 open 類別同時存在時，將顯現狀態切換為彈性盒模型，使彈窗正式現形並完美置中 */
     display: flex;
 }
 
 /* 設定彈出視窗主體樣式 */
 .size-modal {
+    /* 設定彈窗內襯白底卡片的背景顏色為純白色 */
     background-color: white;
+    /* 設定卡片內部的四周留白內邊距為 2rem */
     padding: 2rem;
+    /* 設定卡片四周的圓角為 10px */
     border-radius: 10px;
+    /* 限制彈窗白底卡片的最大寬度不超過 500px，維持視覺精緻度 */
     max-width: 500px;
+    /* 在手機端等小螢幕上，預設橫向佔據視窗寬度的 90% 防止溢出 */
     width: 90%;
+    /* 啟用相對定位，以便內部的關閉按鈕 (✕) 能相對於此卡片進行絕對定位 */
     position: relative;
 }
 
 #sizePickerOptions {
+    /* 設定尺寸按鈕群組容器的上下外邊距：上方 1rem，下方 1.5rem，左右為 0 */
     margin: 1rem 0 1.5rem;
 }
 #sizePickerModal .checkout-btn {
+    /* 將規格選擇彈窗內部的確認按鈕上方外邊距歸零，覆蓋掉全域按鈕的預設外邊距 */
     margin-top: 0;
 }
 
 /* 設定關閉按鈕樣式 */
 .close-modal {
+    /* 啟用絕對定位，使其脫離常規文件流 */
     position: absolute;
+    /* 定位在白底卡片容器內部的頂部 1rem 位置 */
     top: 1rem;
+    /* 定位在白底卡片容器內部的右側 1rem 位置 */
     right: 1rem;
+    /* 移除按鈕自帶的預設背景填色 */
     background: none;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 將關閉圖標 (✕) 的字型大小放大至 1.5rem */
     font-size: 1.5rem;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
 }
 
 /* 設定尺寸對照表樣式 */
 .size-table {
+    /* 設定表格橫向寬度為 100% 填滿父級卡片 */
     width: 100%;
     /* 合併表格邊框 */
+    /* 設定相鄰儲存格的邊框進行合併，消除雙重邊框線的凌亂感 */
     border-collapse: collapse;
+    /* 設定表格與上方小標題之間的垂直外邊距為 1rem */
     margin-top: 1rem;
 }
 
 /* 設定表格儲存格的基本樣式 */
 .size-table th,
 .size-table td {
+    /* 為表頭與所有數據單元格加上 1px 的實線淺灰色細邊框 */
     border: 1px solid #ddd;
+    /* 設定單元格內部的四周內部留白邊距為 8px */
     padding: 8px;
+    /* 確保所有表格文字與尺寸數據皆水平居中對齊 */
     text-align: center;
 }
 
 /* 設定表頭樣式 */
 .size-table th {
+    /* 將表格頂部欄位標頭的背景色，設定為全域變數所定義的淺色調 */
     background-color: var(--light-color);
 }
 
@@ -629,153 +773,239 @@ section h2::after {
 ========================= */
 /* 設定購物車側邊欄 (Drawer) 的定位與基礎樣式 */
 .cart-drawer {
+    /* 設定為固定定位，使其脫離常規文件流並相對於瀏覽器視窗進行定位 */
     position: fixed;
+    /* 貼緊視窗頂部開頭 */
     top: 0;
     /* 初始定位在螢幕外，隱藏狀態 */
+    /* 預設隱藏在螢幕右側外 420px 的位置，達到隱藏的效果 */
     right: -420px;
+    /* 固定抽屜寬度為 420px */
     width: 420px;
+    /* 高度設定為 100% 撐滿整個瀏覽器垂直視窗 */
     height: 100%;
+    /* 設定購物車背景色為純白色 */
     background-color: #fff;
+    /* 加上向左擴散的陰影效果，當滑出時能與主頁面拉開立體層次 */
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    /* 確保其層級高於網頁一般元素（低於滿版彈窗的 1002） */
     z-index: 1001;
     /* 設定滑動動畫效果 */
+    /* 當 right 屬性變更時，套用 0.3 秒的減速平滑動畫過渡效果 */
     transition: right 0.3s ease;
+    /* 啟用彈性盒佈局模型 */
     display: flex;
+    /* 設定內部的子元件依據垂直方向（由上至下）進行數列排列 */
     flex-direction: column;
 }
 
 /* 當加上 open class 時，將側邊欄滑入視窗 */
 .cart-drawer.open {
+    /* 當與 open 類別同時存在時，將 right 座標歸零，使側邊欄平滑滑入至網頁右側邊緣 */
     right: 0;
 }
 
 /* 設定購物車標題區 (Header) */
 .cart-header {
+    /* 設定購物車頭部區域的四周內部邊距為 1.5rem */
     padding: 1.5rem;
+    /* 背景顏色套用全域變數定義的深色主題色 */
     background-color: var(--dark-color);
+    /* 設定標題文字顏色為純白色 */
     color: white;
+    /* 啟用彈性盒佈局模型 */
     display: flex;
+    /* 設定子元件（標題文字與關閉按鈕）在主軸上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定子元件在交叉軸（垂直方向）上居中對齊 */
     align-items: center;
 }
 
 /* 關閉購物車按鈕 */
 .close-cart {
+    /* 移除按鈕自帶的預設背景填色 */
     background: none;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 將關閉圖標文字顏色設定為白色 */
     color: white;
+    /* 將關閉圖標 (✕) 的字型大小放大至 1.5rem */
     font-size: 1.5rem;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
 }
 
 /* 購物車商品列表容器 */
 .cart-items {
+    /* 設定動態商品列表容器內部的四周內邊距為 1.5rem */
     padding: 1.5rem;
+    /* 若商品過多則顯示捲軸 */
+    /* 當購物車內選購的商品數量超過高度時，自動啟用垂直方向的滾動條 */
     overflow-y: auto; /* 若商品過多則顯示捲軸 */
+    /* 設定彈性增長係數為 1，自動撐滿剩餘的垂直空間，將頁尾面板推至最底部 */
     flex-grow: 1;
 }
 
 /* 單一商品項目樣式 */
 .cart-item {
+    /* 啟用彈性盒佈局模型 */
     display: flex;
+    /* 設定子元件在主軸（水平方向）上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定子元件在交叉軸（垂直方向）上居中對齊 */
     align-items: center;
+    /* 設定內部子控制項之間的橫向間距為 1rem */
     gap: 1rem;
+    /* 設定項目與下方下一個商品之間的下外邊距為 1.2rem */
     margin-bottom: 1.2rem;
+    /* 在商品項目底部加上 1px 的實線極淺灰色水平分隔線 */
     border-bottom: 1px solid #eee;
+    /* 設定商品項目底部的內部留白邊距為 1.2rem */
     padding-bottom: 1.2rem;
 }
 
 /* 商品名稱 */
 .cart-item-details h4 {
+    /* 設定商品名稱的字型大小為 1rem */
     font-size: 1rem;
+    /* 設定名稱與下方規格文字之間的垂直外邊距為 0.2rem */
     margin-bottom: 0.2rem;
 }
 
 /* 商品規格文字 (如顏色、尺寸) */
 .cart-item-meta {
+    /* 設定顏色與尺寸等備註文字字型大小為 0.8rem */
     font-size: 0.8rem;
+    /* 設定文字顏色為柔和灰色 */
     color: #777;
+    /* 設定規格文字與下方數量控制區之間的下外邊距為 0.3rem */
     margin-bottom: 0.3rem;
 }
 
 /* 數量控制區 */
 .cart-item-qty {
+    /* 啟用彈性盒佈局模型 */
     display: flex;
+    /* 設定加減按鈕與數量數字在垂直方向上置中對齊 */
     align-items: center;
+    /* 設定加減按鈕與中間數字之間的橫向間距為 0.5rem */
     gap: 0.5rem;
 }
 
 /* 增減數量按鈕 */
 .qty-btn {
+    /* 設定按鈕背景顏色為淺灰色 */
     background-color: #ddd;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 設定按鈕內部的邊距：上下 2px，左右 8px */
     padding: 2px 8px;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 將加減號文字加粗顯示 */
     font-weight: bold;
+    /* 設定按鈕四周的微小圓角為 4px */
     border-radius: 4px;
 }
 
 /* 購物車底部 (包含總價與結帳按鈕) */
 .cart-footer {
+    /* 設定底部結算面板內部的四周內邊距為 1.5rem */
     padding: 1.5rem;
+    /* 在計費面板上方加上 1px 的實線極淺灰色水平分隔線，與商品列表區隔開 */
     border-top: 1px solid #eee;
+    /* 設定計費面板的背景底色為淡灰色 */
     background-color: #f4f4f4;
 }
 
 /* 總價行 */
 .cart-total-line {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定子元件（如：小計、運費、優惠文字與對應金額）在主軸上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定計費明細文字的字型大小為 0.95rem */
     font-size: 0.95rem;
+    /* 設定每一行計費項目之間的垂直下外邊距為 0.4rem */
     margin-bottom: 0.4rem;
 }
 
 /* 最終金額顯示 (加粗與變色) */
 .cart-total-final {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定子元件（總計文字與最終實付金額數字）在主軸上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 將最終結算金額與文字的字型大小放大至 1.3rem */
     font-size: 1.3rem;
+    /* 將字體粗細設定為粗體 */
     font-weight: bold;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
+    /* 設定總計行與上方優惠明細之間的上外邊距為 0.5rem */
     margin-top: 0.5rem;
+    /* 在總計行上方加上 1px 的實線灰色水平分隔線 */
     border-top: 1px solid #ddd;
+    /* 設定總計行內部的上方內邊距為 0.5rem，為分隔線留出通透空間 */
     padding-top: 0.5rem;
 }
 
 /* 結帳按鈕 */
 .checkout-btn {
+    /* 設定按鈕寬度為 100% 水平撐滿底部面板 */
     width: 100%;
+    /* 按鈕背景顏色套用全域變數定義的品牌主色調（亮橘色） */
     background-color: var(--primary-color);
+    /* 設定按鈕文字顏色為純白色 */
     color: white;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 設定按鈕垂直內邊距為 0.9rem */
     padding: 0.9rem;
+    /* 設定按鈕文字字型大小為 1rem */
     font-size: 1rem;
+    /* 將按鈕文字加粗顯示 */
     font-weight: bold;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 設定按鈕四周的圓角為 5px */
     border-radius: 5px;
+    /* 設定按鈕與上方總計行之間的垂直上外邊距為 1rem */
     margin-top: 1rem;
+    /* 針對背景顏色 (background-color) 的更變設定 0.3 秒的平滑動畫過渡時間 */
     transition: background-color 0.3s;
 }
 
 /* 清空購物車按鈕 */
 .clear-cart-btn {
+    /* 設定按鈕寬度為 100% 水平撐滿底部面板 */
     width: 100%;
+    /* 按鈕背景顏色套用全域變數定義的品牌主色調（亮橘色） */
     background-color: var(--primary-color);
+    /* 設定按鈕文字顏色為純白色 */
     color: #fff;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 設定按鈕垂直內邊距為 0.9rem */
     padding: 0.9rem;
+    /* 設定按鈕文字字型大小為 1rem */
     font-size: 1rem;
+    /* 將按鈕文字加粗顯示 */
     font-weight: bold;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 設定按鈕四周的圓角為 5px */
     border-radius: 5px;
+    /* 設定按鈕與上方物件之間的垂直上外邊距為 1rem */
     margin-top: 1rem;
+    /* 針對背景顏色 (background-color) 的更變設定 0.3 秒的平滑動畫過渡時間 */
     transition: background-color 0.3s;
 }
 
 /* 懸停效果 */
 .clear-cart-btn:hover,
 .checkout-btn:hover {
+    /* 當滑鼠懸停在前往結帳或清空購物車按鈕上方時，背景顏色平滑切換為深橘紅色 */
     background-color: #e64a19;
 }
 
@@ -784,94 +1014,134 @@ section h2::after {
 ========================= */
 /* 設定結帳頁面主體的背景與最小高度 */
 .checkout-page-body {
+    /* 設定結帳頁面最外層 body 的背景顏色為淺灰色 */
     background-color: #f7f7f7;
+    /* 設定最小高度為瀏覽器視窗高度的 100%，確保底色撐滿全螢幕 */
     min-height: 100vh;
 }
 
 /* 確保結帳頁面內容避開固定導覽列 */
 .checkout-page {
+    /* 設定上方內邊距為 90px，避免頁面頂部內容被固定的導覽列遮擋 */
     padding-top: 90px;
 }
 
 /* 結帳頁面頂部視覺區 (Hero) */
 .checkout-hero {
+    /* 使用 135 度漸層色，從深黑色平滑過渡到碳灰色，營造安全且專業的結帳氛圍 */
     background: linear-gradient(135deg, #1a1a1a, #333);
+    /* 設定主視覺區內的文字顏色為純 think 白色 */
     color: #fff;
+    /* 將視覺區內的所有文字水平居中對齊 */
     text-align: center;
+    /* 設定主視覺區的內邊距：上下各 4rem，左右各 8% 比例寬度 */
     padding: 4rem 8%;
 }
 
 .checkout-hero h1 {
+    /* 設定安全結帳主標題的字型大小為 2.8rem */
     font-size: 2.8rem;
+    /* 設定主標題與下方副標題之間的垂直下外邊距為 0.8rem */
     margin-bottom: 0.8rem;
 }
 
 .checkout-hero p {
+    /* 設定副標題段落的字型大小為 1.05rem */
     font-size: 1.05rem;
+    /* 設定副標題文字顏色為淺灰色 */
     color: #ddd;
 }
 
 /* 結帳內容容器佈局 */
 .checkout-container {
+    /* 設定主結帳內容區區塊的內邊距：上下各 3rem，左右各 8% */
     padding: 3rem 8%;
 }
 
 /* 使用 Grid 佈局分為左右兩欄（表單 vs 訂單摘要） */
 .checkout-grid {
+    /* 啟用網格佈局模型 (CSS Grid) */
     display: grid;
+    /* 定義兩欄比例為 1.5:1，讓左側顧客表單寬度略大於右側訂單摘要 */
     grid-template-columns: 1.5fr 1fr;
+    /* 設定左右兩欄選單之間的橫向間距為 2rem */
     gap: 2rem;
+    /* 設定兩欄子卡片在垂直方向上靠頂部對齊，防止卡片被無故拉長 */
     align-items: start;
 }
 
 /* 結帳內容卡片樣式 */
 .checkout-card {
+    /* 設定結帳白底卡片的背景顏色為純白色 */
     background: #fff;
+    /* 設定卡片四周的圓角為 12px */
     border-radius: 12px;
+    /* 設定卡片內部的四周留白內邊距為 2rem */
     padding: 2rem;
+    /* 套用柔和、大範圍的低權重擴散陰影，營造高質感的立體浮起視覺感 */
     box-shadow: 0 8px 25px rgba(0,0,0,0.06);
 }
 
 .checkout-card h2 {
+    /* 設定卡片區塊標題的字型大小為 1.6rem */
     font-size: 1.6rem;
+    /* 設定區塊標題下方的垂直外邊距為 1rem */
     margin-bottom: 1rem;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
 }
 
 .checkout-item-count {
+    /* 設定商品件數小標籤的文字顏色為中等灰色 */
     color: #666;
+    /* 設定件數標籤下方的垂直外邊距為 1rem */
     margin-bottom: 1rem;
+    /* 設定標籤字型大小為 0.95rem */
     font-size: 0.95rem;
 }
 
 /* 表單欄位行佈局 */
 .form-row {
+    /* 啟用網格佈局模型，用於表單內特定行別的並排控制 */
     display: grid;
+    /* 設定為均分兩欄佈局（例如將姓名與電話並排在同一行） */
     grid-template-columns: 1fr 1fr;
+    /* 設定兩欄輸入框之間的水平欄位間距為 1rem */
     gap: 1rem;
 }
 
 .form-group {
+    /* 設定每個表單輸入群組容器（包含標籤與輸入框）的下外邊距為 1rem */
     margin-bottom: 1rem;
 }
 
 .form-group label {
+    /* 設定表單標籤為區塊元素，強制其獨占一行並將輸入框擠到下一行 */
     display: block;
+    /* 將標籤文字粗細設定為 600（半粗體） */
     font-weight: 600;
+    /* 設定標籤與下方輸入框之間的下外邊距為 0.45rem 留出細緻空隙 */
     margin-bottom: 0.45rem;
+    /* 設定標籤文字顏色為深灰色 */
     color: #444;
 }
-
 /* 表單輸入框、選單與文字區域樣式 */
 .form-group input,
 .form-group textarea,
 .form-group select {
+    /* 設定表單元件寬度為 100% 撐滿父容器 */
     width: 100%;
+    /* 設定欄位內部邊距：上下 0.85rem，左右 0.95rem */
     padding: 0.85rem 0.95rem;
+    /* 設定 1px 寬的實線淺灰色外邊框 */
     border: 1px solid #ccc;
+    /* 設定欄位元件四周的圓角為 8px */
     border-radius: 8px;
+    /* 設定輸入文字的字型大小為 0.95rem */
     font-size: 0.95rem;
+    /* 移除點擊或啟用時瀏覽器自帶的預設外框線 */
     outline: none;
+    /* 針對邊框顏色與發光陰影設定 0.2 秒的快速過渡動畫，讓互動更流暢 */
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -879,120 +1149,179 @@ section h2::after {
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
+    /* 當顧客點擊欄位打字時，邊框顏色變更為品牌主色調（亮橘色） */
     border-color: var(--primary-color);
+    /* 同時在欄位外圍疊加一層柔和的橘色發光光暈陰影圈 */
     box-shadow: 0 0 0 3px rgba(255,87,34,0.12);
 }
 
 /* 付款資訊提示框 */
 .payment-hint-box {
+    /* 設定提示框的背景填色為極淺的橘粉色 */
     background: #fff3f0;
+    /* 設定 1px 寬的實線淡橘色外邊框 */
     border: 1px solid #ffd2c4;
+    /* 設定提示框四周的圓角為 8px */
     border-radius: 8px;
+    /* 設定提示框內部的四周內邊距為 1rem */
     padding: 1rem;
+    /* 設定提示框與下方物件之間的垂直下外邊距為 1rem */
     margin-bottom: 1rem;
 }
 
 .payment-hint-box h3 {
+    /* 提示框小標題顏色套用品牌主色調（亮橘色） */
     color: var(--primary-color);
+    /* 設定小標題與下方描述文字之間的下外邊距為 0.4rem */
     margin-bottom: 0.4rem;
+    /* 設定小標題字型大小為 1rem */
     font-size: 1rem;
 }
 
 .payment-hint-box p {
+    /* 設定描述文字顏色為深灰色 */
     color: #555;
+    /* 設定描述文字字型大小為 0.95rem */
     font-size: 0.95rem;
+    /* 設定行高為 1.5 倍字高，確保多行說明文字清晰易讀 */
     line-height: 1.5;
 }
 
 /* 結帳提交按鈕 */
 .checkout-submit-btn {
+    /* 設定按鈕寬度為 100% 水平撐滿表單 */
     width: 100%;
+    /* 按鈕背景顏色套用品牌主色調（亮橘色） */
     background-color: var(--primary-color);
+    /* 設定按鈕文字顏色為純白色 */
     color: #fff;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 設定按鈕垂直內部邊距為 1rem */
     padding: 1rem;
+    /* 設定按鈕文字字型大小為 1rem */
     font-size: 1rem;
+    /* 將按鈕文字加粗顯示 */
     font-weight: bold;
+    /* 設定按鈕四周的圓角為 8px */
     border-radius: 8px;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 針對背景填色的更改設定 0.3 秒的平滑動畫過渡時間 */
     transition: background-color 0.3s;
+    /* 設定按鈕與上方物件之間的垂直上外邊距為 0.5rem */
     margin-top: 0.5rem;
 }
 
 .checkout-submit-btn:hover {
+    /* 當滑鼠懸停在確認結帳按鈕上時，背景顏色平滑變更為深橘紅色 */
     background-color: #e64a19;
 }
 
 /* 結帳訂單項目清單 */
 .checkout-items {
+    /* 設定訂單商品列表容器與下方計費摘要之間的垂直下外邊距為 1.5rem */
     margin-bottom: 1.5rem;
 }
 
 .checkout-item {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定子元件在主軸（水平方向）上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定商品文字資訊與右側價格之間的橫向間距為 1rem */
     gap: 1rem;
+    /* 設定每個商品項目的垂直內部邊距為上下各 1rem */
     padding: 1rem 0;
+    /* 在商品項目底部加上 1px 的實線極淺灰色水平分隔線 */
     border-bottom: 1px solid #eee;
 }
 
 .checkout-item-info h4 {
+    /* 設定商品名稱的字型大小為 1rem */
     font-size: 1rem;
+    /* 設定名稱與下方規格文字之間的垂直外邊距為 0.25rem */
     margin-bottom: 0.25rem;
+    /* 設定文字顏色為深黑色 */
     color: #222;
 }
 
 .checkout-item-meta {
+    /* 設定規格文字（如顏色、尺寸、數量）的字型大小為 0.85rem */
     font-size: 0.85rem;
+    /* 設定文字顏色為柔和灰色 */
     color: #777;
 }
 
 .checkout-item-price {
+    /* 強制價格文字不換行，防止金額數字斷行破版 */
     white-space: nowrap;
+    /* 將價格數字加粗顯示 */
     font-weight: bold;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
 }
 
 /* 結帳金額摘要區域 */
 .checkout-summary {
+    /* 在計費摘要區域上方加上 1px 的實線灰色水平分隔線 */
     border-top: 1px solid #ddd;
+    /* 設定摘要區域內部的上方留白內邊距為 1rem */
     padding-top: 1rem;
 }
 
 .summary-line,
 .summary-final {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定文字標籤與金額數字在主軸上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定每一行明細之間的垂直下外邊距為 0.7rem */
     margin-bottom: 0.7rem;
 }
 
 /* 總金額樣式 */
 .summary-final {
+    /* 設定總計行與上方明細之間的垂直上外邊距為 1rem */
     margin-top: 1rem;
+    /* 設定總計行內部的上方內邊距為 0.8rem，為分隔線留出舒適空間 */
     padding-top: 0.8rem;
+    /* 在總計行上方加上 1px 的實線灰色水平分隔線 */
     border-top: 1px solid #ddd;
+    /* 將最終總計金額的字型大小放大至 1.25rem */
     font-size: 1.25rem;
+    /* 將字體粗細設定為粗體 */
     font-weight: bold;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
 }
 
 /* 返回購物連結 */
 .back-shopping-link {
+    /* 設定為行內區塊元素，使其能正確套用垂直外邊距與填色排版 */
     display: inline-block;
+    /* 設定連結與上方區塊之間的垂直上外邊距為 1rem */
     margin-top: 1rem;
+    /* 文字顏色套用全域變數定義的品牌主色調（亮橘色） */
     color: var(--primary-color);
+    /* 移除超連結自帶的預設底線效果 */
     text-decoration: none;
+    /* 將連結文字設定為 600（半粗體），提高視覺導引性 */
     font-weight: 600;
 }
 
 .back-shopping-link:hover {
+    /* 當滑鼠懸停在返回繼續購物連結上方時，平滑顯現下底線 */
     text-decoration: underline;
 }
 
 /* 購物車為空時的提示訊息 */
 .empty-checkout {
+    /* 設定提示文字顏色為中等灰色 */
     color: #888;
+    /* 將文字內容在容器內水平置中對齊 */
     text-align: center;
+    /* 設定提示區域的內部邊距：上下各 1rem，左右為 0 */
     padding: 1rem 0;
 }
 
@@ -1001,86 +1330,127 @@ section h2::after {
 ========================= */
 /* 設定感謝頁面的整體佈局：深色背景、垂直水平置中 */
 .thankyou-body {
+    /* 設定主體最小高度為瀏覽器視窗高度的 100%，確保背景色能完全填滿全螢幕 */
     min-height: 100vh;
+    /* 使用 135 度漸層色，從純深黑色平滑過渡到碳灰色，營造沉穩、精緻的頁面底色 */
     background: linear-gradient(135deg, #111, #333);
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定子卡片在主軸（水平方向）上完美居中對齊 */
     justify-content: center;
+    /* 設定子卡片在交叉軸（垂直方向）上完美居中對齊 */
     align-items: center;
+    /* 設定外層四周內部邊距為 2rem，防止在手機小螢幕上卡片直接貼緊視窗邊緣 */
     padding: 2rem;
 }
 
 /* 設定感謝內容的容器寬度 */
 .thankyou-wrapper {
+    /* 設定寬度為 100% 填滿父容器 */
     width: 100%;
+    /* 限制卡片外包覆容器的最大寬度為 680px，維持版面結構的對稱美感 */
     max-width: 680px;
 }
 
 /* 設定感謝卡片本體樣式（白色背景、圓角、陰影） */
 .thankyou-card {
+    /* 設定感謝卡片主體的背景顏色為純白色 */
     background: #fff;
+    /* 設定卡片四周的圓角半徑為 14px */
     border-radius: 14px;
+    /* 設定卡片內部四周的留白內邊距為 2.5rem，營造大氣通透的視覺感 */
     padding: 2.5rem;
+    /* 將卡片內的所有文字與按鈕進行水平置中對齊 */
     text-align: center;
+    /* 套用中等強度的擴散陰影，使白色卡片在深色漸層背景上平滑浮起，層次更分明 */
     box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 /* 設定感謝標題顏色與字體大小 */
 .thankyou-card h1 {
+    /* 標題文字顏色套用全域變數定義的品牌主色調（亮橘色） */
     color: var(--primary-color);
+    /* 設定主標題與下方描述文字之間的垂直下外邊距為 0.8rem */
     margin-bottom: 0.8rem;
+    /* 將感謝主標題的字型大小放大至 2.2rem，提升視覺焦點 */
     font-size: 2.2rem;
 }
 
 /* 設定說明文字樣式 */
 .thankyou-card p {
+    /* 設定內文段落的文字顏色為柔和的深灰色 */
     color: #555;
+    /* 設定段落與下方物件之間的下外邊距為 1rem */
     margin-bottom: 1rem;
 }
 
 /* 設定訂單資訊區塊樣式 */
 .thankyou-order-info {
+    /* 設定訂單明細底座的背景色為非常淡的灰色 */
     background: #f8f8f8;
+    /* 設定資訊區塊四周的圓角為 10px */
     border-radius: 10px;
+    /* 設定資訊區塊內部的四周內邊距為 1.2rem */
     padding: 1.2rem;
+    /* 設定上下外邊距為 1.5rem，左右為 0，與上下方文字拉開舒適的間隔 */
     margin: 1.5rem 0;
+    /* 覆蓋掉父層的置中樣式，強制將訂單明細文字調整為靠左對齊，便於顧客核對條目 */
     text-align: left;
 }
 
 /* 訂單資訊小標題 */
 .thankyou-order-info h3 {
+    /* 設定明細小標題下方的垂直外邊距為 0.8rem */
     margin-bottom: 0.8rem;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
 }
 
 /* 訂單明細行樣式 */
 .thankyou-line {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定文字標籤與金額/單號數字在主軸上兩端對齊分散排列 */
     justify-content: space-between;
+    /* 設定每一行明細項目之間的垂直下外邊距為 0.6rem */
     margin-bottom: 0.6rem;
+    /* 設定明細文字的字型大小為 0.95rem */
     font-size: 0.95rem;
 }
 
 /* 自動跳轉提示文字 */
 .redirect-text {
+    /* 設定倒數計時跳轉文字的字型大小為 0.95rem */
     font-size: 0.95rem;
+    /* 設定文字顏色為中等灰色 */
     color: #777;
 }
 
 /* 返回首頁按鈕 */
 .thankyou-btn {
+    /* 設定為行內區塊元素，以便能正確套用垂直與水平的內外邊距樣式 */
     display: inline-block;
+    /* 設定按鈕與上方跳轉提示文字之間的垂直上外邊距為 1rem */
     margin-top: 1rem;
+    /* 按鈕主要背景顏色套用品牌主色調（亮橘色） */
     background: var(--primary-color);
+    /* 設定按鈕內部的文字顏色為純白色 */
     color: #fff;
+    /* 移除超連結自帶的預設下底線 */
     text-decoration: none;
+    /* 設定按鈕內部留白邊距：上下 0.9rem，左右 1.6rem */
     padding: 0.9rem 1.6rem;
+    /* 設定按鈕四周的圓角半徑為 8px */
     border-radius: 8px;
+    /* 將按鈕內部的文字加粗顯示 */
     font-weight: bold;
+    /* 針對滑鼠移入時的背景色更變設定 0.3 秒的平滑動畫過渡時間 */
     transition: background-color 0.3s;
 }
 
 /* 按鈕懸停效果 */
 .thankyou-btn:hover {
+    /* 當滑鼠懸停在返回首頁按鈕上方時，背景填色平滑變更為深橘紅色 */
     background: #e64a19;
 }
 /* =========================
@@ -1089,10 +1459,12 @@ section h2::after {
 /* 設定頁尾 (footer) 的外觀與排版 */
 footer {
     /* 使用深色變數作為背景 */
+    /* 將網頁最底部的頁尾背景顏色，設定為全域變數所定義的深色主題色 */
     background-color: var(--dark-color);
     /* 文字顏色設為淺灰色，與背景形成柔和對比 */
-    color: #bbb;
+    color: #bbb; /* 使用淺灰色，與背景形成柔和對比 */
     /* 設定內距：上下各 3rem 與 1rem，左右為 5% */
+    /* 設定頁尾內部的留白邊距：上方 3rem、左右各 5% 的比例寬度、下方 1rem（保留給版權宣告空間） */
     padding: 3rem 5% 1rem;
     /* 文字置中 */
     text-align: center;
@@ -1102,185 +1474,262 @@ footer {
    響應式
 ========================= */
 /* 設定平板與手機端的響應式佈局 (寬度 768px 以下) */
+/* RWD 響應式設計：針對行動裝置（視窗寬度小於或等於 768px） */
 @media (max-width: 768px) {
 
     .product-grid {
+        /* 在行動端將原本的商品兩欄佈局強制降級為垂直單欄排列，避免擠壓破版 */
         grid-template-columns: 1fr;
     }
 
     /* 縮小頁首的左右邊距 */
     header {
+        /* 將手機端頁首導覽列的內部留白，調整為上下 1rem、左右縮緊至 4% 的比例寬度 */
         padding: 1rem 4%;
     }
 
     /* 縮小導覽列項目的間距 */
     header nav {
+        /* 將手機端導覽列內部所有按鈕與連結之間的橫向間距，微縮至 0.5rem */
         gap: 0.5rem;
     }
 
     /* 調整導覽連結的間距與字體大小 */
     nav a {
+        /* 將每個導覽超連結的左側外邊距縮減至 1rem */
         margin-left: 1rem;
+        /* 將手機端選單文字的字型大小微調至 0.9rem，維持版面精緻度 */
         font-size: 0.9rem;
     }
 
     /* 優化 Hero 區塊：加入背景圖片、疊加層與縮放動畫 */
     .hero {
+        /* 引入半透明黑色線性漸層作為半透明遮罩層，並將背景圖片設定為居中、滿版且不重複 */
         background:
             linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
             url("hero-bg.jpg") center center / cover no-repeat;
+        /* 套用全域定義的 heroZoom 背景縮放動畫，以 12 秒為週期，進行均速淡入淡出的無限循環往復播放 */
         animation: heroZoom 12s ease-in-out infinite alternate;
+        /* 將行動端主視覺的高度固定為瀏覽器視窗高度的 75% (75vh) */
         height: 75vh;
+        /* 啟用彈性盒佈局模型 */
         display: flex;
+        /* 設定內部的子元件依據垂直方向（由上至下）進行數列排列 */
         flex-direction: column;
+        /* 設定子元件在主軸（垂直方向）上完美居中對齊 */
         justify-content: center;
+        /* 設定子元件在交叉軸（水平方向）上完美居中對齊 */
         align-items: center;
+        /* 將主視覺區內的所有文字與按鈕進行水平置中對齊 */
         text-align: center;
+        /* 設定文字主色調為純白色 */
         color: #fff;
+        /* 設定左右兩側內邊距各為 1rem，防止長段落文字直接貼緊手機邊緣 */
         padding: 0 1rem;
+        /* 上方外邊距設為 60px，精準保留高度以騰出給頂部固定導覽列空間 */
         margin-top: 60px;
     }
 
     /* 縮小 Hero 標題文字大小 */
     .hero h1 {
+        /* 將手機端滿版視覺的大標題字型大小微縮至 2.3rem */
         font-size: 2.3rem;
     }
 
     /* 縮小 Hero 段落文字大小 */
     .hero p {
+        /* 將手機端滿版視覺的描述副標題字型大小微縮至 1.05rem */
         font-size: 1.05rem;
     }
 
     /* 關於我們區塊改為單欄排列 */
     .about-container {
+        /* 將關於我們區域的雙欄佈局強制更改為垂直單欄上下排列 */
         flex-direction: column;
+        /* 設定文字與形象相片卡片之間的垂直間距為 2rem */
         gap: 2rem;
     }
 
     /* 調整各內容區塊的內距 */
     section {
+        /* 將全站所有獨立 section 區塊的內邊距調整為：上下各 4rem，左右縮減至 5% 的比例寬度 */
         padding: 4rem 5%;
     }
 
     /* 購物車側邊欄改為全螢幕寬度 */
     .cart-drawer {
+        /* 將手機端購物車側邊抽屜的寬度強制放大至 100% 填滿全螢幕 */
         width: 100%;
+        /* 初始隱藏狀態位置改為向右移出整個螢幕寬度的外圍 (-100%) */
         right: -100%;
     }
 
     /* 結帳頁面網格改為單欄排列 */
     .checkout-grid {
+        /* 在行動端將結帳頁面的雙欄網格拆解為垂直單欄排列（表單推至上方，摘要被推至下方） */
         grid-template-columns: 1fr;
     }
 
     /* 結帳表單行改為單欄排列 */
     .form-row {
+        /* 將表單內原先並排的欄位（如姓名與電話）強制拆解為各自獨立獨占一行，方便手機打字點擊 */
         grid-template-columns: 1fr;
     }
 
     /* 調整結帳容器內距 */
     .checkout-container {
+        /* 將手機端結帳內容主容器的內邊距微調為：上下各 2rem，左右各 5% 比例寬度 */
         padding: 2rem 5%;
     }
 
     /* 縮小結帳頁標題文字 */
     .checkout-hero h1 {
+        /* 將手機端安全結帳主標題的字型大小微縮至 2rem */
         font-size: 2rem;
     }
 }
     /* =========================
     Promo Code（優惠碼）
     =========================*/
-    .promo-box {
+.promo-box {
+        /* 設定優惠碼區塊的上下外邊距為 12px，左右為 0 */
         margin: 12px 0;
+        /* 啟用彈性盒佈局模型 (Flexbox) */
         display: flex;
+        /* 設定輸入框與套用按鈕之間的橫向間距為 8px */
         gap: 8px;
+        /* 設定子控制項在垂直方向上居中對齊 */
         align-items: center;
     }
 
     .promo-input {
+        /* 設定彈性增長係數為 1，讓輸入框自動填滿橫向剩餘的所有空間 */
         flex: 1;
+        /* 設定輸入框內部的邊距：上下 0.6rem，左右 0.75rem */
         padding: 0.6rem 0.75rem;
+        /* 設定 1px 實線的淺灰色外邊框 */
         border: 1px solid #ccc;
+        /* 設定輸入框四周的圓角為 6px */
         border-radius: 6px;
+        /* 設定輸入字型大小為 0.9rem */
         font-size: 0.9rem;
+        /* 針對邊框顏色與光暈陰影設定 0.2 秒的平滑動畫過渡時間 */
         transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .promo-input:focus {
+        /* 當顧客點擊欄位輸入優惠碼時，邊框顏色變更為品牌主色調（亮橘色） */
         border-color: var(--primary-color);
+        /* 同時在輸入框外圍擴散疊加一層柔和的橘色發光光暈陰影圈 */
         box-shadow: 0 0 0 3px rgba(255,87,34,0.15);
+        /* 移除瀏覽器預設的聚焦外框線樣式 */
         outline: none;
     }
 
     .promo-btn {
+        /* 設定套用按鈕的內部邊距：上下 0.6rem，左右 1rem */
         padding: 0.6rem 1rem;
+        /* 移除按鈕自帶的預設外框線 */
         border: none;
+        /* 按鈕背景顏色套用全域變數定義的品牌主色調（亮橘色） */
         background-color: var(--primary-color);
+        /* 設定按鈕文字顏色為純白色 */
         color: white;
+        /* 設定按鈕四周的圓角為 6px */
         border-radius: 6px;
+        /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
         cursor: pointer;
+        /* 將按鈕內部的文字字體粗細設定為 600（半粗體） */
         font-weight: 600;
+        /* 針對背景變色設定 0.3 秒的平滑動畫過渡時間 */
         transition: background-color 0.3s;
     }
 
     .promo-btn:hover {
+        /* 當滑鼠懸停在套用按鈕上方時，背景顏色平滑切換為深橘紅色 */
         background-color: #e64a19;
     }
 
     .promo-message {
+        /* 設定提示文字與上方輸入框之間的垂直外邊距為 5px */
         margin-top: 5px;
+        /* 設定狀態文字的字型大小為 0.85rem */
         font-size: 0.85rem;
     }
 
     .promo-success {
+        /* 當優惠碼驗證成功時，將提示文字顏色切換為綠色 */
         color: green;
     }
 
     .promo-error {
+        /* 當優惠碼失效或錯誤時，將提示文字顏色切換為紅色 */
         color: red;
     }
 
     .variant-selector {
+    /* 設定商品規格選擇器區塊的下方外邊距為 1rem */
     margin-bottom: 1rem;
 }
 
 .variant-title {
+    /* 設定規格名稱（如：選擇尺碼）的字型大小為 0.85rem */
     font-size: 0.85rem;
+    /* 將規格名稱文字加粗顯示 */
     font-weight: bold;
+    /* 設定文字顏色為中等灰色 */
     color: #666;
+    /* 設定規格名稱與下方按鈕群組之間的垂直下外邊距為 0.35rem */
     margin-bottom: 0.35rem;
 }
 
 .option-group {
+    /* 啟用彈性盒佈局模型 (Flexbox) */
     display: flex;
+    /* 設定各個規格按鈕之間的間距為 0.5rem */
     gap: 0.5rem;
+    /* 啟用自動換行屬性，確保尺碼按鈕過多時在手機端能自動向下排列而不溢出 */
     flex-wrap: wrap;
 }
 
 .option-btn {
+    /* 設定規格按鈕背景顏色為純白色 */
     background-color: #fff;
+    /* 設定 1px 的實線淺灰色外邊框 */
     border: 1px solid #ccc;
+    /* 設定按鈕內部留白邊距：上下 4px，左右 10px */
     padding: 4px 10px;
+    /* 設定按鈕內部字型大小為 0.85rem */
     font-size: 0.85rem;
+    /* 設定按鈕四周的微小圓角為 4px */
     border-radius: 4px;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 針對所有屬性變更（如選中狀態切換）設定 0.2 秒的平滑過渡時間 */
     transition: all 0.2s;
 }
 
 .option-btn.selected {
+    /* 當按鈕被選中時，邊框顏色動態切換為品牌主色調（亮橘色） */
     border-color: var(--primary-color);
+    /* 文字顏色同步變更為品牌主色調 */
     color: var(--primary-color);
+    /* 背景填色變更為非常淡的溫和橘粉色背景 */
     background-color: #fff3f0;
+    /* 將選中的按鈕文字強制加粗顯示 */
     font-weight: bold;
 }
 
     /* 定義 Hero 圖片背景縮放動畫 */
     @keyframes heroZoom {
+        /* 動畫初始狀態 */
         0% {
+            /* 背景圖片尺寸維持 100% 原始大小 */
             background-size: 100%;
         }
+        /* 動畫結束與回彈狀態 */
         100% {
+            /* 背景圖片平滑放大至 108% 大小，營造高質感的慢動作推進視覺感 */
             background-size: 108%;
         }
     }
@@ -1290,45 +1739,76 @@ footer {
    Image Lightbox 圖片放大
 ========================= */
 
+/* 設定產品圖片游標樣式 */
 .product-img {
+    /* 當滑鼠懸停在商品圖片上方時，游標圖示切換為「放大鏡 (zoom-in)」，提示用戶點擊可查看大圖 */
     cursor: zoom-in;
 }
 
+/* 圖片放大彈窗燈箱（滿版深色半透明背景） */
 .image-lightbox {
+    /* 預設完全隱藏，不佔據任何網頁空間 */
     display: none;
+    /* 設定為固定定位，使其相對於瀏覽器視窗，即使滾動網頁也始終維持置頂滿版 */
     position: fixed;
+    /* 設定極高階層的堆疊順序，確保圖片燈箱與遮罩能完美覆蓋在全站所有元件與一般彈窗之上 */
     z-index: 2005;
+    /* 設定四周邊距座標皆為 0（等同於 top:0; left:0; width:100%; height:100%;），將容器完美撐滿全螢幕 */
     inset: 0;
+    /* 使用帶有 0.88 高飽和度半透明的黑色作為背景填色，將後方網頁完全變暗以聚焦圖片 */
     background: rgba(0, 0, 0, 0.88);
+    /* 使用 Flexbox 彈性盒佈局，以便內部的商品大圖能在全螢幕中完美垂直水平置中對齊 */
     justify-content: center;
     align-items: center;
+    /* 設定容器四周的內部留白邊距為 2rem，防止大圖在手機等小螢幕上直接貼緊視窗邊緣 */
     padding: 2rem;
 }
 
+/* 當加上 show class 時，顯現大圖燈箱 */
 .image-lightbox.show {
+    /* 當被注入 show 類別時，將顯現狀態切換為彈性盒模型 (flex)，使燈箱正式現形並完美置中 */
     display: flex;
 }
 
+/* 燈箱內部的大圖本體樣式 */
 .lightbox-img {
+    /* 限制放大後圖片的最大寬度不超過瀏覽器視窗寬度的 92% (92vw)，避免橫向溢出 */
     max-width: 92vw;
+    /* 限制放大後圖片的最大高度不超過瀏覽器視窗高度的 86% (86vh)，避免縱向溢出 */
     max-height: 86vh;
+    /* 確保大圖片在固定比例內縮放時完整顯示，不剪裁且不拉伸變形 */
     object-fit: contain;
+    /* 設定大圖後方的相框襯底底色為純白色 */
     background: #fff;
+    /* 設定大圖白色外相框四周的圓角為 12px */
     border-radius: 12px;
+    /* 設定大圖白色外相框內部的四周內邊距為 12px，營造精緻白邊框質感 */
     padding: 12px;
+    /* 套用高權重、大範圍的深色擴散陰影，增強大圖懸浮於暗色背景之上的立體聚焦感 */
     box-shadow: 0 12px 35px rgba(0,0,0,0.35);
 }
 
+/* 燈箱右上方關閉按鈕樣式 */
 .lightbox-close {
+    /* 啟用絕對定位，使其脫離常規文件流 */
     position: absolute;
+    /* 定位在全螢幕燈箱內部的頂部 22px 位置 */
     top: 22px;
+    /* 定位在全螢幕燈箱內部的右側 28px 位置 */
     right: 28px;
+    /* 移除按鈕自帶的預設背景填色，使其完全透明 */
     background: transparent;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 將關閉圖標文字（✕）的顏色設定為純白色 */
     color: #fff;
+    /* 將關閉圖標（✕）的字型大小放大至 2rem */
     font-size: 2rem;
+    /* 將關閉圖標文字強制加粗顯示 */
     font-weight: bold;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 設定高於大圖本體的層級堆疊順序，確保關閉按鈕不會被大圖覆蓋遮擋 */
     z-index: 2006;
 }
 /* =========================
@@ -1337,115 +1817,173 @@ footer {
 
 /* 頁面載入淡入 */
 body {
+    /* 為全網頁網格主體套用開場淡入動畫，耗時 0.6 秒，結束後停留在動畫最終狀態 (both) */
     animation: pageFadeIn 0.6s ease both;
 }
 
+/* 定義全網頁開場淡入的關鍵影格動畫 */
 @keyframes pageFadeIn {
+    /* 動畫起始狀態 */
     from {
+        /* 完全透明 */
         opacity: 0;
     }
 
+    /* 動畫結束狀態 */
     to {
+        /* 完全顯現不透明 */
         opacity: 1;
     }
 }
 
 /* Header 由上滑入 */
 header {
+    /* 為頂部固定導覽列套用下滑顯現動畫，耗時 0.7 秒，結束後停留在動畫最終狀態 (both) */
     animation: navSlideDown 0.7s ease both;
 }
 
+/* 定義導覽列由上滑入的關鍵影格動畫 */
 @keyframes navSlideDown {
+    /* 動畫起始狀態 */
     from {
+        /* 初始完全透明 */
         opacity: 0;
+        /* 同時沿垂直 Y 軸往上提 18px，營造從上方滑入的動態感 */
         transform: translateY(-18px);
     }
 
+    /* 動畫結束狀態 */
     to {
+        /* 動畫結束時完全顯現 */
         opacity: 1;
+        /* 垂直座標歸零，回到原始正常的排版位置 */
         transform: translateY(0);
     }
 }
 
 /* Hero 背景：黑橙流動光感 */
 .hero {
+    /* 啟用相對定位，以便內部的虛擬元素進行滿版絕對定位 */
     position: relative;
+    /* 隱藏所有溢出此視覺區域的動態干擾內容（如：斜向掃過的光束） */
     overflow: hidden;
+    /* 疊加多組高階漸層背景：左上橘色放射光感、右下淡橙放射光感、底層黑橙相間的多節點線性漸層 */
     background:
         radial-gradient(circle at 18% 22%, rgba(255, 87, 34, 0.52), transparent 28%),
         radial-gradient(circle at 82% 68%, rgba(255, 138, 80, 0.38), transparent 32%),
         linear-gradient(120deg, #070707, #181818, #ff5722, #111111, #ff8a50, #070707);
+    /* 將各漸層層級的背景畫布大幅放大，以便為後續的背景位置移動動畫預留滑動空間 */
     background-size: 180% 180%, 165% 165%, 460% 460%;
+    /* 套用全域定義的 heroGlowMove 背景極光流動動畫，週期 7 秒，均速且無限往復循環播放 */
     animation: heroGlowMove 7s ease-in-out infinite;
 }
 
 /* 暗色遮罩，令文字更清楚 */
+/* 使用 ::before 虛擬元素建立滿版疊加層 */
 .hero::before {
+    /* 注入空文字內容以啟用虛擬元素 */
     content: "";
+    /* 啟用絕對定位，使其脫離常規文件流 */
     position: absolute;
+    /* 設定四周邊距座標皆為 0，將遮罩完美撐滿整個視覺 Hero 區 */
     inset: 0;
+    /* 疊加一層從上到下由淺變深的半透明黑色漸層，確保上層白字在橘黑流體背景中具備完美的閱讀對比度 */
     background:
         linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42));
+    /* 設定堆疊階層為 0，位於背景之上、文字內容之下 */
     z-index: 0;
 }
 
 /* 運動感斜光掃過 */
+/* 使用 ::after 虛擬元素建立高流暢度的傾斜掃光光束 */
 .hero::after {
+    /* 注入空文字內容以啟用虛擬元素 */
     content: "";
+    /* 啟用絕對定位，使其脫離常規文件流 */
     position: absolute;
+    /* 故意將光束起點定在左上方視窗外围 (-35%)，為掃行動畫做準備 */
     top: -35%;
+    /* 故意將光束起點定在左側視窗外围 (-35%) */
     left: -35%;
+    /* 設定光束的寬度為整個容器寬度的 46% */
     width: 46%;
+    /* 設定光束的高度為整個容器高度的 175%，確保傾斜後仍能縱向貫穿 */
     height: 175%;
+    /* 設定光束的填色為帶有 0.16 透明度的白色線性漸層，兩側往外自然淡出 */
     background: linear-gradient(
         120deg,
         transparent,
         rgba(255, 255, 255, 0.16),
         transparent
     );
+    /* 將垂直矩形光束順時針傾斜 18 度，增強網頁的流暢運動速度感 */
     transform: rotate(18deg);
+    /* 套用名為 heroLightSweep 的光束橫向掃過動畫，週期 4.6 秒，無限循環播放 */
     animation: heroLightSweep 4.6s ease-in-out infinite;
+    /* 設定堆疊階層為 0，位於背景之上、文字內容之下 */
     z-index: 0;
 }
 
+/* 確保文字與按鈕能覆蓋在遮罩與光束之上 */
 .hero h1,
 .hero p,
 .hero .btn {
+    /* 啟用相對定位，使其能正確接收並啟用 z-index 層級變更 */
     position: relative;
+    /* 將文字與按鈕的層級拉高至 1，使其完美浮在 z-index: 0 的遮罩與掃光層上方，保護元件可點擊且不變暗 */
     z-index: 1;
 }
 
+/* 定義黑橙背景極光動態流暢位移的關鍵影格動畫 */
 @keyframes heroGlowMove {
+    /* 動畫初始狀態 */
     0% {
+        /* 移動各組漸層背景的初始平鋪坐標 */
         background-position: 0% 30%, 100% 70%, 0% 50%;
     }
 
+    /* 動畫中段狀態（50% 週期） */
     50% {
+        /* 將放大的背景畫布平滑拖曳位移至反向坐標，營造斑斕色彩慢動作流動的科幻視覺效果 */
         background-position: 75% 45%, 20% 80%, 100% 50%;
     }
 
+    /* 動畫結束並重置狀態 */
     100% {
+        /* 回歸起點坐標，確保與 0% 完美銜接，達成無縫流體滾動的視覺閉環 */
         background-position: 0% 30%, 100% 70%, 0% 50%;
     }
 }
 
+/* 定義運動感傾斜白光從左至右閃爍掃過的關鍵影格動畫 */
 @keyframes heroLightSweep {
+    /* 動畫初始狀態 */
     0% {
+        /* 隱藏在左側視窗外 -45% 的位置 */
         left: -45%;
+        /* 初始設定為完全透明 */
         opacity: 0;
     }
 
+    /* 動畫推進中狀態（20% 週期） */
     20% {
+        /* 當光束剛跨入可視區邊緣時，快速顯現透明度為 1，使白光亮起 */
         opacity: 1;
     }
 
+    /* 動畫完成橫掃狀態（55% 週期） */
     55% {
+        /* 平滑向右橫切橫移，直至完全滑出右側視窗外的 115% 位置，並同時淡出隱藏 */
         left: 115%;
+        /* 恢復完全透明 */
         opacity: 0;
     }
 
+    /* 動畫冷卻暫停狀態（55% 到 100% 週期） */
     100% {
+        /* 讓光束在右側外围保持靜止與透明，形成一個優雅的「視覺冷卻空檔」，再重新回到 0% 播放 */
         left: 115%;
+        /* 保持完全透明 */
         opacity: 0;
     }
 }
@@ -1455,14 +1993,23 @@ header {
 ========================= */
 
 .hero h1 {
+    /* 啟用相對定位，以便內部的前後虛擬元素 (::before, ::after) 能以此標題為基準進行絕對定位 */
     position: relative;
+    /* 設定為行內區塊元素，使背景漸層與寬度精準包裹文字本體，不往外溢出佔滿整行 */
     display: inline-block;
+    /* 使用 CSS clamp 函數設定字型大小自適應：最小 2.8rem、隨螢幕寬度變動的 7.5vw、最大限制在 6rem 內 */
     font-size: clamp(2.8rem, 7.5vw, 6rem);
+    /* 將字體粗細設定為超粗體樣式 (950) */
     font-weight: 950;
+    /* 設定字元與字元之間的橫向間距為 5px */
     letter-spacing: 5px;
+    /* 設定行高為 1.05 倍字高，縮減多行時的垂直間隙 */
     line-height: 1.05;
+    /* 強制將所有字母轉換為大寫 */
     text-transform: uppercase;
+    /* 將文字本身原本的填色設為完全透明，以便顯露出底層遮罩切出來的漸層色彩 */
     color: transparent;
+    /* 設定橫向 90 度的多節點線性漸層背景，融合白、淡橙與品牌核心亮橘色 */
     background: linear-gradient(
         90deg,
         #ffffff,
@@ -1471,18 +2018,25 @@ header {
         #ffffff,
         #ff8a50
     );
+    /* 將背景畫布橫向大幅放大至 320%，為後續的漸層流動動畫預留橫移滑動的空間 */
     background-size: 320% auto;
+    /* 強制將背景圖案剪裁為文字輪廓外觀，此處特別加上舊版 Webkit 核心瀏覽器的前綴兼顧相容性 */
     -webkit-background-clip: text;
+    /* 標準的背景剪裁為文字屬性，此時背景漸層色會完全填入透明的文字主體內 */
     background-clip: text;
+    /* 使用多層次疊加陰影：第一層白色微發光、第二層中度強烈橘光、第三層大範圍淡橘色呼吸光暈 */
     text-shadow:
         0 0 10px rgba(255, 255, 255, 0.25),
         0 0 24px rgba(255, 87, 34, 0.5),
         0 0 55px rgba(255, 87, 34, 0.28);
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 同時套用三組並行軌道的動畫：具備彈性三次貝氏曲線的入場動畫、無間斷漸層流動、柔和垂直飄浮 */
     animation:
         titleEnter 0.95s cubic-bezier(0.2, 0.9, 0.25, 1.2) both,
         titleGradientFlow 3.8s linear infinite,
         titleFloat 3.4s ease-in-out infinite;
+    /* 針對位移、字間距、亮度濾鏡與陰影的切換設定 0.28 秒的平滑過渡時間 */
     transition:
         transform 0.28s ease,
         letter-spacing 0.28s ease,
@@ -1491,44 +2045,69 @@ header {
 }
 
 /* Glitch layer 1 */
+/* 使用 ::before 建立賽博朋克風格的第 1 層數位故障偏色渲染外皮 */
 .hero h1::before {
+    /* 將內容填寫為完全一致的大寫商品名稱文字 */
     content: "NOVA SPORTSWEAR DESIGN";
+    /* 啟用絕對定位，使其脫離文件流 */
     position: absolute;
+    /* 設定四周邊距座標皆為 0，將故障層與原始文字完美重疊疊加 */
     inset: 0;
+    /* 設定故障層的文字填色為橘色，並帶有 0.62 的半透明度 */
     color: rgba(255, 87, 34, 0.62);
+    /* 為偏色層加上一左一右的立體偏位陰影，營造螢幕訊號失真的重影錯位視覺感 */
     text-shadow:
         -2px 0 rgba(255, 87, 34, 0.8),
         2px 0 rgba(255, 255, 255, 0.35);
+    /* 使用 clip-path 遮罩切片屬性，預設只截取上半部：保留上頂端到從上往下 46% 的文字面積（下半部 54% 砍掉隱藏） */
     clip-path: inset(0 0 54% 0);
+    /* 將該層文字向左微移 2px，形成常規狀態下的細微水平錯位錯開 */
     transform: translateX(-2px);
+    /* 預設狀態下透明度為 0 隱藏不顯示，不干擾一般視覺 */
     opacity: 0;
+    /* 阻斷此層的所有游標滑鼠點擊與懸停監聽事件，防止干擾外層 h1 的正常觸發 */
     pointer-events: none;
 }
 
 /* Glitch layer 2 */
+/* 使用 ::after 建立賽博朋克風格的第 2 層數位故障偏色渲染外皮 */
 .hero h1::after {
+    /* 將內容填寫為對應的大寫品牌核心名稱文字 */
     content: "NOVA SPORT DESIGN";
+    /* 啟用絕對定位，使其脫離文件流 */
     position: absolute;
+    /* 設定四周邊距座標皆為 0，將故障層與原始文字完美重疊疊加 */
     inset: 0;
+    /* 設定第二偏色層的文字填色為柔和的半透明白色 */
     color: rgba(255, 255, 255, 0.5);
+    /* 為此層加上右橘左白的水平偏位重影陰影，深化視覺差 */
     text-shadow:
         2px 0 rgba(255, 138, 80, 0.8),
         -2px 0 rgba(255, 255, 255, 0.35);
+    /* 使用 clip-path 遮罩切片屬性，預設只截取下半部：保留從上往下 48% 開始到最底部的文字面積（上半部砍掉隱藏） */
     clip-path: inset(48% 0 0 0);
+    /* 將該層文字向右微移 2px，與第一層偏色層進行反向錯開 */
     transform: translateX(2px);
+    /* 預設狀態下透明度為 0 隱藏不顯示，不干擾一般視覺 */
     opacity: 0;
+    /* 阻斷此層的所有游標滑鼠點擊與懸停監聽事件，防止干擾外層 h1 的正常觸發 */
     pointer-events: none;
 }
 
 /* 指住大標題：放大、震動、glitch */
 .hero h1:hover {
+    /* 當滑鼠懸停時，沿 Y 軸向上平滑微移 9px，同步均等放大 1.055 倍，並逆時針微幅傾斜 1 度，產生極具張力的 3D 立體跳出感 */
     transform: translateY(-9px) scale(1.055) rotate(-1deg);
+    /* 將字元橫向間距平滑放寬展開至 8px，營造酷炫的字體拉伸動態效果 */
     letter-spacing: 8px;
+    /* 透過 CSS 濾鏡將整體亮度拉高 1.25 倍、對比度提高 1.08 倍，營造按鈕通電般的亮眼聚焦感 */
     filter: brightness(1.25) contrast(1.08);
+    /* 大幅加強多層次發光發亮陰影的擴散強度與色彩飽和度，形成強烈的高能霓虹光暈 */
     text-shadow:
         0 0 18px rgba(255, 255, 255, 0.8),
         0 0 34px rgba(255, 87, 34, 0.8),
         0 0 70px rgba(255, 87, 34, 0.45);
+    /* 當滑鼠懸停時，將動畫切換為加快速度的 2.4 秒漸層流動，以及模擬高頻跳動心跳感的 titleHoverPulse 微彈動畫 */
     animation:
         titleGradientFlow 2.4s linear infinite,
         titleHoverPulse 0.75s ease-in-out infinite;
@@ -1536,119 +2115,184 @@ header {
 
 /* 指住時 glitch 層開啟 */
 .hero h1:hover::before {
+    /* 當滑鼠懸停在標題上時，立即將第一偏色層的透明度調至 1 顯現 */
     opacity: 1;
+    /* 套用名為 glitchTop 的故障切片抖動動畫，使用 steps(2) 階段函數，強行阻斷平滑過渡，營造無規律、電子訊號卡頓閃爍的硬核故障視覺 */
     animation: glitchTop 0.55s steps(2, end) infinite;
 }
 
 .hero h1:hover::after {
+    /* 當滑鼠懸停在標題上時，立即將第二偏色層的透明度調至 1 顯現 */
     opacity: 1;
+    /* 套用名為 glitchBottom 的故障切片抖動動畫，週期為略微錯開的 0.58 秒，使用階梯步進函數達成非同步的高頻閃爍 */
     animation: glitchBottom 0.58s steps(2, end) infinite;
 }
 
 /* 大標題入場 */
+/* 定義大標題從螢幕下方往上彈跳入場的關鍵影格動畫 */
 @keyframes titleEnter {
+    /* 動畫初始狀態（0% 週期） */
     0% {
+        /* 入場前完全透明 */
         opacity: 0;
+        /* 垂直向下推 46px 且整體等比例微縮至 0.88 倍 */
         transform: translateY(46px) scale(0.88);
+        /* 為文字套用 8px 的模糊濾鏡，營造由遠及近、從模糊到清晰的景深感 */
         filter: blur(8px);
+        /* 初始字間距寬度拉伸為 12px */
         letter-spacing: 12px;
     }
 
+    /* 動畫衝過頭的衝刺階段（65% 週期） */
     65% {
+        /* 透明度完成顯現 */
         opacity: 1;
+        /* 藉由三次貝氏曲線，故意讓標題往上衝過頭：向上超越原本位置 6px 且稍微放大到 1.03 倍 */
         transform: translateY(-6px) scale(1.03);
+        /* 高速消除模糊濾鏡 */
         filter: blur(0);
     }
 
+    /* 動畫最終回彈校正狀態（100% 週期） */
     100% {
+        /* 維持完全顯現 */
         opacity: 1;
+        /* 垂直座標與大小完美回彈復位，精確停留在原始設計位置 */
         transform: translateY(0) scale(1);
+        /* 確保濾鏡為完全清晰狀態 */
         filter: blur(0);
     }
 }
 
 /* 漸層流動 */
+/* 定義文字內部七彩漸層色無間斷向右橫向滾動的關鍵影格動畫 */
 @keyframes titleGradientFlow {
+    /* 動畫起始狀態 */
     0% {
+        /* 背景漸層橫向位置靠左對齊起點 */
         background-position: 0% center;
     }
 
+    /* 動畫結束狀態 */
     100% {
+        /* 將背景畫布平滑橫移至 320% 的終點位置，形成行雲流水的無限漸層流光特效 */
         background-position: 320% center;
     }
 }
 
 /* 平時輕微浮動 */
+/* 定義標題日常無狀態下平緩規律呼吸起伏的關鍵影格動畫 */
 @keyframes titleFloat {
+    /* 起始位置 */
     0% {
+        /* 座標維持基準線點 */
         transform: translateY(0);
     }
 
+    /* 浮動頂點（50% 週期） */
     50% {
+        /* 平滑沿 Y 軸向上緩慢飄浮 5px，增加網頁整體的靈動與通透感 */
         transform: translateY(-5px);
     }
 
+    /* 回歸基準 */
     100% {
+        /* 再次緩慢滑落回歸起點，達成平滑無感的呼吸閉環 */
         transform: translateY(0);
     }
 }
 
 /* hover 時微彈 */
+/* 定義滑鼠懸停時卡片在高位進行輕微前後高頻搖擺與彈跳反饋的關鍵影格動畫 */
 @keyframes titleHoverPulse {
+    /* 懸停初始起點 */
     0% {
+        /* 維持 hover 觸發時的基礎 3D 偏位坐標 */
         transform: translateY(-9px) scale(1.055) rotate(-1deg);
     }
 
+    /* 彈跳衝刺頂點（50% 週期） */
     50% {
+        /* 沿 Y 軸進一步向極限上衝至 -13px，等比放大到 1.075 倍，並反向順時針傾斜 1 度，形成強烈的脈衝震盪感 */
         transform: translateY(-13px) scale(1.075) rotate(1deg);
     }
 
+    /* 懸停回彈終點 */
     100% {
+        /* 回歸 hover 的基礎偏位坐標，確保高頻往復跳動時沒有死角閃爍 */
         transform: translateY(-9px) scale(1.055) rotate(-1deg);
     }
 }
 
 /* Glitch 上半部 */
+/* 定義 hover 時第一偏色故障切割層進行高頻、無規律、硬邊錯位的關鍵影格動畫 */
 @keyframes glitchTop {
+    /* 故障狀態一 */
     0% {
+        /* 沿 X 軸左移 2px、Y 軸上移 1px 進行無秩序偏位 */
         transform: translate(-2px, -1px);
+        /* 即時改變切片範圍：保留頂端到底部 42% 的面積（下方 58% 強行砍掉隱藏） */
         clip-path: inset(0 0 58% 0);
     }
 
+    /* 故障狀態二（35% 週期） */
     35% {
+        /* 瞬間往右反向平移 4px、往下平移 1px 進行錯位跳動 */
         transform: translate(4px, 1px);
+        /* 即時改變切片範圍：僅擷取文字中央偏上、高度從 8% 到 52% 之間的一橫條文字窄片 */
         clip-path: inset(8% 0 48% 0);
     }
 
+    /* 故障狀態三（70% 週期） */
     70% {
+        /* 瞬間往左大範圍平移 5px，製造劇烈的訊號斷裂橫撕拉感 */
         transform: translate(-5px, 0);
+        /* 即時改變切片範圍：收窄保留頂端到底部 36% 的極窄面積 */
         clip-path: inset(0 0 64% 0);
     }
 
+    /* 故障重置狀態 */
+    /* 動畫完成並準備進入下一個高頻循環的最終狀態（100% 週期） */
     100% {
+        /* 回歸起點偏位坐標與切片範圍，完成一個高頻週期的硬步進跳變 */
+        /* 將偏色層平滑或硬步進回歸到初始的錯位座標，確保動畫循環銜接時不會發生畫面閃爍或突兀斷裂 */
         transform: translate(-2px, -1px);
+        /* 同步將遮罩切片範圍復原到基準線，使其與 0% 的畫面設定完美閉合 */
         clip-path: inset(0 0 58% 0);
     }
+
 }
 
 /* Glitch 下半部 */
+/* 定義 hover 時第二偏色故障切割層進行低位高頻錯位的關鍵影格動畫 */
 @keyframes glitchBottom {
+    /* 故障狀態一 */
     0% {
+        /* 沿 X 軸右移 2px、Y 軸上移 1px 進行初始無秩序偏位 */
         transform: translate(2px, 1px);
+        /* 即時改變切片範圍：保留從上往下 48% 開始到最底部的文字面積（上半部 48% 強行砍掉隱藏） */
         clip-path: inset(48% 0 0 0);
     }
 
+    /* 故障狀態二（35% 週期） */
     35% {
+        /* 瞬間往左大範圍平移 4px、往上平移 1px 進行反向水平扯裂跳動 */
         transform: translate(-4px, -1px);
+        /* 即時改變切片範圍：將切片橫線向下壓，改為僅保留底部 44% 的面積（上方 56% 砍掉隱藏） */
         clip-path: inset(56% 0 0 0);
     }
 
+    /* 故障狀態三（70% 週期） */
     70% {
+        /* 瞬間往右平移 5px，製造高頻的數位訊號失真重影 */
         transform: translate(5px, 0);
+        /* 即時改變切片範圍：將切片橫線往上提，擴大保留底部 58% 的面積（上方 42% 砍掉隱藏） */
         clip-path: inset(42% 0 0 0);
     }
 
+    /* 故障重置狀態 */
     100% {
+        /* 回歸起點偏位坐標與切片範圍，完成一個週期的非同步步進跳變，與 0% 完美閉合 */
         transform: translate(2px, 1px);
         clip-path: inset(48% 0 0 0);
     }
@@ -1656,76 +2300,110 @@ header {
 
 /* Hero 副標題 */
 .hero p {
+    /* 套用副標題入場動畫：總耗時 0.9 秒，並特別設定 0.18 秒的延遲時間 (Delay)，營造與大標題錯開的層次流暢感 */
     animation: heroTextIn 0.9s ease 0.18s both;
+    /* 為副標題加上一層半透明的黑色發光陰影，進一步確保其在多節點流體漸層背景上的文字辨識度 */
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
 }
 
 /* Hero 按鈕 */
 .hero .btn {
+    /* 套用按鈕入場動畫：總耗時 0.9 秒，並設定最長的 0.35 秒延遲時間，達成「標題 -> 副標 -> 按鈕」梯隊式優雅入場 */
     animation: heroButtonIn 0.9s ease 0.35s both;
+    /* 為按鈕加上一層淡淡的品牌橘色擴散立體陰影 */
     box-shadow: 0 8px 22px rgba(255, 87, 34, 0.28);
 }
 
 .hero .btn:hover {
+    /* 當滑鼠懸停在行動呼籲按鈕上時，沿 Y 軸向上滑動 5px，同時等比例平滑放大 1.05 倍，營造極強的點擊引導性 */
     transform: translateY(-5px) scale(1.05);
+    /* 同時大幅度加深並擴大橘色核心陰影的亮度與範疇，產生強烈通電發光感 */
     box-shadow: 0 14px 32px rgba(255, 87, 34, 0.48);
 }
 
+/* 定義 Hero 區副標題文字平滑向上浮現入場的關鍵影格動畫 */
 @keyframes heroTextIn {
+    /* 動畫初始狀態 */
     from {
+        /* 完全透明 */
         opacity: 0;
+        /* 初始座標向下推 24px */
         transform: translateY(24px);
     }
 
+    /* 動畫結束狀態 */
     to {
+        /* 完全顯現 */
         opacity: 1;
+        /* 回歸原本正常的排版位置 */
         transform: translateY(0);
     }
 }
 
+/* 定義 Hero 區行動呼籲按鈕平滑放大兼上浮入場的關鍵影格動畫 */
 @keyframes heroButtonIn {
+    /* 動畫初始狀態 */
     from {
+        /* 完全透明 */
         opacity: 0;
+        /* 初始座標向下推 22px，並微縮至 0.96 倍 */
         transform: translateY(22px) scale(0.96);
     }
 
+    /* 動畫結束狀態 */
     to {
+        /* 完全顯現 */
         opacity: 1;
+        /* 座標回歸正常，大小回復 100% 滿版比例 */
         transform: translateY(0) scale(1);
     }
 }
 
 /* Scroll reveal 初始狀態 */
+/* 全站設定滾動動態顯現元件的初始隱藏狀態類別 */
 .reveal {
+    /* 預設完全透明 */
     opacity: 0;
+    /* 預設向下位移 34px，埋下上浮動畫的伏筆 */
     transform: translateY(34px);
+    /* 針對透明度與位移屬性，設定 0.75 秒的慢動作平滑過渡時間 */
     transition: opacity 0.75s ease, transform 0.75s ease;
 }
 
 /* Scroll reveal 顯示狀態 */
+/* 當顧客向下滾動網頁，JS 偵測到元件進入視窗並動態注入 show 類別時的樣式 */
 .reveal.show {
+    /* 平滑顯現為完全不透明 */
     opacity: 1;
+    /* 垂直座標歸零，順暢地滑動至原始排版位置，營造現代網頁的高級沉浸感 */
     transform: translateY(0);
-}
+} phot
 
 /* 產品卡 hover 動感 */
+/* 覆蓋優化：將產品卡片的過渡時間調整為更細緻、靈敏的 0.35 秒 */
 .product-card {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .product-card:hover {
+    /* 當滑鼠懸停在商品卡片上時，向上平滑位移 8px，並同步微幅等比例放大 1.015 倍，立體感與衝擊力更強 */
     transform: translateY(-8px) scale(1.015);
+    /* 同時將底部的立體擴散陰影加深，加強商品卡片懸浮在頁面之上的 3D 立體視覺反饋 */
     box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
 }
 
 /* 產品圖片 hover 微放大 */
 .product-img {
+    /* 當滑鼠懸停在圖片上方時，游標維持 zoom-in 放大鏡狀態 */
     cursor: zoom-in;
+    /* 針對縮放 (transform) 與亮度濾鏡 (filter) 設定 0.35 秒的平滑過渡時間 */
     transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 .product-img:hover {
+    /* 當滑鼠懸停在商品圖上時，圖片本身在相框內部平滑放大 1.04 倍，產生極具動感的內襯破框視覺效果 */
     transform: scale(1.04);
+    /* 同時微幅拉高圖片亮度 1.03 倍，讓產品細節與服飾材質在視覺上更加鮮明奪目 */
     filter: brightness(1.03);
 }
 
@@ -1738,6 +2416,7 @@ header {
 .promo-btn,
 .filter-btn,
 .option-btn {
+    /* 為全站所有核心按鈕與規格按鈕元件設定統一且靈敏的 0.25 秒動畫過渡時間，涵蓋位移、背景色與立體陰影 */
     transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -1749,65 +2428,90 @@ header {
 .promo-btn:hover,
 .filter-btn:hover,
 .option-btn:hover {
+    /* 當滑鼠懸停在全站任何主要按鈕上方時，平滑沿 Y 軸向上微移 2px，賦予網頁輕盈有彈性的高品質操作手感 */
     transform: translateY(-2px);
 }
 
 /* 尺碼彈窗 / Modal 彈出感 */
 .modal-overlay.open .size-modal {
+    /* 當尺寸對照表或購物規格彈窗被開啟時，為其內襯卡片套用 modalPop 入場動畫，耗時 0.28 秒並停留在最終狀態 (both) */
     animation: modalPop 0.28s ease both;
 }
 
+/* 定義彈窗由小放大兼上浮入場的關鍵影格動畫 */
 @keyframes modalPop {
+    /* 動畫初始狀態 */
     from {
+        /* 初始完全透明 */
         opacity: 0;
+        /* 整體縮小至 0.92 倍，並向下微移 12px，蓄積向外彈出的動能 */
         transform: scale(0.92) translateY(12px);
     }
 
+    /* 動畫結束狀態 */
     to {
+        /* 完全顯現不透明 */
         opacity: 1;
+        /* 縮放比例與垂直座標回歸正常正常的 100% 飽和狀態，營造輕快跳出的 3D 浮現視覺感 */
         transform: scale(1) translateY(0);
     }
 }
 
 /* 圖片放大彈窗動畫 */
 .image-lightbox.show .lightbox-img {
+    /* 當大圖燈箱被開啟顯現時，為內部的高清商品圖片套用 imageZoomIn 入場動畫，耗時 0.25 秒並停留在最終狀態 */
     animation: imageZoomIn 0.25s ease both;
 }
 
+/* 定義大圖燈箱圖片向外放大聚焦入場的關鍵影格動畫 */
 @keyframes imageZoomIn {
+    /* 動畫初始狀態 */
     from {
+        /* 初始完全透明 */
         opacity: 0;
+        /* 整體向內縮小至 0.88 倍，營造從遠處拉近的景深差 */
         transform: scale(0.88);
     }
 
+    /* 動畫結束狀態 */
     to {
+        /* 完全顯現不透明 */
         opacity: 1;
+        /* 恢復 100% 原始滿版大圖比例，使圖片聚焦過程極其順暢自然 */
         transform: scale(1);
     }
 }
 
 /* FAQ 打開更順 */
 .faq-answer {
+    /* 覆蓋優化：將常見問題回答區塊的最大高度 (max-height) 與上方外邊距 (margin-top) 的過渡時間微調為更優雅的 0.35 秒，使折疊選單開闔更為絲滑 */
     transition: max-height 0.35s ease, margin-top 0.35s ease;
 }
 
 /* 手機版 */
+/* RWD 響應式佈局：針對行動裝置（視窗寬度不超過 768px）進行全站核心元件的細緻補強樣式修正 */
 @media (max-width: 768px) {
     .product-grid {
+        /* 在行動端將商品列表網格強制降級為垂直單欄排列，確保衣服圖片與規格不擠壓破型 */
         grid-template-columns: 1fr;
     }
 
     .hero h1 {
+        /* 為適應手機螢幕，將具有賽博朋克 Glitch 特效的主標題字型大小微縮至 2.45rem */
         font-size: 2.45rem;
+        /* 同時將字元之間的橫向間距縮緊至 2px，防止橫向爆版 */
         letter-spacing: 2px;
     }
 
     .hero h1:hover {
+        /* 調整行動端滑鼠指住（或手指點按觸發）時的拉伸字距為 3px */
         letter-spacing: 3px;
+        /* 同時將其上浮位移與放大比例縮減至向上 5px 與 1.025 倍，使其在小螢幕上的動態反饋溫和且不超出邊界 */
         transform: translateY(-5px) scale(1.025);
     }
 
     .hero p {
+        /* 將行動端主視覺區的宣傳副標題內文字型大小微調為 1rem，達到最佳的閱讀清晰度 */
         font-size: 1rem;
     }
 }
@@ -1816,9 +2520,13 @@ header {
 ========================= */
 
 .logo {
+    /* 啟用相對定位，以便內部的虛擬元素 (::after) 能以此 Logo 為基準進行絕對定位 */
     position: relative;
+    /* 設定為行內區塊元素，使背景漸層與寬度精準包裹商標文字本體，不往外溢出佔滿整行 */
     display: inline-block;
+    /* 將文字本身原本的填色設為完全透明，以便顯露出底層遮罩切出來的漸層色彩 */
     color: transparent;
+    /* 設定橫向 90 度的多節點線性漸層背景，融合品牌核心亮橘色、純白色與淡橙色 */
     background: linear-gradient(
         90deg,
         #ff5722,
@@ -1826,17 +2534,25 @@ header {
         #ff8a50,
         #ff5722
     );
+    /* 將背景畫布橫向大幅放大至 260%，為後續的漸層流動動畫預留橫移滑動的空間 */
     background-size: 260% auto;
+    /* 強制將背景圖案剪裁為文字輪廓外觀，此處特別加上舊版 Webkit 核心瀏覽器的前綴兼顧相容性 */
     -webkit-background-clip: text;
+    /* 標準的背景剪裁為文字屬性，此時背景漸層色會完全填入透明的商標文字主體內 */
     background-clip: text;
+    /* 將字體粗細設定為極粗體樣式 (900) */
     font-weight: 900;
+    /* 設定字元與字元之間的橫向間距為 3px */
     letter-spacing: 3px;
+    /* 使用雙層次疊加陰影：第一層中度亮橘色發光、第二層大範圍淡橘色呼吸光暈 */
     text-shadow:
         0 0 8px rgba(255, 87, 34, 0.45),
         0 0 18px rgba(255, 87, 34, 0.25);
+    /* 同時套用兩組並行軌道的動畫：無間斷漸層流動、極輕微垂直飄浮呼吸 */
     animation:
         logoGradientMove 3.2s linear infinite,
         logoSoftFloat 3s ease-in-out infinite;
+    /* 針對位移、字間距、亮度濾鏡與陰影的切換設定 0.28 秒的平滑過渡時間 */
     transition:
         transform 0.28s ease,
         letter-spacing 0.28s ease,
@@ -1845,29 +2561,44 @@ header {
 }
 
 /* Logo 掃光 */
+/* 使用 ::after 建立高亮白光的傾斜掃光光束 */
 .logo::after {
+    /* 注入空文字內容以啟用虛擬元素 */
     content: "";
+    /* 啟用絕對定位，使其脫離常規文件流 */
     position: absolute;
+    /* 貼緊容器頂部開頭 */
     top: 0;
+    /* 故意將光束起點定在左側視窗外围 (-35%)，為掃行動畫做準備 */
     left: -35%;
+    /* 設定光束的寬度為整個 Logo 寬度的 30% */
     width: 30%;
+    /* 高度設定為 100% 撐滿整個 Logo 區域 */
     height: 100%;
+    /* 設定光束的填色為帶有 0.75 高透明度的白色線性漸層，兩側往外自然淡出 */
     background: linear-gradient(
         120deg,
         transparent,
         rgba(255, 255, 255, 0.75),
         transparent
     );
+    /* 將垂直矩形光束橫向傾斜 -20 度，增強網頁的流暢科技感 */
     transform: skewX(-20deg);
+    /* 預設狀態下透明度為 0 隱藏不顯示，不干擾一般視覺 */
     opacity: 0;
+    /* 阻斷此層的所有游標滑鼠點擊與懸停監聽事件，防止干擾外層 logo 連結的正常點擊觸發 */
     pointer-events: none;
 }
 
 /* 指住 Logo 時：郁 + 發光 + 掃光 */
 .logo:hover {
+    /* 當滑鼠懸停時，沿 Y 軸向上平滑微移 3px，同步微幅放大 1.06 倍，產生精緻的立體跳出感 */
     transform: translateY(-3px) scale(1.06);
+    /* 將字元橫向間距平滑放寬展開至 5px，營造酷炫的字體拉伸動態效果 */
     letter-spacing: 5px;
+    /* 透過 CSS 濾鏡將整體亮度拉高 1.25 倍，營造亮眼聚焦感 */
     filter: brightness(1.25);
+    /* 大幅加強多層次發光發亮陰影的擴散強度與色彩飽和度，形成強烈的高能霓虹光暈 */
     text-shadow:
         0 0 10px rgba(255, 255, 255, 0.55),
         0 0 24px rgba(255, 87, 34, 0.75),
@@ -1875,48 +2606,70 @@ header {
 }
 
 .logo:hover::after {
+    /* 當滑鼠懸停在 Logo 上時，觸發一次性的高亮白光單向橫切掃過動畫，總耗時 0.75 秒 */
     animation: logoShineSweep 0.75s ease;
 }
 
 /* Logo 漸層流動 */
+/* 定義文字內部漸層色無間斷向右橫向滾動的關鍵影格動畫 */
 @keyframes logoGradientMove {
+    /* 動畫起始狀態 */
     0% {
+        /* 背景漸層橫向位置靠左對齊起點 */
         background-position: 0% center;
     }
 
+    /* 動畫結束狀態 */
     100% {
+        /* 將背景畫布平滑橫移至 260% 的終點位置，形成無縫漸層流光特效 */
         background-position: 260% center;
     }
 }
 
 /* Logo 平時輕微浮動 */
+/* 定義 Logo 日常無狀態下極其平緩規律呼吸起伏的關鍵影格動畫 */
 @keyframes logoSoftFloat {
+    /* 起始位置 */
     0% {
+        /* 座標維持基準線點 */
         transform: translateY(0);
     }
 
+    /* 浮動頂點（50% 週期） */
     50% {
+        /* 平滑沿 Y 軸向上緩慢飄浮微小的 1.5px，增加導覽列整體的高級沉浸感 */
         transform: translateY(-1.5px);
     }
 
+    /* 回歸基準 */
     100% {
+        /* 再次緩慢滑落回歸起點，達成平滑無感的呼吸閉環 */
         transform: translateY(0);
     }
 }
 
 /* 指住時掃光 */
+/* 定義 hover 時高亮白光束單向橫切掃過 Logo 的關鍵影格動畫 */
 @keyframes logoShineSweep {
+    /* 動畫初始狀態（0% 週期） */
     0% {
+        /* 隱藏在左側外圍 -35% 的位置 */
         left: -35%;
+        /* 初始設定為完全透明 */
         opacity: 0;
     }
 
+    /* 動畫推進中狀態（20% 週期） */
     20% {
+        /* 當光束剛跨入 Logo 邊緣時，快速顯現透明度為 1，使白光亮起 */
         opacity: 1;
     }
 
+    /* 動畫結束與淡出狀態（100% 週期） */
     100% {
+        /* 平滑向右橫切橫移，直至完全滑出 Logo 右側外圍的 115% 位置 */
         left: 115%;
+        /* 恢復完全透明，為下一次滑鼠懸停觸發做準備 */
         opacity: 0;
     }
 }
@@ -1925,19 +2678,33 @@ header {
 ========================= */
 
 .music-toggle-btn {
+    /* 設定為固定定位，使其脫離一般排版文件流，永遠固定在螢幕特定角落，不受網頁捲動影響 */
     position: fixed;
+    /* 貼緊視窗右側邊緣留出 22px 距離 */
     right: 22px;
+    /* 貼緊視窗底部邊緣留出 22px 距離 */
     bottom: 22px;
+    /* 設定極高堆疊層級，確保音樂懸浮按鈕不會被全站一般區塊遮擋（低於大圖燈箱的 2005） */
     z-index: 2500;
+    /* 套用品牌標誌性的橘色系 135 度線性漸層作為按鈕填色 */
     background: linear-gradient(135deg, #ff5722, #ff8a50);
+    /* 設定按鈕內部文字/音符符號顏色為純白色 */
     color: #fff;
+    /* 移除按鈕自帶的預設外框線 */
     border: none;
+    /* 四周圓角設定為 999px，將按鈕化為完美的膠囊型/正圓形外觀 */
     border-radius: 999px;
+    /* 設定按鈕內部留白邊距：上下 0.75rem，左右 1.1rem */
     padding: 0.75rem 1.1rem;
+    /* 將按鈕內部文字設定為特粗體 (800) */
     font-weight: 800;
+    /* 設定字元之間的橫向間距為 1px */
     letter-spacing: 1px;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 套用立體橘色擴散陰影，營造按鈕高光浮出的層次感 */
     box-shadow: 0 10px 26px rgba(255, 87, 34, 0.32);
+    /* 針對位移、陰影與亮度濾鏡設定 0.25 秒的平滑動畫過渡時間 */
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
@@ -1945,25 +2712,36 @@ header {
 }
 
 .music-toggle-btn:hover {
+    /* 當滑鼠懸停時，沿 Y 軸向上滑動 4px，同步微幅放大 1.06 倍，回饋強烈的點擊暗示 */
     transform: translateY(-4px) scale(1.06);
+    /* 同時加深並擴大底部的橘色陰影，加強視覺上的高位懸浮聚焦感 */
     box-shadow: 0 15px 34px rgba(255, 87, 34, 0.5);
+    /* 透過 CSS 濾鏡將整體亮度拉高 1.12 倍，營造按鈕通電通亮的發光感 */
     filter: brightness(1.12);
 }
 
 .music-toggle-btn.playing {
+    /* 當音訊正在播放且被 JS 注入 .playing 類別時，觸發名為 musicPulse 的雷達發光呼吸動畫，週期為 1.35 秒且無限循環 */
     animation: musicPulse 1.35s ease-in-out infinite;
 }
 
+/* 定義音樂播放中按鈕外圍如同漣漪、雷達般擴散光圈的關鍵影格動畫 */
 @keyframes musicPulse {
+    /* 動畫起始狀態 */
     0% {
+        /* 設定橘色發光波紋從按鈕邊緣起跑，初始範圍半徑為 0 */
         box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.45);
     }
 
+    /* 漣漪向外擴散中段（70% 週期） */
     70% {
+        /* 橘色光圈平滑向外擴散至 12px 的大範圍半徑，並同步將透明度降至 0（完全透明隱藏） */
         box-shadow: 0 0 0 12px rgba(255, 87, 34, 0);
     }
 
+    /* 動畫重置收尾 */
     100% {
+        /* 保持外部光圈完全淡出不顯示，完成一個週期的呼吸，準備回到 0% 再次擴散 */
         box-shadow: 0 0 0 0 rgba(255, 87, 34, 0);
     }
 }
@@ -1971,11 +2749,16 @@ header {
    Nav Hover Motion
 ========================= */
 
+/* 導覽項目與購物車圖示按鈕的共用基礎樣式 */
 nav a,
 .cart-icon-btn {
+    /* 啟用行內彈性盒佈局模型，確保文字與內部圖示能在水平線上完美對齊 */
     display: inline-flex;
+    /* 設定子元件在交叉軸（垂直方向）上垂直居中對齊 */
     align-items: center;
+    /* 啟用相對定位，以便內部的虛擬元素能以此元件為基準進行絕對定位 */
     position: relative;
+    /* 針對位移、色彩、發光陰影與亮度濾鏡，設定統一且靈敏的 0.25 秒平滑動畫過渡時間 */
     transition:
         transform 0.25s ease,
         color 0.25s ease,
@@ -1984,57 +2767,85 @@ nav a,
 }
 
 /* 導覽文字底線光效 */
+/* 使用 ::after 虛擬元素在文字下方建立動態光效水平線 */
 nav a::after {
+    /* 注入空文字內容以啟用虛擬元素 */
     content: "";
+    /* 啟用絕對定位，使其脫離常規文件流 */
     position: absolute;
+    /* 將光束起點定在正中央 (50%)，以便後續實現由中間往兩側水平展開的特效 */
     left: 50%;
+    /* 定位在文字下方 -8px 的外圍位置 */
     bottom: -8px;
+    /* 初始狀態寬度為 0（隱藏狀態） */
     width: 0;
+    /* 固定底線的高度為 2px */
     height: 2px;
+    /* 設定橫向 90 度的漸層背景，由品牌核心橘色平滑過渡到淡粉橘色 */
     background: linear-gradient(90deg, #ff5722, #ffb199);
+    /* 將底線四周圓角設定為 999px，營造微型膠囊狀的圓潤線條感 */
     border-radius: 999px;
+    /* 強制將底線向左水平反向平移 50%，配合 left: 50% 達成精確的水平居中點對齊 */
     transform: translateX(-50%);
+    /* 針對寬度 (width) 的更變設定 0.25 秒的平滑動畫過渡時間 */
     transition: width 0.25s ease;
 }
 
 /* 指住導覽文字 */
 nav a:hover {
+    /* 當滑鼠懸停在導覽選單連結上時，文字顏色平滑切換為明亮的亮橙色 */
     color: #ff8a50;
+    /* 同時沿 Y 軸向上滑動 3px，並微幅等比例放大 1.12 倍，產生顯著的跳出聚焦感 */
     transform: translateY(-3px) scale(1.12);
+    /* 疊加雙層橘色霓虹發光陰影，大幅增強導覽文字在深色/流體背景中的視覺張力 */
     text-shadow:
         0 0 8px rgba(255, 87, 34, 0.6),
         0 0 18px rgba(255, 87, 34, 0.35);
 }
 
+/* 指住文字時，底線完全展開 */
 nav a:hover::after {
+    /* 當滑鼠懸停時，底線寬度瞬間拉滿至 100% 寬，呈現由正中央向左右兩側平滑舒展擴散的視覺特效 */
     width: 100%;
 }
 
 /* 購物車按鈕 hover */
 .cart-icon-btn:hover {
+    /* 當滑鼠懸停在購物車按鈕上時，圖示與文字顏色平滑切換為亮橙色 */
     color: #ff8a50;
+    /* 同時沿 Y 軸向上滑動 3px，並等比例平滑放大 1.1 倍 */
     transform: translateY(-3px) scale(1.1);
+    /* 疊加與導覽項目一致的雙層霓虹發光陰影，維持頁首視覺風格的統一 */
     text-shadow:
         0 0 8px rgba(255, 87, 34, 0.6),
         0 0 18px rgba(255, 87, 34, 0.35);
+    /* 透過 CSS 濾鏡將整體亮度拉高 1.15 倍，營造按鈕通電通亮的發光互動反饋 */
     filter: brightness(1.15);
 }
 
 /* 購物車 badge hover 跟住彈 */
 .cart-icon-btn:hover .cart-badge {
+    /* 當滑鼠懸停在購物車上時，內嵌的數量紅點提示泡泡立刻被注入觸發名為 cartBadgePop 的獨立縮放反彈動畫，耗時 0.45 秒 */
     animation: cartBadgePop 0.45s ease;
 }
 
+/* 定義購物車數量小泡泡（Badge）在按鈕被懸停時，產生 Q 彈震盪、跳動反彈反饋的關鍵影格動畫 */
 @keyframes cartBadgePop {
+    /* 動畫起點 */
     0% {
+        /* 維持原本正常的 100% 比例大小 */
         transform: scale(1);
     }
 
+    /* 彈跳擴散頂點（45% 週期） */
     45% {
+        /* 瞬間如氣泡般膨脹放大至 1.35 倍，產生極具趣味性的動態暗示，吸引用戶注意當前商品件數 */
         transform: scale(1.35);
     }
 
+    /* 動畫結束重置 */
     100% {
+        /* 緩慢回彈校正，安全地縮回正常的 100% 比例大小，確保動畫平滑閉環 */
         transform: scale(1);
     }
 }
@@ -2043,16 +2854,27 @@ nav a:hover::after {
    Language Toggle Button
 ========================= */
 
+/* 語言切換按鈕的基礎樣式 */
 .language-toggle-btn {
+    /* 設定按鈕與左側購物車元件之間的橫向外邊距為 1.5rem */
     margin-left: 1.5rem;
+    /* 將按鈕預設背景設為完全透明，透出頁首的背景底色 */
     background: transparent;
+    /* 設定內部語言代碼文字（如：EN）的顏色為純白色 */
     color: #fff;
+    /* 加上 1.5px 寬度的實線半透明白色外邊框線 */
     border: 1.5px solid rgba(255, 255, 255, 0.45);
+    /* 設定四周圓角半徑為 999px，將按鈕塑造成精緻的圓潤膠囊外觀 */
     border-radius: 999px;
+    /* 設定按鈕內部留白邊距：上下 0.35rem，左右 0.8rem */
     padding: 0.35rem 0.8rem;
+    /* 將按鈕文字設定為特粗體 (800) */
     font-weight: 800;
+    /* 設定字元與字元之間的橫向間距為 1px */
     letter-spacing: 1px;
+    /* 當滑鼠移上去時，自動切換為點擊的手指游標 */
     cursor: pointer;
+    /* 針對縮放、色彩、邊框線、發光陰影與背景色設定 0.25 秒統一的平滑過渡時間 */
     transition:
         transform 0.25s ease,
         color 0.25s ease,
@@ -2061,11 +2883,17 @@ nav a:hover::after {
         background-color 0.25s ease;
 }
 
+/* 語言切換按鈕滑鼠懸停互動樣式 */
 .language-toggle-btn:hover {
+    /* 懸停時文字繼續保持為純白色 */
     color: #fff;
+    /* 按鈕背景顏色平滑填滿為品牌主色調（亮橘色） */
     background: var(--primary-color);
+    /* 外框線顏色同步變更為品牌主色調，消除原本的透明白邊框 */
     border-color: var(--primary-color);
+    /* 沿 Y 軸平滑向上微移 3px，同步放大 1.08 倍，營造有彈性的立體浮現反饋 */
     transform: translateY(-3px) scale(1.08);
+    /* 疊加一層飽和度較高的橘色全彩擴散發光陰影，強化聚焦感 */
     box-shadow: 0 0 18px rgba(255, 87, 34, 0.55);
 }
 
@@ -2073,12 +2901,16 @@ nav a:hover::after {
 nav a,
 .cart-icon-btn,
 .language-toggle-btn {
+    /* 強制將頁首所有可點擊連結與按鈕的變形基準點 (Transform Origin) 固定在正中央，確保縮放動畫時元件不往一邊歪斜偏位 */
     transform-origin: center;
 }
 
+/* 導覽文字與購物車按鈕的縮放覆蓋樣式 */
 nav a:hover,
 .cart-icon-btn:hover {
+    /* 當滑鼠懸停時，沿 Y 軸向上平滑微移 3px，同步等比例放大 1.1 倍 */
     transform: translateY(-3px) scale(1.1);
+    /* 疊加雙層橘色霓虹發光陰影，大幅增強導覽列在網頁頂部滾動時的視覺張力 */
     text-shadow:
         0 0 8px rgba(255, 87, 34, 0.6),
         0 0 18px rgba(255, 87, 34, 0.35);
@@ -2088,47 +2920,83 @@ nav a:hover,
    Music Volume Control
 ========================= */
 
+/* 音量控制面板外殼基礎樣式 */
 .music-control-panel {
+    /* 設定為固定定位，使其脫離常規文件流並永遠浮動在視窗特定角落 */
     position: fixed;
+    /* 固定在視窗右側邊緣留出 22px 距離，與下方的音樂按鈕對齊 */
     right: 22px;
+    /* 固定在視窗底部往上 78px 的位置，精確避開下方音樂開關按鈕的高度 */
     bottom: 78px;
+    /* 設定極高堆疊層級，與音樂按鈕一致 (2500)，確保控制面板不被一般區塊遮擋 */
     z-index: 2500;
+    /* 限制控制面板的固定寬度為 190px */
     width: 190px;
+    /* 設定 92% 高飽和半透明度的碳黑色背景，微透出下方的網頁內容 */
     background: rgba(26, 26, 26, 0.92);
+    /* 設定面板內文字與數字顏色為純白色 */
     color: #fff;
+    /* 加上 1px 寬的實線半透明品牌橘色外邊框，增添賽博朋克線條質感 */
     border: 1px solid rgba(255, 87, 34, 0.35);
+    /* 設定面板四周的圓角為 16px */
     border-radius: 16px;
+    /* 設定面板內部的上下內邊距為 0.8rem，左右內邊距為 0.9rem */
     padding: 0.8rem 0.9rem;
+    /* 套用中等強度的深色擴散陰影，增強面板的浮出立體感 */
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+    /* 啟用進階毛玻璃濾鏡，將面板下方的背景自動進行 8px 模糊化處理，大幅提升 UI 質感 */
     backdrop-filter: blur(8px);
 }
 
+/* 面板內部的音量標籤文字 (label) */
 .music-control-panel label {
+    /* 設定為區塊元素，強制標籤文字獨立獨占一行 */
     display: block;
+    /* 設定微縮標籤字型大小為 0.82rem */
     font-size: 0.82rem;
+    /* 將標籤文字字體粗細設定為特粗體 (800) */
     font-weight: 800;
+    /* 設定標籤與下方滑桿控制項之間的垂直下外邊距為 0.45rem */
     margin-bottom: 0.45rem;
+    /* 文字顏色採用高對比度的淡粉橘色，引導用戶視覺聚焦 */
     color: #ffb199;
 }
 
+/* 面板內部的 HTML5 原生音量拖曳滑桿 (input range) */
 .music-control-panel input[type="range"] {
+    /* 設定滑桿橫向寬度為 100% 水平撐滿控制面板 */
     width: 100%;
+    /* 使用 CSS5 特性將滑桿的已填滿進度條與拖曳圓鈕顏色一鍵變更為品牌主色調亮橘色 */
     accent-color: #ff5722;
+    /* 當滑鼠移上去時，自動切換為點擊與拖曳的手指游標 */
     cursor: pointer;
 }
 
+/* 面板內部右下角的百分比數字顯示 (span) */
 .music-control-panel span {
+    /* 設定為區塊元素，方便套用外邊距與對齊屬性 */
     display: block;
+    /* 設定百分比數字與上方滑桿之間的垂直上外邊距為 0.35rem */
     margin-top: 0.35rem;
+    /* 設定數字字型大小為微小的 0.78rem */
     font-size: 0.78rem;
+    /* 強制將百分比數字靠右對齊排列 */
     text-align: right;
+    /* 設定數字文字顏色為柔和的淺灰色 */
     color: #ddd;
 }
+
+/* 當購物車為空時，結帳按鈕的禁用 (Disabled) 狀態樣式 */
 .checkout-btn:disabled {
+    /* 將按鈕不透明度降低至 0.45，呈現明顯的半透明不可用視覺效果 */
     opacity: 0.45;
+    /* 強制將滑鼠游標切換為紅圈斜線的「禁止點擊 (not-allowed)」狀態圖示 */
     cursor: not-allowed;
+    /* 同時疊加 35% 的去色灰階濾鏡，使按鈕色彩變暗淡 */
     filter: grayscale(0.35);
+    /* 使用 !important 強制覆蓋並禁用 hover 時的所有位移變形效果，防止按鈕被無故點起 */
     transform: none !important;
+    /* 使用 !important 強制清除 hover 時的所有發光陰影，使其保持扁平死寂狀態 */
     box-shadow: none !important;
 }
 /* =========================
@@ -2136,11 +3004,17 @@ nav a:hover,
    音量面板預設隱藏，指住音樂按鈕先顯示
 ========================= */
 
+/* 音量控制面板的初始隱藏與動畫準備樣式 */
 .music-control-panel {
+    /* 預設將面板的不透明度設為 0（完全透明隱藏） */
     opacity: 0;
+    /* 配合不透明度，同時將可見性設為隱藏，確保螢幕閱讀器與鍵盤焦點不會誤觸到它 */
     visibility: hidden;
+    /* 阻斷此面板在隱藏狀態下的所有滑鼠游標監聽事件，防止顧客誤觸到隱形的隱藏區塊 */
     pointer-events: none;
+    /* 初始狀態沿 Y 軸向下微移 10px 且等比例微縮至 0.96 倍，為後續的上浮放大入場做準備 */
     transform: translateY(10px) scale(0.96);
+    /* 針對不透明度、可見性與 3D 變形屬性，設定統一且靈敏的 0.25 秒平滑動畫過渡時間 */
     transition:
         opacity 0.25s ease,
         visibility 0.25s ease,
@@ -2148,13 +3022,18 @@ nav a:hover,
 }
 
 /* 指住音樂按鈕時顯示音量面板 */
+/* 運用相鄰兄弟選擇器（+），精確定位緊跟在音樂開關按鈕後方的音量面板，實現滑鼠懸停或聚焦時的連動顯現 */
 .music-toggle-btn:hover + .music-control-panel,
 .music-toggle-btn:focus + .music-control-panel,
 .music-control-panel:hover,
 .music-control-panel:focus-within {
+    /* 當觸發上述任一懸停或聚焦條件時，面板不透明度平滑切換為 1（完全顯現） */
     opacity: 1;
+    /* 將可見性同步變更為 visible，使其在畫面中現形 */
     visibility: visible;
+    /* 重新啟用面板內部的滑鼠游標監聽事件，以便用戶能正常進行點擊與拖曳 */
     pointer-events: auto;
+    /* 垂直座標回歸正常，大小回復 100% 滿版比例，營造從下方平滑上浮且輕微放大的高級 UI 互動反饋 */
     transform: translateY(0) scale(1);
 }
 /* =========================
@@ -2162,450 +3041,684 @@ nav a:hover,
    手機版面優化
 ========================= */
 
+/* RWD 響應式佈局：針對行動裝置（視窗寬度小於或等於 768px）進行大篇幅的介面與導覽優化 */
 @media (max-width: 768px) {
 
     /* ---------- 全局 ---------- */
     html,
     body {
+        /* 強制將網頁與主體寬度錨定為 100% 填滿視窗 */
         width: 100%;
+        /* 隱藏水平方向的滾動條，完美防範因為排版計算誤差產生的橫向溢出、右側白邊與畫面抖動問題 */
         overflow-x: hidden;
     }
 
     body {
+        /* 在網頁主體底部預留 90px 的內邊距，防止底部內容被固定的音樂或購物車按鈕遮擋 */
         padding-bottom: 90px;
     }
 
     section {
+        /* 將行動端所有獨立區塊的內部留白微調為：上下各 3rem、左右各 5% 的比例寬度 */
         padding: 3rem 5%;
     }
 
     section h2 {
+        /* 將各區塊次級大標題的字型大小微縮至 1.8rem */
         font-size: 1.8rem;
+        /* 設定大標題與下方核心內容之間的下外邊距為 2rem */
         margin-bottom: 2rem;
     }
 
     /* ---------- Header / Nav ---------- */
     header {
+        /* 將手機端頁首導覽列的內部留白縮緊為上下 0.75rem、左右各 4% */
         padding: 0.75rem 4%;
+        /* 將原本的橫向排版變更為垂直單欄排列（Logo 在上，選單在下） */
         flex-direction: column;
+        /* 將內部的子元件在交叉軸（水平方向）上強制靠左對齊 */
         align-items: flex-start;
+        /* 設定 Logo 與下方選單之間的垂直排版間距為 0.65rem */
         gap: 0.65rem;
     }
 
     .logo {
+        /* 微縮手機端商標文字的字型大小為 1rem */
         font-size: 1rem;
+        /* 設定字元與字元之間的橫向間距為 1.5px */
         letter-spacing: 1.5px;
+        /* 限制商標最大寬度為 100% 水平撐滿 */
         max-width: 100%;
+        /* 強制商標文字不換行，避免品牌名稱在窄螢幕上斷行破版 */
         white-space: nowrap;
     }
 
     nav {
+        /* 設定選單寬度為 100% 水平撐滿頁首 */
         width: 100%;
+        /* 啟用彈性盒佈局模型 (Flexbox) */
         display: flex;
+        /* 設定導覽連結與購物車按鈕在垂直方向上居中對齊 */
         align-items: center;
+        /* 設定選單項目之間的橫向間距為 0.5rem */
         gap: 0.5rem;
+        /* 關鍵：當選單寬度超出手機螢幕時，自動啟用橫向水平滾動條，營造手勢滑動選單體驗 */
         overflow-x: auto;
+        /* 嚴格隱藏垂直方向的滾動條 */
         overflow-y: hidden;
+        /* 在選單底部留出 0.35rem 的內邊距，為滾動留出細緻空隙 */
         padding-bottom: 0.35rem;
+        /* 隱藏火狐 (Firefox) 瀏覽器的預設橫向滾動條 */
         scrollbar-width: none;
+        /* 啟用 iOS Safari 瀏覽器的硬體加速原生滑動回彈效果，讓橫向划動選單極其絲滑 */
         -webkit-overflow-scrolling: touch;
     }
 
+    /* 隱藏 Chrome、Safari、Edge 等主流 Webkit 核心瀏覽器的網頁原生滾動條結構 */
     nav::-webkit-scrollbar {
+        /* 將滾動條完全隱藏不顯示，維持極簡乾淨的介面視覺 */
         display: none;
     }
 
     nav a {
+        /* 將原本在桌機端設定的左側外邊距歸零，全面交由 gap 屬性控制按鈕間距 */
         margin-left: 0;
+        /* 設定彈性收縮基準：不放大、不縮小、依內容自動決定膠囊按鈕的寬度，確保文字不被擠壓 */
         flex: 0 0 auto;
+        /* 微縮手機端連結文字的字型大小為 0.82rem */
         font-size: 0.82rem;
+        /* 設定膠囊按鈕內部的垂直與水平內邊距：上下 0.35rem，左右 0.55rem */
         padding: 0.35rem 0.55rem;
+        /* 設定四周圓角為 999px，將導覽連結塑造成現代感十足的獨立膠囊形按鈕 */
         border-radius: 999px;
+        /* 設定膠囊背景填色為帶有 0.08 超低不透明度的微弱半透明白色 */
         background: rgba(255, 255, 255, 0.08);
+        /* 強制按鈕文字在一行內完整顯示，防止手機端文字爆開斷行 */
         white-space: nowrap;
     }
 
     nav a::after {
+        /* 行動端完全隱藏桌機版的文字底線光效，改由膠囊底色作為主要視覺主體 */
         display: none;
     }
 
     nav a:hover {
+        /* 行動端取消懸停時的 3D 位移變形效果，防止手機觸控時畫面產生無謂的抖動 */
         transform: none;
+        /* 行動端取消懸停時的發光陰影，優化小螢幕效能 */
         text-shadow: none;
     }
 
     .language-toggle-btn {
+        /* 移除原本在桌機端設定的左側外邊距，交由 gap 統一排版 */
         margin-left: 0;
+        /* 固定膠囊按鈕基準，防止被 Flex 彈性模型無故擠壓壓縮變形 */
         flex: 0 0 auto;
+        /* 設定語言按鈕的內部留白邊距：上下 0.35rem，左右 0.65rem */
         padding: 0.35rem 0.65rem;
+        /* 將手機端多國語言按鈕的文字大小微調至 0.78rem */
         font-size: 0.78rem;
     }
 
+    /* 行動端購物車圖示按鈕樣式修正 */
     .cart-icon-btn {
+        /* 移除原本在桌機端設定的左側外邊距，交由父層的 gap 屬性控制按鈕間距 */
         margin-left: 0;
+        /* 固定按鈕基準，防止被 Flex 彈性盒模型模型擠壓或壓縮變形 */
         flex: 0 0 auto;
+        /* 將手機端購物車按鈕的文字字型大小微調至 0.9rem */
         font-size: 0.9rem;
+        /* 設定膠囊狀按鈕內部的留白邊距：上下 0.35rem，左右 0.55rem */
         padding: 0.35rem 0.55rem;
+        /* 設定四周圓角半徑為 999px，將其塑造成與導覽連結一致的獨立膠囊按鈕 */
         border-radius: 999px;
+        /* 設定按鈕背景填色為帶有 0.18 透明度的品牌主色調亮橘色，形成醒目的提示底色 */
         background: rgba(255, 87, 34, 0.18);
     }
 
+    /* 行動端購物車按鈕懸停互動優化 */
     .cart-icon-btn:hover {
+        /* 行動端取消懸停時的 3D 位移變形效果，防止手機觸控時畫面產生無謂的抖動 */
         transform: none;
+        /* 行動端取消懸停時的發光陰影，提升小螢幕網頁流暢度 */
         text-shadow: none;
     }
 
+    /* 購物車數量提示泡泡（Badge）位置微調 */
     .cart-badge {
+        /* 向上調整定位坐標至 -7px，使紅點提示能完美貼緊膠囊按鈕的邊緣 */
         top: -7px;
+        /* 向右調整定位坐標至 -7px */
         right: -7px;
+        /* 將泡泡內部的數量數字字型大小微縮至 0.65rem */
         font-size: 0.65rem;
+        /* 設定紅點提示泡泡內部的邊距：上下 1px，左右 5px，使其呈現精緻橢圓形 */
         padding: 1px 5px;
     }
 
     /* ---------- Hero ---------- */
+    /* 行動端主視覺區（Hero Section）佈局優化 */
     .hero {
+        /* 將最小高度限制為瀏覽器視窗高度的 78% (78vh)，確保流體漸層背景佔據視覺主體 */
         min-height: 78vh;
+        /* 高度設定為自動，以便完美容納行動端換行後的長標題文字 */
         height: auto;
+        /* 上方外邊距拉高至 112px，精準保留高度以避開手機端雙行重排的固定導覽列 */
         margin-top: 112px;
+        /* 設定視覺區內部邊距：上方 4.5rem、左右各 1rem、下方 3.5rem */
         padding: 4.5rem 1rem 3.5rem;
     }
 
+    /* 行動端主視覺大標題樣式優化 */
     .hero h1 {
+        /* 使用 CSS clamp 函數設定字型大小自適應：最小 2rem、隨螢幕變動的 12vw、最大不超過 3.2rem */
         font-size: clamp(2rem, 12vw, 3.2rem);
+        /* 將字元之間的橫向間距縮緊至 2px，防止橫向爆版 */
         letter-spacing: 2px;
+        /* 設定行高為 1.1 倍字高，縮減換行後的垂直間隙 */
         line-height: 1.1;
+        /* 限制大標題最大寬度為 100% 水平撐滿 */
         max-width: 100%;
+        /* 關鍵：啟用單字斷行屬性，強制超長英文單字（如專利布料名稱）自動換行，防止撐破手機版面 */
         word-break: break-word;
     }
 
+    /* 行動端大標題懸停優化 */
     .hero h1:hover {
+        /* 取消手機端大標題懸停時的 3D 位移變形，保護網頁觸控效能 */
         transform: none;
+        /* 鎖定字元間距為 2px 保持穩定，不觸發拉伸效果 */
         letter-spacing: 2px;
     }
 
+    /* 行動端完全隱藏大標題的賽博朋克 Glitch 數位故障渲染雙虛擬元素層，避免高頻渲染干擾手機效能 */
     .hero h1::before,
     .hero h1::after {
+        /* 隱藏虛擬元素層 */
         display: none;
     }
 
+    /* 行動端主視覺副標題段落優化 */
     .hero p {
+        /* 將描述文字字型大小調整為 0.98rem */
         font-size: 0.98rem;
+        /* 設定行高為 1.75 倍字高，確保行動端多行文字依然清晰好讀 */
         line-height: 1.75;
+        /* 限制段落最大寬度為 92%，為兩側留出舒適的視覺呼吸空間 */
         max-width: 92%;
+        /* 設定副標題段落與下方按鈕之間的垂直下外邊距為 1.5rem */
         margin-bottom: 1.5rem;
     }
 
+    /* 行動端主視覺核心行動呼籲按鈕優化 */
     .hero .btn {
+        /* 加大按鈕內部的垂直與水平內邊距：上下 0.75rem，左右 1.4rem，更方便手指觸控點擊 */
         padding: 0.75rem 1.4rem;
+        /* 將按鈕文字字型大小微調至 0.88rem */
         font-size: 0.88rem;
+        /* 設定四周圓角為 999px，將其塑造成更具現代感的極限圓潤大膠囊形按鈕 */
         border-radius: 999px;
     }
 
     /* ---------- About ---------- */
+    /* 行動端關於我們區塊佈局優化 */
     .about-container {
+        /* 將原本桌機端的雙欄網格拆解為垂直單欄排列 */
         grid-template-columns: 1fr;
+        /* 設定文字卡片與形象照卡片之間的垂直間距為 1.5rem */
         gap: 1.5rem;
     }
 
+    /* 關於我們文字卡片區域 */
     .about-text {
+        /* 設定白底文字卡片內部的四周內邊距為 1.4rem */
         padding: 1.4rem;
+        /* 將文字卡片四周的圓角調整為 18px */
         border-radius: 18px;
     }
 
+    /* 關於我們小標題 */
     .about-text h3 {
+        /* 將故事小標題的字型大小微縮至 1.35rem */
         font-size: 1.35rem;
     }
 
+    /* 關於我們內文段落 */
     .about-text p {
+        /* 將品牌背景介紹的字型大小微調為 0.95rem */
         font-size: 0.95rem;
+        /* 設定行高為 1.75 倍字高，使長段落文字更通透舒適 */
         line-height: 1.75;
     }
 
+    /* 關於我們品牌形象照相框卡片 */
     .about-photo-card {
+        /* 自適應寬度：手機小螢幕上撐滿 100% 寬度，並將最大寬度限制在 330px 內防止圖片過大 */
         width: min(100%, 330px);
+        /* 將照片相框卡片的圓角半徑調整為 18px */
         border-radius: 18px;
+        /* 設定相框卡片內部的四周留白內邊距（拍立得質感邊框）為 10px */
         padding: 10px;
     }
 
+    /* 相框內襯的實體圖片 */
     .about-photo-card img {
+        /* 同步將內部模特兒實體形象照片的四角圓角半徑調整為 14px，使其與外相框協調一致 */
         border-radius: 14px;
     }
 
     /* ---------- Products ---------- */
+    /* 商品類別過濾按鈕列 */
     .filter-container {
+        /* 將分類按鈕之間的水平與垂直排版間距微調縮窄至 0.55rem */
         gap: 0.55rem;
+        /* 設定分類按鈕列與下方商品之間的下外邊距為 1.5rem */
         margin-bottom: 1.5rem;
     }
 
+    /* 商品分類按鈕 */
     .filter-btn {
+        /* 將按鈕文字字型大小縮減至 0.82rem */
         font-size: 0.82rem;
+        /* 調整按鈕內部的邊距：上下 0.45rem，左右 0.9rem，使其結構緊湊不爆版 */
         padding: 0.45rem 0.9rem;
     }
 
+    /* 官方尺寸表觸發連結 */
     .size-guide-trigger {
+        /* 將尺碼指南連結文字字型大小微縮至 0.9rem */
         font-size: 0.9rem;
+        /* 設定連結與下方商品網格之間的下外邊距為 1.4rem */
         margin-bottom: 1.4rem;
     }
 
+    /* 產品卡片列表網格 */
     .product-grid {
+        /* 強制將原本兩欄或多欄的商品網格拆解為垂直單欄排列，確保商品封面與規格大氣展示 */
         grid-template-columns: 1fr;
+        /* 設定商品卡片彼此之間的上下行格垂直間距為 1.25rem */
         gap: 1.25rem;
     }
 
+    /* 商品卡片主體 */
     .product-card {
+        /* 將商品白色外殼卡片四周的圓角半徑微調為 18px */
         border-radius: 18px;
     }
 
+    /* 商品封面圖片 */
     .product-img {
+        /* 限制衣服圖片的最大高度不超過 280px，防止在長螢幕手機上單張圖片佔據過大版面 */
         max-height: 280px;
+        /* 設定圖片四周的白色框留白邊距為 12px */
         padding: 12px;
     }
 
+    /* 商品資訊與購買操作區域 */
     .product-info {
+        /* 將文字與按鈕群組區塊的四周內部邊距收緊至 1.15rem */
         padding: 1.15rem;
     }
 
+    /* 商品主要名稱標題 */
     .product-title {
+        /* 將商品標題名稱的字型大小微縮至 1rem */
         font-size: 1rem;
+        /* 設定多行行高為 1.45 倍字高，確保多行商品品名排版結構緊湊 */
         line-height: 1.45;
     }
 
+    /* 商品特殊狀態與促銷標籤 */
     .product-tag {
+        /* 將分類標籤內文字型大小微調為 0.7rem */
         font-size: 0.7rem;
     }
 
+    /* 加入購物車核心購買按鈕 */
     .buy-btn {
+        /* 加大購買按鈕內部的垂直內邊距為 0.8rem，創造完美的指腹點擊面積 */
         padding: 0.8rem;
+        /* 設定四角圓角為 999px，將其打造成高點擊引導率的圓潤大膠囊形狀 */
         border-radius: 999px;
+        /* 將按鈕文字字體粗細設定為 700（粗體加強），強調行動呼籲 */
         font-weight: 700;
     }
 
     /* ---------- FAQ ---------- */
+    /* 常見問題折疊標題列 */
     .faq-question {
+        /* 將問題文字標題的字型大小微縮至 1rem */
         font-size: 1rem;
+        /* 設定行高為 1.5 倍字高，確保兩行問題文字不擁擠 */
         line-height: 1.5;
     }
 
+    /* 常見問題展開回答區域 */
     .faq-answer p {
+        /* 將詳細回答說明的字型大小微調為 0.92rem */
         font-size: 0.92rem;
+        /* 設定段落行高為 1.65 倍字高，營造極佳的手機端閱讀舒適度 */
         line-height: 1.65;
     }
 
     /* ---------- Modal ---------- */
+    /* 行動端尺寸與規格挑選彈窗主體優化 */
     .size-modal {
+        /* 在手機端預設橫向佔據視窗寬度的 92% 防止溢出 */
         width: 92%;
+        /* 限制手機端彈窗白底卡片的最大寬度不超過 360px，維持視覺精緻度 */
         max-width: 360px;
+        /* 將卡片內部的四周留白內邊距縮緊至 1.5rem */
         padding: 1.5rem;
+        /* 將彈窗卡片四周的圓角微調調整為 18px */
         border-radius: 18px;
     }
 
+    /* 尺寸對照表格儲存格微調 */
     .size-table th,
     .size-table td {
+        /* 緊縮單元格內部的邊距：上下 7px，左右 5px，防止多欄位撐破表格 */
         padding: 7px 5px;
+        /* 將表格文字與尺寸數據的字型大小微微縮至 0.82rem */
         font-size: 0.82rem;
     }
 
+    /* 規格選擇按鈕（如：尺碼按鈕） */
     .option-btn {
+        /* 設定按鈕內部的留白邊距：上下 0.45rem，左右 0.75rem */
         padding: 0.45rem 0.75rem;
+        /* 設定四周圓角為 999px，將其塑造成高質感的圓潤大膠囊形狀 */
         border-radius: 999px;
+        /* 將規格按鈕內部的字型大小微縮至 0.82rem */
         font-size: 0.82rem;
     }
 
     /* ---------- Cart Drawer ---------- */
+    /* 行動端購物車側邊欄抽屜優化 */
     .cart-drawer {
+        /* 將手機端購物車側邊抽屜的寬度強制放大至 100% 填滿全螢幕 */
         width: 100%;
+        /* 初始隱藏狀態位置改為向右移出整個螢幕寬度的外圍 (-100%) */
         right: -100%;
+        /* 鎖定最大寬度為 100% 水平撐滿 */
         max-width: 100%;
     }
 
+    /* 行動端購物車開啟狀態 */
     .cart-drawer.open {
+        /* 將右側座標歸零，使全螢幕購物車抽屜平滑滑入畫面 */
         right: 0;
     }
 
+    /* 購物車頂部控制區 */
     .cart-header {
+        /* 將頭部區域的留白內邊距緊縮為：上下 1rem，左右 1.2rem */
         padding: 1rem 1.2rem;
     }
 
+    /* 購物車動態商品清單容器 */
     .cart-items {
+        /* 將商品列表容器內部的四周內邊距緊縮為 1rem */
         padding: 1rem;
     }
 
+    /* 單一商品項目卡片 */
     .cart-item {
+        /* 設定商品資訊在垂直方向上靠頂部對齊，容納多行文字 */
         align-items: flex-start;
+        /* 設定商品文字資訊與右側價格之間的橫向間距縮緊至 0.75rem */
         gap: 0.75rem;
     }
 
+    /* 商品名稱 */
     .cart-item-details h4 {
+        /* 將商品名稱的字型大小微縮至 0.95rem */
         font-size: 0.95rem;
+        /* 設定多行行高為 1.35 倍字高，縮減換行後的垂直間隙 */
         line-height: 1.35;
     }
 
+    /* 購物車底部計費區 */
     .cart-footer {
+        /* 將底部計費面板內部的四周內邊距緊縮為 1rem */
         padding: 1rem;
     }
 
+    /* 最終實付總計金額顯示 */
     .cart-total-final {
+        /* 將最終結算應付總金額的字型大小微調為 1.1rem */
         font-size: 1.1rem;
     }
 
+    /* 前往結帳與清空購物車按鈕 */
     .checkout-btn,
     .clear-cart-btn {
+        /* 設定按鈕內部的垂直內邊距為 0.85rem，確保指腹有點擊面積 */
         padding: 0.85rem;
+        /* 設定四周圓角為 999px，將其塑造成現代感十足的極限圓潤大膠囊形狀 */
         border-radius: 999px;
+        /* 將按鈕內部的字型大小微微縮至 0.95rem */
         font-size: 0.95rem;
     }
 
     /* ---------- Music Button ---------- */
+    /* 行動端背景音樂按鈕位置微調 */
     .music-toggle-btn {
+        /* 縮減貼緊視窗右側邊緣的距離至 14px */
         right: 14px;
+        /* 縮減貼緊視窗底部邊緣的距離至 14px，防止與手機系統的手勢黑色導航條重疊 */
         bottom: 14px;
+        /* 緊縮膠囊按鈕內部的留白邊距：上下 0.65rem，左右 0.9rem */
         padding: 0.65rem 0.9rem;
+        /* 將按鈕文字與音符圖標字型大小微縮至 0.82rem */
         font-size: 0.82rem;
+        /* 設定極高堆疊層級 (2600)，確保其永遠高於手機版全螢幕購物車抽屜 (1001) */
         z-index: 2600;
     }
 
+    /* 行動端背景音樂音量控制面板 */
     .music-control-panel {
+        /* 縮減貼緊視窗右側邊緣的距離至 12px */
         right: 12px;
+        /* 縮減貼緊視窗底部座標至 66px，精確疊加在微調後的音樂開關按鈕正上方 */
         bottom: 66px;
+        /* 緊縮音量控制面板的寬度為 170px */
         width: 170px;
+        /* 設定面板內部的上下內邊距為 0.7rem，左右內邊距為 0.8rem */
         padding: 0.7rem 0.8rem;
+        /* 將控制面板的圓角半徑調整為 14px */
         border-radius: 14px;
     }
 
     /* 手機版避免 hover 狀態怪怪哋：只係細化位置 */
+    /* 行動端音量標籤文字 (label) */
     .music-control-panel label {
+        /* 將音量標籤的文字大小微調至微小的 0.76rem */
         font-size: 0.76rem;
     }
 
+    /* 行動端右下角百分比數字顯示 (span) */
     .music-control-panel span {
+        /* 將音量百分比數字的字型大小微調至微小的 0.72rem */
         font-size: 0.72rem;
     }
 
     /* ---------- Checkout Page ---------- */
+    /* 行動端獨立結帳頁面優化 */
     .checkout-page {
+        /* 將上方內邊距拉高至 118px，避免內容被手機端雙行重排的固定導覽列遮擋 */
         padding-top: 118px;
     }
 
+    /* 結帳頁面頂部視覺區 (Hero) */
     .checkout-hero {
+        /* 將主視覺區的留白內邊距微調為：上下各 3rem、左右各 5% 比例寬度 */
         padding: 3rem 5%;
     }
 
+    /* 安全結帳主標題 */
     .checkout-hero h1 {
+        /* 將主標題的字型大小縮減至 2rem */
         font-size: 2rem;
     }
 
+    /* 結帳頁描述段落 */
     .checkout-hero p {
+        /* 將描述文字字型大小調整為 0.95rem */
         font-size: 0.95rem;
+        /* 設定行高為 1.65 倍字高，優化行動端的長句閱讀體驗 */
         line-height: 1.65;
     }
 
+    /* 結帳主內容包覆容器 */
     .checkout-container {
+        /* 將內容區塊的內部留白邊距微調為：上下各 2rem、左右各 5% */
         padding: 2rem 5%;
     }
 
+    /* 左右雙欄網格佈局 */
     .checkout-grid {
+        /* 在行動端將結帳頁面的雙欄網格強制拆解為垂直單欄上下排列 */
         grid-template-columns: 1fr;
+        /* 設定上下兩個資訊卡片之間的垂直行格間距縮緊至 1.25rem */
         gap: 1.25rem;
     }
 
+    /* 結帳內容卡片外殼 */
     .checkout-card {
+        /* 將白色外殼卡片內部的四周留白內邊距收緊至 1.35rem */
         padding: 1.35rem;
+        /* 將卡片四周的圓角半徑調整為 18px */
         border-radius: 18px;
     }
 
     .checkout-card h2 {
+        /* 將手機端結帳卡片區塊標題的字型大小微縮至 1.35rem */
         font-size: 1.35rem;
     }
 
     .form-row {
+        /* 將結帳頁面原本並排的表單行強行拆解為垂直單欄上下排列 */
         grid-template-columns: 1fr;
+        /* 將原先橫向的間距歸零，改由各群組的下邊距進行垂直排版控制 */
         gap: 0;
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
+        /* 優化行動端體驗：強制將字型大小拉高到 16px，完美防止 iOS Safari 點擊輸入時視窗被自動無故放大的怪異行為 */
         font-size: 16px;
+        /* 微調輸入控制項內部的留白內邊距：上下 0.8rem，左右 0.9rem */
         padding: 0.85rem 0.9rem;
     }
 
     .promo-box {
+        /* 將優惠碼輸入框與套用按鈕的排列方式，由橫向並排改為垂直單欄上下排列 */
         flex-direction: column;
+        /* 設定子控制項在交叉軸上自動拉伸，填滿整個摘要卡片的寬度 */
         align-items: stretch;
     }
 
     .promo-input,
     .promo-btn {
+        /* 將輸入框與按鈕的橫向寬度強行撐滿 100% */
         width: 100%;
     }
 
     .checkout-item {
+        /* 設定商品資訊在垂直方向上靠頂部對齊，以便優化多項目重疊時的結構 */
         align-items: flex-start;
     }
 
     .summary-final {
+        /* 將結帳摘要最終實付金額的字型大小微縮至 1.1rem */
         font-size: 1.1rem;
     }
 
     /* ---------- Thank You Page ---------- */
+    /* 感謝頁面行動端優化 */
     .thankyou-body {
+        /* 縮小卡片外圍四周的內部留白邊距至 1rem */
         padding: 1rem;
+        /* 設定感謝卡片在垂直交叉軸上靠頂部對齊，防止過度垂直居中導致按鈕跑出視窗 */
         align-items: flex-start;
+        /* 為頂部拉出 4rem 的垂直外邊距空間，避開頂部盲區 */
         padding-top: 4rem;
     }
 
     .thankyou-card {
+        /* 緊縮感謝白色卡片內部的四周內邊距為 1.5rem */
         padding: 1.5rem;
+        /* 將感謝卡片四周的圓角調整為 18px */
         border-radius: 18px;
     }
 
     .thankyou-card h1 {
+        /* 將感謝確認主標題的字型大小微縮至 1.75rem */
         font-size: 1.75rem;
     }
 
     .thankyou-line {
+        /* 將單號與明細行文字字型大小微調為 0.88rem */
         font-size: 0.88rem;
+        /* 設定文字標籤與數字內容之間的橫向間距為 0.8rem */
         gap: 0.8rem;
     }
 }
 
+/* RWD 響應式佈局：專門針對超窄螢幕手機（視窗寬度不超過 420px）的極限邊界配置 */
 @media (max-width: 420px) {
 
     .logo {
+        /* 將極小螢幕下的商標文字字型大小進一步微縮至 0.9rem */
         font-size: 0.9rem;
+        /* 將字元橫向間距收緊為 1px，極力防止商標文字被強行切斷 */
         letter-spacing: 1px;
     }
 
     nav a {
+        /* 將極小螢幕下導覽選單膠囊按鈕的文字大小微縮至 0.76rem */
         font-size: 0.76rem;
+        /* 收緊膠囊按鈕內部的邊距：上下 0.32rem，左右 0.5rem */
         padding: 0.32rem 0.5rem;
     }
 
     .hero {
+        /* 由於導覽列雙行折疊，將主視覺區的上方外邊距加大拉高至 118px 阻斷疊加 */
         margin-top: 118px;
+        /* 將主視覺內部的上方內邊距收緊至 4rem */
         padding-top: 4rem;
     }
 
     .hero h1 {
+        /* 使用 CSS clamp 函數在極小螢幕上設定安全自適應大小：最小限制在 1.85rem 內防止爆開 */
         font-size: clamp(1.85rem, 13vw, 2.75rem);
     }
 
     .hero p {
+        /* 將極小螢幕下的宣傳引導文字大小微調為 0.9rem */
         font-size: 0.9rem;
     }
 
     .product-img {
+        /* 限制極窄螢幕下的商品圖片高度不超過 240px，保持卡片緊湊整齊 */
         max-height: 240px;
     }
 
     .music-toggle-btn {
+        /* 縮緊音樂懸浮按鈕貼緊右側邊緣的距離至 10px */
         right: 10px;
+        /* 縮緊音樂懸浮按鈕貼緊底部邊緣的距離至 10px */
         bottom: 10px;
     }
 
     .music-control-panel {
+        /* 縮緊音量控制面板貼緊右側邊緣的距離至 10px，與按鈕保持對齊 */
         right: 10px;
+        /* 調整面板底部座標至 60px，精確貼緊在微調後的音樂按鈕上方 */
         bottom: 60px;
+        /* 將音量控制面板的橫向寬度緊縮為 155px，防止侵佔畫面 */
         width: 155px;
     }
 }
@@ -2613,86 +3726,134 @@ nav a:hover,
    Size Chart Update
 ========================= */
 
+/* 新增的寬版化官方尺寸表彈窗主體樣式類別 */
 .size-modal-wide {
+    /* 限制寬版對照彈窗的最大寬度不超過 980px，優化電腦端的滿版大表體驗 */
     max-width: 980px;
+    /* 預設橫向佔據瀏覽器視窗寬度的 94% 防止溢出 */
     width: 94%;
+    /* 限制彈窗白底卡片的最大高度不超過視窗高度的 86% (86vh)，防止超出螢幕邊界 */
     max-height: 86vh;
+    /* 當尺寸表內容、備註超出彈窗的最大高度時，內部自動啟用垂直滾動條 */
     overflow-y: auto;
 }
 
+/* 服飾品類分區的副標題樣式類別 */
 .size-section-title {
+    /* 設定分區副標題的上下垂直外邊距：上方 1.2rem，下方 0.6rem，左右為 0 */
     margin: 1.2rem 0 0.6rem;
+    /* 文字顏色套用全域變數定義的深色主題色 */
     color: var(--dark-color);
+    /* 設定副標題文字字型大小為 1rem */
     font-size: 1rem;
+    /* 將副標題文字字體粗細設定為超粗體 (800) */
     font-weight: 800;
 }
 
+/* 橫向滾動溢出包覆容器樣式類別（手機端不破版的防護關鍵） */
 .size-table-scroll {
+    /* 設定滾動容器寬度為 100% 填滿全彈窗 */
     width: 100%;
+    /* 核心：當表格寬度大於手機螢幕時，內部自動啟用橫向水平滾動條，確保數據不被強行擠壓破型 */
     overflow-x: auto;
+    /* 設定滾動容器與下方物件之間的下垂直外邊距為 1rem */
     margin-bottom: 1rem;
+    /* 為滾動容器加上 1px 的實線極淺灰色細框線 */
     border: 1px solid #eee;
+    /* 設定滾動容器外殼的四周圓角半徑為 10px */
     border-radius: 10px;
 }
 
+/* 尺寸數據對照表格 */
 .size-table {
+    /* 強制設定對照表格的最低橫向寬度為 960px，確保多個尺碼（7XS-5XL）有足夠的格子寬度展開，不擠壓變形 */
     min-width: 960px;
+    /* 設定表格橫向寬度為 100% 自適應 */
     width: 100%;
+    /* 設定相鄰儲存格的邊框進行合併，消除雙重邊框線 */
     border-collapse: collapse;
+    /* 設定表格底色為純白色 */
     background: #fff;
 }
 
+/* 表格內所有的表頭欄位與數據單元格共用樣式 */
 .size-table th,
 .size-table td {
+    /* 為所有單元格加上 1px 實線灰色細邊框 */
     border: 1px solid #ddd;
+    /* 設定單元格內部的邊距：上下各 8px，左右各 10px */
     padding: 8px 10px;
+    /* 確保所有尺寸文字與範圍數據皆水平置中對齊 */
     text-align: center;
+    /* 將儲存格字型大小設定為微縮的 0.86rem */
     font-size: 0.86rem;
+    /* 關鍵：強制所有尺寸數字在格子內不換行，確保表格外觀完美整齊 */
     white-space: nowrap;
 }
 
+/* 尺寸表頭專屬樣式 */
 .size-table th {
+    /* 設定表頭橫向列的背景底色為淡灰色 */
     background: #f4f4f4;
+    /* 將表頭尺碼文字強制加粗顯示 (800) */
     font-weight: 800;
 }
 
+/* 進階：表格第一直行（項目欄位名稱，如：胸圍、衣長）完美固定防隱藏特效 */
 .size-table td:first-child,
 .size-table th:first-child {
+    /* 核心特性：開啟黏性定位 (Sticky Positioning) */
     position: sticky;
+    /* 將第一直行牢牢釘死固定在滾動容器的最左側 (0) 位置 */
     left: 0;
+    /* 將堆疊層級提高到 1，確保橫向滾動尺寸數字時，數字會完美滑入此欄後方，而不遮擋名稱 */
     z-index: 1;
+    /* 設定固定欄位的背景填色為淡粉橘色，與右側滾動過來的純白數據單元格拉開明顯視覺差 */
     background: #fff3f0;
+    /* 將項目名稱文字強制加粗顯示 (800) */
     font-weight: 800;
+    /* 設定文字顏色為深黑色 */
     color: #1a1a1a;
 }
 
+/* 尺寸表下方的提示備註文字 */
 .size-note {
+    /* 設定備註文字與上方滾動容器之間的垂直上外邊距為 0.8rem */
     margin-top: 0.8rem;
+    /* 設定微縮備註字型大小為 0.85rem */
     font-size: 0.85rem;
+    /* 設定文字顏色為中等灰色 */
     color: #777;
+    /* 設定行高為 1.6 倍字高，確保多行說明文字清晰舒適 */
     line-height: 1.6;
 }
 
+/* 寬版尺寸表在行動端（手機、平板等寬度小於 768px）的極限自適應修正 */
 @media (max-width: 768px) {
     .size-modal-wide {
+        /* 微調寬版彈窗在手機端的橫向佔據寬度為 94% */
         width: 94%;
+        /* 同步將手機端彈窗白底卡片的最大高度限制縮緊至 82% (82vh)，防止溢出 */
         max-height: 82vh;
+        /* 將卡片內部的四周內邊距緊縮至 1.2rem */
         padding: 1.2rem;
     }
 
     .size-table {
+        /* 微調行動端表格的最低橫向寬度為 900px，在手機小螢幕上依然具備完美的橫向滑動空間 */
         min-width: 900px;
     }
 
     .size-table th,
     .size-table td {
+        /* 進一步緊縮行動端單元格內部的邊距：上下 7px，左右 8px */
         padding: 7px 8px;
+        /* 將行動端表格內部所有數據文字大小微縮至 0.78rem */
         font-size: 0.78rem;
     }
 
     .size-section-title {
+        /* 將行動端品類標題的字型大小微縮至 0.95rem */
         font-size: 0.95rem;
     }
 }
-
-

@@ -1,23 +1,35 @@
+<!-- 宣告此文件為符合 HTML5 標準的網頁文件 -->
 <!DOCTYPE html>
+<!-- 設定網頁根節點，並指定預設語系為香港繁體中文 -->
 <html lang="zh-Hant-HK">
 <head>
+    <!-- 設定網頁文字編碼為萬國碼 (UTF-8)，防止中文字元出現亂碼 -->
     <meta charset="UTF-8">
+    <!-- 設定響應式網頁的視窗縮放規則，確保在手機等行動裝置上能完美自適應不變形 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 設定瀏覽器分頁與搜尋結果所顯示的結帳頁網頁標題 -->
     <title>NOVA Sport Design - 前往結帳</title>
+    <!-- 引入全站共用的外部核心自適應樣式表檔案 style.css -->
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- 網頁內容主體，套用結帳頁專屬的自適應背景色樣式類別 -->
 <body class="checkout-page-body">
         <!-- 背景音樂 -->
+    <!-- 背景音樂音訊標籤：設定唯一的控制 id、指定音訊來源路徑、啟用循環播放及自動預載 -->
     <audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
 
     <!-- 音樂開關按鈕 -->
+    <!-- 音樂播放與暫停切換按鈕，設定類型為普通按鈕、綁定點擊事件方法，並設有多國語言翻譯屬性 -->
     <button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
         ♫ 音樂
     </button>
 
+    <!-- 音量調整控制面板的外層容器 -->
     <div class="music-control-panel">
+        <!-- 綁定音量滑桿 id 的文字標籤，並設有多國語言翻譯監聽屬性 -->
         <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
 
+        <!-- 音量調整原生滑桿控制項 (Range 欄位)，設定範圍值為 0-100、預設值 18 並綁定滑動即時變更事件 -->
         <input
             type="range"
             id="bgmVolumeSlider"
@@ -27,42 +39,65 @@
             oninput="updateBgmVolume(this.value)"
         >
 
+        <!-- 即時反映並在畫面上印出當前音量百分比數字（如：18%）的顯示標籤 -->
         <span id="bgmVolumeValue">18%</span>
+    <!-- 閉合音量調整控制面板的外層容器 (div.music-control-panel) -->
     </div>
 
+    <!-- 網頁頂部頁首 (Header) 主區塊容器 -->
     <header>
+        <!-- 品牌標誌 Logo 連結，指向首頁網頁檔案與對應的主視覺錨點位置 -->
         <a href="index.html#home" class="logo">NOVA SPORT DESIGN</a>
+        <!-- 主要導覽列標籤 -->
         <nav>
+            <!-- 各個連結皆改為指向 index.html 首頁檔案與對應的分頁錨點位置，並綁定 data-i18n 翻譯屬性 -->
             <a href="index.html#home" data-i18n="navHome">首頁</a>
             <a href="index.html#about" data-i18n="navAbout">關於我們</a>
             <a href="contact.html" data-i18n="navContact">聯絡我們</a>
             <a href="index.html#products" data-i18n="navProducts">產品</a>
             <a href="index.html#faq" data-i18n="navFaq">常見問題</a>
 
+            <!-- 多國語言切換按鈕，點擊時呼叫切換語系的方法 -->
             <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
+                <!-- 語言狀態文字顯示區域（預設顯示 EN） -->
                 <span id="languageLabel">EN</span>
             </button>
+        <!-- 閉合主要導覽列 (nav) -->
         </nav>
 
+    <!-- 閉合網頁頂部頁首 (header) -->
     </header>
 
+    <!-- 結帳頁面的主要內容版面佈局容器 -->
     <main class="checkout-page">
+        <!-- 結帳頁面頂部視覺區 (Hero Section) 的外層獨立區塊標籤 -->
         <section class="checkout-hero">
+            <!-- 安全結帳主標題文字，綁定多國語言翻譯監聽屬性 -->
             <h1 data-i18n="checkoutHeroTitle">安全結帳</h1>
+            <!-- 視覺區的送貨引導描述段落，設有多國語言翻譯監聽屬性 -->
             <p data-i18n="checkoutHeroSubtitle">請填寫你的聯絡及送貨資料，完成訂單確認。</p>
+        <!-- 閉合結帳頁面頂部視覺區外層容器 (section.checkout-hero) -->
         </section>
 
+        <!-- 結帳核心內容與填寫表單的外部容器區塊 -->
         <section class="checkout-container">
+            <!-- 左右雙欄網格佈局容器（顧客資料表單 vs 右側訂單摘要） -->
             <div class="checkout-grid">
 
-                <!-- 左邊：顧客資料 -->
+                <!-- 左邊欄位：顧客資料填寫卡片 -->
                 <div class="checkout-card">
+                    <!-- 區塊的主要小標題，綁定多國語言翻譯監聽屬性 -->
                     <h2 data-i18n="customerInfoTitle">顧客資料</h2>
 
+                    <!-- 結帳表單主體，綁定提交事件時攔截預設行為並呼叫 JS 的 submitOrder 方法 -->
                     <form id="checkoutForm" onsubmit="submitOrder(event)">
+                        <!-- 表單資料並排的單行網格佈局列（姓名與電話） -->
                         <div class="form-row">
+                            <!-- 姓名輸入群組容器 -->
                             <div class="form-group">
+                                <!-- 綁定輸入框 id 的文字標籤，並設有多國語言翻譯監聽屬性 -->
                                 <label for="customerName" data-i18n="customerNameLabel">姓名</label>
+                                <!-- 姓名文字輸入框，設定為必填、限制字數 2-40 字、加上嚴格的語系與格式驗證正則表達式，並提供防錯輸入提示 -->
                                 <input 
                                     type="text" 
                                     id="customerName" 
@@ -74,10 +109,14 @@
                                     title="請輸入 2 至 40 個字，可使用中文、英文、空格、句點、單引號或連字號"
                                 >
 
+                            <!-- 閉合姓名輸入群組容器 (div.form-group) -->
                             </div>
 
+                            <!-- 電話輸入群組容器 -->
                             <div class="form-group">
+                                <!-- 綁定輸入框 id 的文字標籤，並設有多國語言翻譯監聽屬性 -->
                                 <label for="customerPhone" data-i18n="customerPhoneLabel">電話</label>
+                                <!-- 電話專用輸入框，設定為必填、強制行動端彈出純數字鍵盤、嚴格限制且只能輸入 8 位數純數字，並提供驗證提示 -->
                                 <input
                                     type="tel" 
                                     id="customerPhone" 
@@ -88,11 +127,16 @@
                                     pattern="^[0-9]{8}$"
                                     title="請輸入 8 位數字電話號碼"
                                 >
+                            <!-- 閉合電話輸入群組容器 (div.form-group) -->
                             </div>
+                        <!-- 閉合表單資料並排的單行網格佈局列 (div.form-row) -->
                         </div>
 
+                        <!-- 電郵輸入欄位群組 -->
                         <div class="form-group">
+                            <!-- 綁定輸入框 id 的標籤，並設有多國語言翻譯屬性 -->
                             <label for="customerEmail" data-i18n="customerEmailLabel">電郵</label>
+                            <!-- 電子郵件專用輸入框，具備瀏覽器基本格式驗證，設為必填且限制最大字數為 100 字 -->
                             <input
                                 type="email"
                                 id="customerEmail"
@@ -102,28 +146,41 @@
                             >
                         </div>
 
+                        <!-- 送貨地區選擇群組 -->
                         <div class="form-group">
+                            <!-- 綁定下拉選單 id 的標籤，並設有多國語言翻譯屬性 -->
                             <label for="region" data-i18n="regionLabel">地區</label>
+                            <!-- 地區選單，設為必填項目，變更時呼叫動態更新行政區選項的 JS 方法 -->
                             <select id="region" name="region" required onchange="updateDistrictOptions()">
+                                <!-- 預設提示無效選項，綁定多國語言翻譯屬性 -->
                                 <option value="" data-i18n="regionPlaceholder">請選擇地區</option>
+                                <!-- 香港島分區選項，綁定多國語言翻譯屬性 -->
                                 <option value="香港島" data-i18n="regionHKIsland">香港島</option>
+                                <!-- 九龍分區選項，綁定多國語言翻譯屬性 -->
                                 <option value="九龍" data-i18n="regionKowloon">九龍</option>
+                                <!-- 新界分區選項，綁定多國語言翻譯屬性 -->
                                 <option value="新界" data-i18n="regionNT">新界</option>
                             </select>
 
                         </div>
 
+                        <!-- 送貨行政區域選擇群組 -->
                         <div class="form-group">
+                            <!-- 綁定下拉選單 id 的標籤，並設有多國語言翻譯屬性 -->
                             <label for="district" data-i18n="districtLabel">區域</label>
-                            
-<select id="district" name="district" required>
+                            <!-- 行政區域選單，設為必填項目，預設由 JS 根據上方所選地區動態注入可選清單 -->
+                            <select id="district" name="district" required>
+                                <!-- 初始不可點選的佔位提示，綁定多國語言翻譯屬性 -->
                                 <option value="" data-i18n="districtFirstChooseRegion">請先選擇地區</option>
                             </select>
 
                         </div>
 
+                        <!-- 其他自訂區域輸入群組，預設透過行內樣式進行隱藏，由 JS 動態動態控制顯示 -->
                         <div class="form-group" id="otherDistrictGroup" style="display:none;">
+                            <!-- 綁定輸入框 id 的標籤，並設有多國語言翻譯屬性 -->
                             <label for="otherDistrict" data-i18n="otherDistrictLabel">其他區域</label>
+                            <!-- 填寫自訂區域的普通文字輸入框，限制最大長度 30 字 -->
                             <input
                                 type="text"
                                 id="otherDistrict"
@@ -133,62 +190,96 @@
                             >
                         </div>
 
+                        <!-- 詳細收件地址輸入群組 -->
                         <div class="form-group">
+                            <!-- 綁定多行文字框 id 的標籤，並設有多國語言翻譯屬性 -->
                             <label for="customerAddressDetail" data-i18n="addressDetailLabel">詳細地址</label>
+                            <!-- 詳細地址多行文字輸入框，預設橫向擴展 3 行高度，限制最大字數 120 字，並綁定多國語言佔位符提示屬性 -->
                             <textarea id="customerAddressDetail" name="customerAddressDetail" rows="3"
                             required maxlength="120" placeholder="請輸入大廈 / 街道 / 樓層 / 單位"
                             data-i18n-placeholder="addressDetailPlaceholder"
                             ></textarea>
                         </div>
 
+                        <!-- 付款管道選擇群組 -->
                         <div class="form-group">
+                            <!-- 綁定下拉選單 id 的標籤，並設有多國語言翻譯屬性 -->
                             <label for="paymentMethod" data-i18n="paymentMethodLabel">付款方式</label>
+                            <!-- 付款方式下拉選單，設為必填項目，變更時呼叫即時切換帳戶資料提示的 JS 方法 -->
                             <select id="paymentMethod" name="paymentMethod" required onchange="showPaymentHint()">
+                            <!-- 預設提示無效選項，綁定多國語言翻譯屬性 -->
                             <option value="" data-i18n="paymentPlaceholder">請選擇付款方式</option>
+                            <!-- 各大香港本地熱門行動支付選項，具備個別的多國語言語系支援標籤 -->
                             <option value="PayMe">PayMe</option>
                             <option value="FPS" data-i18n="paymentFPS">轉數快 FPS</option>
                             <option value="AlipayHK">AlipayHK</option>
                             <option value="WeChatPayHK" data-i18n="paymentWeChatPayHK">微信支付 HK</option>          
                             </select>
                         </div>
+                        <!-- 動態付款指示帳號提示框，預設透過行內樣式隱藏，當選定付款方式後由 JS 填寫內文並切換為可見狀態 -->
                         <div id="paymentHintBox" class="payment-hint-box" style="display:none;">
+                            <!-- 提示框副標題，綁定預設多國語言翻譯屬性 -->
                             <h3 id="paymentHintTitle" data-i18n="paymentHintDefaultTitle">付款提示</h3>
+                            <!-- 用於供 JS 動態注入收款二維碼、轉數快識別碼等轉帳說明的空白段落 -->
                             <p id="paymentHintText"></p>
                         </div>
 
+                        <!-- 訂單顧客備註輸入群組 -->
                         <div class="form-group">
+                        <!-- 綁定多行文字框 id 的標籤，並設有多國語言翻譯屬性 -->
                         <label for="remark" data-i18n="remarkLabel">備註（選填）</label>
+                        <!-- 備註說明的多行文字輸入框，預設提供 3 行基礎垂直高度 -->
                         <textarea id="remark" name="remark" rows="3"></textarea>
                         </div>
 
 
+                       <!-- 結帳表單的正式提交按鈕，點擊時正式發送數據、執行客製化前端驗證並觸發 submitOrder 函式 -->
                        <button type="submit" class="checkout-submit-btn" data-i18n="confirmOrderBtn">確認訂單</button>
+                    <!-- 關閉顧客資料與送貨付款填寫表單 (form#checkoutForm) -->
                     </form>
+                <!-- 閉合左側欄顧客資料卡片主容器 (div.checkout-card) -->
                 </div>
         
-                <!-- 右邊：訂單摘要 -->
+                <!-- 右邊欄：訂單摘要資訊卡片容器 -->
                 <div class="checkout-card order-summary-card">
+                    <!-- 摘要區塊次級小標題，綁定多國語言翻譯屬性 -->
                     <h2 data-i18n="orderSummaryTitle">訂單摘要</h2>
+                    <!-- 累計購買商品總件數的即時提示文字，綁定唯一的 id 供 JS 複寫、並設定預設多國語言翻譯屬性 -->
                     <p id="checkoutItemCount" class="checkout-item-count" data-i18n="checkoutItemCountEmpty">共 0 件商品</p>
+                    <!-- 結帳商品動態卡片清單的累積容器，綁定 id 供 JS 自動將購物車快取商品重繪並列出於此 -->
                     <div id="checkoutItems" class="checkout-items">
+                        <!-- 預設無商品時的空狀態中文描述段落樣式 -->
                         <p class="empty-checkout">目前沒有商品。</p>
+                    <!-- 閉合結帳商品動態卡片清單的累積容器 (div#checkoutItems) -->
                     </div>
 
+                    <!-- 結帳金額最終試算與明細面板區塊 -->
                     <div class="checkout-summary">
+                        <!-- 純商品金額小計行 -->
                         <div class="summary-line">
+                            <!-- 欄位項目標籤：小計，綁定多國語言翻譯屬性 -->
                             <span data-i18n="subtotal">小計</span>
+                            <!-- 顯示商品總金額數字標籤，設定唯一的 id 供 JS 自動計算更新 -->
                             <span id="checkoutSubtotal">HK$ 0</span>
                         </div>
+                        <!-- 本地運費收取或免運狀態明細行 -->
                         <div class="summary-line">
+                            <!-- 欄位項目標籤：運費，綁定多國語言翻譯屬性 -->
                             <span data-i18n="shipping">運費</span>
+                            <!-- 顯示運費核算數字標籤，設定唯一的 id 供 JS 自動判定更新 -->
                             <span id="checkoutShipping">HK$ 0</span>
                         </div>
+                        <!-- 優惠券碼扣減折扣金額明細行 -->
                         <div class="summary-line">
+                            <!-- 欄位項目標籤：優惠，綁定多國語言翻譯屬性 -->
                             <span data-i18n="discount">優惠</span>
+                            <!-- 顯示折扣扣減金額標籤，設定唯一的 id 供 JS 進行折扣覆寫 -->
                             <span id="checkoutDiscount">-HK$ 0</span>
                         </div>
 
+                        <!-- 優惠代碼輸入與驗證套用操作區 -->
                         <div class="promo-box">
+                            <!-- 優惠碼文字鍵入框，設有多國語言佔位符翻譯監聽屬性 -->
                             <input 
                                 type="text" 
                                 id="promoCodeInput" 
@@ -196,27 +287,43 @@
                                 data-i18n-placeholder="promoPlaceholder"
                                 class="promo-input"
                             />
+                            <!-- 點擊套用按鈕，點擊時觸發 JS 的 applyPromo 函式檢驗優惠碼有效性 -->
                             <button onclick="applyPromo()" class="promo-btn" data-i18n="applyPromoBtn">
                                 套用
                             </button>
 
 
+                            <!-- 供 JavaScript 依據優惠碼驗證結果，動態寫入成功或失敗中文提示的空白容器 -->
                             <div id="promoMessage" class="promo-message"></div>
+                        <!-- 閉合優惠代碼輸入與驗證套用操作區容器 (div.promo-box) -->
                         </div>
 
+                        <!-- 最終應付總金額顯示行，套用獨立加粗放大的強調專屬樣式類別 -->
                         <div class="summary-final">
+                            <!-- 欄位項目標籤：總計，綁定多國語言翻譯屬性 -->
                             <span data-i18n="total">總計</span>
+                            <!-- 顯示最終實付總金額的數字標籤，設定唯一的 id 供 JS 即時複寫更新 -->
                             <span id="checkoutTotal">HK$ 0</span>
                         </div>
+                    <!-- 閉合結帳金額最終試算與明細面板區塊 (div.checkout-summary) -->
                     </div>
 
+                    <!-- 顧客放棄或完成階段操作時，返回首頁商品列表重新選購的導引超連結，設有多國語言翻譯屬性 -->
                     <a href="index.html#products" class="back-shopping-link" data-i18n="backToShopping">← 返回繼續購物</a>
+                <!-- 閉合右側欄訂單摘要資訊卡片容器 (div.checkout-card) -->
                 </div>
 
+            <!-- 閉合左右雙欄網格佈局容器 (div.checkout-grid) -->
             </div>
+        <!-- 閉合結帳核心內容與填寫表單的外部容器區塊 (section.checkout-container) -->
         </section>
+    <!-- 閉合結帳頁面的主要內容版面佈局容器 (main.checkout-page) -->
     </main>
+    <!-- 引入 SheetJS 官方外部 CDN 核心腳本，用以支援在前端將表單數據直接無縫封裝並導出為標準 Excel 活頁簿檔案 -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <!-- 引入全站主要業務、多國語言、地區行政區連動、購物車金額核算與 Excel 訂單導出邏輯的外部 JavaScript 檔案 -->
     <script src="script.js"></script>
+<!-- 閉合網頁主體內容標籤 -->
 </body>
+<!-- 閉合整個 HTML 網頁文件根標籤 -->
 </html>
