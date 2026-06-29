@@ -198,21 +198,45 @@
     </style>
 </head>
 <body>
-    <header>
+        <!-- 背景音樂 -->
+    <audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
+
+    <!-- 音樂開關按鈕 -->
+    <button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
+        ♫ 音樂
+    </button>
+
+    <div class="music-control-panel">
+        <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
+
+        <input
+            type="range"
+            id="bgmVolumeSlider"
+            min="0"
+            max="100"
+            value="18"
+            oninput="updateBgmVolume(this.value)"
+        >
+
+        <span id="bgmVolumeValue">18%</span>
+    </div>
+        <header>
         <a href="index.html#home" class="logo">NOVA SPORTSWEAR DESIGN</a>
         
         <nav>
             <a href="index.html" data-i18n="navHome">首頁</a>
-            <a href="index.html#Home" data-i18n="navAbout">關於我們</a>
+            <a href="index.html#about" data-i18n="navAbout">關於我們</a>
             <a href="index.html#products" data-i18n="navProducts">產品</a>
             <a href="index.html#faq" data-i18n="navFaq">常見問題</a>
             <a href="contact.html" class="active" data-i18n="navContact">聯絡我們</a>
-
+            <button class="cart-icon-btn" onclick="toggleCart(true)">
+                🛒 <span data-i18n="navCart">購物車</span>
+                <span class="cart-badge" id="cart-count">0</span>
+            </button>
             <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
                 <span id="languageLabel">EN</span>
             </button>
         </nav>
-
     </header>
 
     <main class="contact-page">
@@ -295,6 +319,49 @@
             </div>
         </section>
     </main>
+    <!-- ✅ 購物車側邊欄 -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 data-i18n="cartTitle">購物車</h3>
+            <button class="close-cart" onclick="toggleCart(false)">✕</button>
+        </div>
+
+        <div class="cart-items" id="cartItemsContainer">
+            <p data-i18n="cartEmpty" style="text-align:center; color:#999;">
+                購物車目前是空的
+            </p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-line">
+                <span data-i18n="subtotal">小計</span>
+                <span id="cartSubtotal">HK$ 0</span>
+            </div>
+
+            <div class="cart-total-line">
+                <span data-i18n="shipping">運費</span>
+                <span id="cartShipping">HK$ 0</span>
+            </div>
+
+            <div class="cart-total-line">
+                <span data-i18n="discount">優惠</span>
+                <span id="cartDiscount">-HK$ 0</span>
+            </div>
+
+            <div class="cart-total-final">
+                <span data-i18n="total">總計</span>
+                <span id="cartTotalAmount">HK$ 0</span>
+            </div>
+
+            <button class="clear-cart-btn" onclick="clearCart()" data-i18n="clearCart">
+                清空購物車
+            </button>
+
+            <button id="drawerCheckoutBtn" class="checkout-btn" onclick="goCheckout()" data-i18n="goCheckout">
+                前往結帳
+            </button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

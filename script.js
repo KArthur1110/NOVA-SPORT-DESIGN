@@ -115,6 +115,21 @@ const translations = {
         otherDistrictLabel: '其他區域',
         addressDetailLabel: '詳細地址',
         paymentMethodLabel: '付款方式',
+        
+        paymentHintDefaultTitle: '付款提示',
+
+        paymeHintTitle: 'PayMe 付款提示',
+        paymeHintText: '請於提交訂單後使用 PayMe 完成轉帳，並保留付款截圖作確認用途。',
+
+        fpsHintTitle: 'FPS 付款提示',
+        fpsHintText: '請使用轉數快 FPS 完成付款，付款後請保留交易參考編號以便核對。',
+
+        alipayHintTitle: 'AlipayHK 付款提示',
+        alipayHintText: '請於提交訂單後使用 AlipayHK 完成付款，並保留付款截圖作確認用途。',
+
+        wechatHintTitle: '微信支付 HK 付款提示',
+        wechatHintText: '請於提交訂單後使用微信支付 HK 完成付款，並保留付款截圖作確認用途。',
+
         remarkLabel: '備註（選填）',
         confirmOrderBtn: '確認訂單',
         orderSummaryTitle: '訂單摘要',
@@ -237,6 +252,19 @@ const translations = {
         otherDistrictLabel: 'Other District',
         addressDetailLabel: 'Detailed Address',
         paymentMethodLabel: 'Payment Method',
+        paymentHintDefaultTitle: 'Payment Hint',
+
+        paymeHintTitle: 'PayMe Payment Hint',
+        paymeHintText: 'After submitting your order, please complete the transfer with PayMe and keep a payment screenshot for confirmation.',
+
+        fpsHintTitle: 'FPS Payment Hint',
+        fpsHintText: 'Please complete the payment using FPS and keep the transaction reference number for checking.',
+
+        alipayHintTitle: 'AlipayHK Payment Hint',
+        alipayHintText: 'After submitting your order, please complete the payment with AlipayHK and keep a payment screenshot for confirmation.',
+
+        wechatHintTitle: 'WeChat Pay HK Payment Hint',
+        wechatHintText: 'After submitting your order, please complete the payment with WeChat Pay HK and keep a payment screenshot for confirmation.',
         remarkLabel: 'Remarks Optional',
         confirmOrderBtn: 'Confirm Order',
         orderSummaryTitle: 'Order Summary',
@@ -344,6 +372,17 @@ function toggleModal(open) {
 
 let bgmStarted = false;
 
+
+function saveBgmState() {
+    const audio = document.getElementById('bgmAudio');
+
+    if (!audio) return;
+
+    localStorage.setItem('nova_bgm_time', String(audio.currentTime || 0));
+    localStorage.setItem('nova_bgm_paused', audio.paused ? 'true' : 'false');
+}
+
+
 function getSavedBgmVolume() {
     const savedVolume = localStorage.getItem('nova_bgm_volume');
     const volumeNumber = savedVolume !== null ? Number(savedVolume) : 18;
@@ -399,6 +438,9 @@ function toggleBgm() {
                 bgmStarted = true;
                 btn.classList.add('playing');
                 btn.innerText = t('musicPlaying');
+
+                localStorage.setItem('nova_bgm_paused', 'false');
+                saveBgmState();
             })
             .catch(() => {
                 alert('瀏覽器需要你先點擊一次頁面，才可以播放音樂。');
@@ -407,7 +449,47 @@ function toggleBgm() {
         audio.pause();
         btn.classList.remove('playing');
         btn.innerText = t('musicBtn');
+
+        localStorage.setItem('nova_bgm_paused', 'true');
+        saveBgmState();
     }
+}
+function initBgmResume() {
+    const audio = document.getElementById('bgmAudio');
+    const btn = document.getElementById('musicToggleBtn');
+
+    if (!audio || !btn) return;
+
+    audio.volume = getSavedBgmVolume();
+
+    const savedTime = Number(localStorage.getItem('nova_bgm_time')) || 0;
+    const wasPaused = localStorage.getItem('nova_bgm_paused') === 'true';
+
+    audio.addEventListener('loadedmetadata', function () {
+        if (savedTime > 0 && savedTime < audio.duration) {
+            audio.currentTime = savedTime;
+        }
+
+        if (!wasPaused) {
+            audio.play()
+                .then(() => {
+                    bgmStarted = true;
+                    btn.classList.add('playing');
+                    btn.innerText = t('musicPlaying');
+                })
+                .catch(() => {
+                    // 瀏覽器阻止自動播放時，保留按鈕俾用戶自己撳
+                    btn.classList.remove('playing');
+                    btn.innerText = t('musicBtn');
+                });
+        }
+    });
+
+    audio.addEventListener('timeupdate', function () {
+        localStorage.setItem('nova_bgm_time', String(audio.currentTime || 0));
+    });
+
+    window.addEventListener('beforeunload', saveBgmState);
 }
 
 /* 顧客第一次點擊網站時，自動嘗試播放一次背景音樂 */
@@ -859,33 +941,31 @@ function showPaymentHint() {
     if (method === '') {
         // ✅ 隱藏提示框（唔顯示任何付款提示）
         hintBox.style.display = 'none';
+
+        hintTitle.innerText = t('paymentHintDefaultTitle');
+
+        hintText.innerText = '';
+
         // ✅ 停止執行（唔再往下做）
         return;
     }
-    if (method === '') {
-        hintBox.style.display = 'none';
-        return;
-    }
-
-
-
     // 顯示提示區塊
     hintBox.style.display = 'block';
-
     // 根據不同的付款方式設定對應的標題與提示文字
     if (method === 'PayMe') {
-        hintTitle.innerText = 'PayMe 付款提示';
-        hintText.innerText = '請於提交訂單後使用 PayMe 完成轉帳，並保留付款截圖作確認用途。';
+        hintTitle.innerText = t('paymeHintTitle');
+        hintText.innerText = t('paymeHintText');
     } else if (method === 'FPS') {
-        hintTitle.innerText = 'FPS 付款提示';
-        hintText.innerText = '請使用轉數快 FPS 完成付款，付款後請保留交易參考編號以便核對。';
+        hintTitle.innerText = t('fpsHintTitle');
+        hintText.innerText = t('fpsHintText');
     } else if (method === 'AlipayHK') {
-        hintTitle.innerText = 'AlipayHK 付款提示';
-        hintText.innerText = '請於提交訂單後使用 AlipayHK 完成付款，並保留付款截圖作確認用途。';
+        hintTitle.innerText = t('alipayHintTitle');
+        hintText.innerText = t('alipayHintText');
     } else if (method === 'WeChatPayHK') {
-        hintTitle.innerText = '微信支付 HK 付款提示';
-        hintText.innerText = '請於提交訂單後使用微信支付 HK 完成付款，並保留付款截圖作確認用途。';
+        hintTitle.innerText = t('wechatHintTitle');
+        hintText.innerText = t('wechatHintText');
     }
+    
 }
 
 // 渲染 pay.html 訂單摘要
@@ -1325,15 +1405,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loadCartState();
     initBgmVolume();
+    initBgmResume();
     if (guardCheckoutPage()) return;
     initScrollAnimations();
     // 渲染結帳頁面內容
     renderCheckoutPage();
     // 渲染感謝頁面內容
     renderThankYouPage();
-    // 根據選擇的付款方式顯示對應提示
-    showPaymentHint();
+    
     // 更新購物車介面顯示
     updateCartUI();
+    // 根據選擇的付款方式顯示對應提示
+    showPaymentHint();
     applyLanguage()
 });

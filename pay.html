@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="checkout-page-body">
+        <!-- 背景音樂 -->
+    <audio id="bgmAudio" src="夜空の輝き Yozora no Kagayaki AI Music Generator2.mp3.mpeg" loop preload="auto"></audio>
+
+    <!-- 音樂開關按鈕 -->
+    <button id="musicToggleBtn" class="music-toggle-btn" type="button" onclick="toggleBgm()" data-i18n="musicBtn">
+        ♫ 音樂
+    </button>
+
+    <div class="music-control-panel">
+        <label for="bgmVolumeSlider" data-i18n="bgmVolumeLabel">音樂音量</label>
+
+        <input
+            type="range"
+            id="bgmVolumeSlider"
+            min="0"
+            max="100"
+            value="18"
+            oninput="updateBgmVolume(this.value)"
+        >
+
+        <span id="bgmVolumeValue">18%</span>
+    </div>
 
     <header>
         <a href="index.html#home" class="logo">NOVA SPORT DESIGN</a>
@@ -130,8 +152,8 @@
                             </select>
                         </div>
                         <div id="paymentHintBox" class="payment-hint-box" style="display:none;">
-                        <h3 id="paymentHintTitle">付款提示</h3>
-                        <p id="paymentHintText"></p>
+                            <h3 id="paymentHintTitle" data-i18n="paymentHintDefaultTitle">付款提示</h3>
+                            <p id="paymentHintText"></p>
                         </div>
 
                         <div class="form-group">
