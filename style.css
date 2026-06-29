@@ -2609,5 +2609,90 @@ nav a:hover,
         width: 155px;
     }
 }
+/* =========================
+   Size Chart Update
+========================= */
+
+.size-modal-wide {
+    max-width: 980px;
+    width: 94%;
+    max-height: 86vh;
+    overflow-y: auto;
+}
+
+.size-section-title {
+    margin: 1.2rem 0 0.6rem;
+    color: var(--dark-color);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.size-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.size-table {
+    min-width: 960px;
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.size-table th,
+.size-table td {
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 0.86rem;
+    white-space: nowrap;
+}
+
+.size-table th {
+    background: #f4f4f4;
+    font-weight: 800;
+}
+
+.size-table td:first-child,
+.size-table th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #fff3f0;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.size-note {
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .size-modal-wide {
+        width: 94%;
+        max-height: 82vh;
+        padding: 1.2rem;
+    }
+
+    .size-table {
+        min-width: 900px;
+    }
+
+    .size-table th,
+    .size-table td {
+        padding: 7px 8px;
+        font-size: 0.78rem;
+    }
+
+    .size-section-title {
+        font-size: 0.95rem;
+    }
+}
 
 

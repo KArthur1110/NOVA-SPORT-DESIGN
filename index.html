@@ -45,7 +45,7 @@
                 🛒 <span data-i18n="navCart">購物車</span>
                 <span class="cart-badge" id="cart-count">0</span>
             </button>
-            
+
             <button class="language-toggle-btn" type="button" onclick="toggleLanguage()">
                 <span id="languageLabel">EN</span>
             </button>
@@ -107,7 +107,7 @@
                     <div class="product-info">
                         <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
                         <h3 class="product-title" data-i18n="productSkyX">NOVA Sky-X traing Tee</h3>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA Sky-X traing Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])" data-i18n="addToCart">加入購物車
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Sky-X traing Tee', 218, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart">加入購物車
                         </button>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                     <div class="product-info">
                         <span class="product-tag" data-i18n="tagGeneral">全能運動</span>
                         <h3 class="product-title" data-i18n="productEveryday">Everyday Core 高透氣運動 T-Shirt</h3>
-                        <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 188, ['XS','S','M','L','XL','2XL'])" data-i18n="addToCart"> 加入購物車
+                        <button class="buy-btn" onclick="openSizePicker('Everyday Core 運動 T-Shirt', 188, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart"> 加入購物車
                         </button>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                     <div class="product-info">
                         <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
                         <h3 class="product-title" data-i18n="productBakugo">NOVA Bakugo Tee</h3>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA Bakugo Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])" data-i18n="addToCart"> 加入購物車
+                        <button class="buy-btn" onclick="openSizePicker('NOVA Bakugo Tee', 218, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart"> 加入購物車
                         </button>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                     <div class="product-info">
                         <span class="product-tag" data-i18n="tagVolleyball">排球專屬</span>
                         <h3 class="product-title" data-i18n="productShoto">NOVA shoto Tee</h3>
-                        <button class="buy-btn" onclick="openSizePicker('NOVA shoto Tee', 218, ['2XS','XS','S','M','L','XL','2XL'])" data-i18n="addToCart">加入購物車
+                        <button class="buy-btn" onclick="openSizePicker('NOVA shoto Tee', 218, ['7XS','6XS','5XS','4XS','3XS','2XS','XS','S','M','L','XL','2XL','3XL','4XL','5XL'])" data-i18n="addToCart">加入購物車
                         </button>
                     </div>
                 </div>
@@ -187,33 +187,243 @@
     <script src="script.js">
     </script>
 
+
 <!-- ✅ 尺碼表彈窗 -->
 <div class="modal-overlay" id="sizeModal">
-  <div class="size-modal">
+  <div class="size-modal size-modal-wide">
     <button class="close-modal" onclick="toggleModal(false)">✕</button>
+
     <h3 data-i18n="sizeTableTitle">尺寸表</h3>
 
-    <table class="size-table">
-      <tr><th>Size</th><th>胸圍</th><th>長度</th></tr>
-      <tr><td>S</td><td>90cm</td><td>65cm</td></tr>
-      <tr><td>M</td><td>96cm</td><td>68cm</td></tr>
-      <tr><td>L</td><td>102cm</td><td>71cm</td></tr>
-      <tr><td>XL</td><td>108cm</td><td>74cm</td></tr>
-    </table>
+    <h4 class="size-section-title">上衣 T-Shirt / Jersey</h4>
+
+    <div class="size-table-scroll">
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>尺碼</th>
+            <th>7XS</th>
+            <th>6XS</th>
+            <th>5XS</th>
+            <th>4XS</th>
+            <th>3XS</th>
+            <th>2XS</th>
+            <th>XS</th>
+            <th>S</th>
+            <th>M</th>
+            <th>L</th>
+            <th>XL</th>
+            <th>2XL</th>
+            <th>3XL</th>
+            <th>4XL</th>
+            <th>5XL</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>參考身高(cm)</td>
+            <td>100-109</td>
+            <td>110-119</td>
+            <td>120-129</td>
+            <td>130-139</td>
+            <td>140-149</td>
+            <td>150-155</td>
+            <td>155-165</td>
+            <td>165-170</td>
+            <td>170-175</td>
+            <td>175-180</td>
+            <td>180-185</td>
+            <td>185-195</td>
+            <td>185-195</td>
+            <td>195-200</td>
+            <td>200-205</td>
+          </tr>
+
+          <tr>
+            <td>參考體重(kg)</td>
+            <td>15-16</td>
+            <td>17-21</td>
+            <td>18-24</td>
+            <td>22-26</td>
+            <td>24-34</td>
+            <td>26-38</td>
+            <td>40-50</td>
+            <td>50-60</td>
+            <td>60-65</td>
+            <td>65-75</td>
+            <td>75-85</td>
+            <td>85-95</td>
+            <td>95-105</td>
+            <td>105-115</td>
+            <td>115-125</td>
+          </tr>
+
+          <tr>
+            <td>胸圍(cm)</td>
+            <td>35.0</td>
+            <td>37.0</td>
+            <td>40.0</td>
+            <td>43.0</td>
+            <td>47.0</td>
+            <td>48.5</td>
+            <td>50.0</td>
+            <td>50.5</td>
+            <td>52.5</td>
+            <td>54.5</td>
+            <td>56.5</td>
+            <td>58.5</td>
+            <td>60.5</td>
+            <td>62.5</td>
+            <td>65.5</td>
+          </tr>
+
+          <tr>
+            <td>後衣長(cm)</td>
+            <td>45.0</td>
+            <td>48.0</td>
+            <td>52.0</td>
+            <td>56.0</td>
+            <td>60.0</td>
+            <td>65.0</td>
+            <td>66.5</td>
+            <td>68.5</td>
+            <td>70.5</td>
+            <td>72.5</td>
+            <td>74.5</td>
+            <td>76.5</td>
+            <td>78.5</td>
+            <td>80.5</td>
+            <td>82.5</td>
+          </tr>
+
+          <tr>
+            <td>短袖袖長(cm)</td>
+            <td>16.0</td>
+            <td>17.0</td>
+            <td>18.0</td>
+            <td>19.0</td>
+            <td>20.0</td>
+            <td>21.0</td>
+            <td>22.0</td>
+            <td>22.5</td>
+            <td>23.0</td>
+            <td>23.5</td>
+            <td>24.0</td>
+            <td>24.5</td>
+            <td>25.0</td>
+            <td>25.5</td>
+            <td>26.0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="size-section-title">褲子 Shorts</h4>
+
+    <div class="size-table-scroll">
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>尺碼</th>
+            <th>7XS</th>
+            <th>6XS</th>
+            <th>5XS</th>
+            <th>4XS</th>
+            <th>3XS</th>
+            <th>2XS</th>
+            <th>XS</th>
+            <th>S</th>
+            <th>M</th>
+            <th>L</th>
+            <th>XL</th>
+            <th>2XL</th>
+            <th>3XL</th>
+            <th>4XL</th>
+            <th>5XL</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>腰圍 1/2 (cm)</td>
+            <td>23.0</td>
+            <td>24.5</td>
+            <td>26.0</td>
+            <td>27.5</td>
+            <td>29.0</td>
+            <td>30.5</td>
+            <td>32.0</td>
+            <td>33.5</td>
+            <td>35.0</td>
+            <td>36.5</td>
+            <td>38.0</td>
+            <td>39.5</td>
+            <td>41.0</td>
+            <td>42.5</td>
+            <td>44.0</td>
+          </tr>
+
+          <tr>
+            <td>臀圍 1/2 (cm)</td>
+            <td>39.0</td>
+            <td>41.0</td>
+            <td>43.5</td>
+            <td>46.0</td>
+            <td>48.5</td>
+            <td>51.0</td>
+            <td>52.0</td>
+            <td>54.0</td>
+            <td>56.0</td>
+            <td>58.0</td>
+            <td>60.0</td>
+            <td>62.0</td>
+            <td>64.0</td>
+            <td>66.0</td>
+            <td>68.0</td>
+          </tr>
+
+          <tr>
+            <td>褲長含腰 (cm)</td>
+            <td>27.5</td>
+            <td>30.0</td>
+            <td>32.5</td>
+            <td>35.0</td>
+            <td>37.5</td>
+            <td>40.0</td>
+            <td>42.0</td>
+            <td>44.0</td>
+            <td>46.0</td>
+            <td>48.0</td>
+            <td>50.0</td>
+            <td>52.0</td>
+            <td>54.0</td>
+            <td>56.0</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="size-note">
+      * 尺碼資料只作參考，實際穿著感會因身形及版型而略有不同。
+    </p>
   </div>
 </div>
-
-
 <!-- 選擇尺碼彈窗 -->
 <div class="modal-overlay" id="sizePickerModal">
   <div class="size-modal">
-    <button class="close-modal" onclick="closeSizePicker()">✕</button>
+    <button class="close-modal" type="button" onclick="closeSizePicker()">✕</button>
 
     <h3 data-i18n="chooseSize">請選擇尺碼</h3>
 
     <div id="sizePickerOptions" class="option-group"></div>
 
-    <button class="checkout-btn" onclick="confirmSizeSelection()" data-i18n="confirmAddCart">
+    <button
+      class="checkout-btn"
+      type="button"
+      onclick="confirmSizeSelection()"
+      data-i18n="confirmAddCart">
       確認加入購物車
     </button>
   </div>
